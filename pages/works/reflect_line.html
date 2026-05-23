@@ -36,8 +36,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-award">受賞</a>
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -49,13 +48,10 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-award">アイデア賞受賞</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
-        </p>
-        <p>
-          <span class="side-toc-dot">・</span><a href="#contents-desc">操作説明</a>
+          <span class="side-toc-dot">・</span><a href="#contents-operate">操作方法</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-rule">ルール</a>
@@ -75,99 +71,78 @@
   <!-- サイト本体 -->
   <main class="wrap">
 
-    <section id="contents-award">
-      <div class="fade-in">
-        <!-- 賞状 & 動画 -->
-        <h2 class="h2 neon">アイデア賞受賞</h2>
-        <div class="panel">
-          <p>
-            <span class="keyword">『第14回 全国専門学校ゲームコンペティション』</span>にて、全196作品の中で<span class="keyword">『アイデア賞』</span>を受賞しました！
-          </p>
-          <div class="kr-layout_grid">
-            <div>
-              <a href="../../img/works/reflect_line/idea_award.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
-                <img src="../../img/works/reflect_line/idea_award.webp" class="panel-img">
-                <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
-              </a>
-            </div>
-            <div>
-              <iframe
-                src="https://www.youtube.com/embed/75ie9WD8uxU"
-                width="100%"
-                frameborder="0"
-                allow="autoplay; encrypted-media"
-                allowfullscreen
-                class="kr-layout_center-iframe panel-img"
-              ></iframe>
-            </div>
+    <section id="contents-overview">
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 REFLECT LINE 》
+        </div>
+        <div class="text">
+          「アイデア賞」を受賞した代表作です。<br>
+          ゲームロジック・UI・演出まで全てコーディングで実装。<br>
+          ロゴや作中のデザインも自作しました。
+        </div>
+      </div>
+      <!-- 受賞 -->
+      <div class="panel">
+        <div class="title-row">
+          <b class="title">受賞</b>
+        </div>
+        <p>
+          <span class="keyword">「第14回 全国専門学校ゲームコンペティション」</span>にて、全196作品の中から<span class="keyword">「アイデア賞」</span>を受賞しました。<br>
+          ※チームメンバーの許可を得て掲載しています。
+        </p>
+        <div class="kr-layout_grid">
+          <div>
+            <a href="../../img/works/reflect_line/idea_award.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
+              <img src="../../img/works/reflect_line/idea_award.webp" class="panel-img">
+              <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
+            </a>
+          </div>
+          <div>
+            <iframe
+              src="https://www.youtube.com/embed/75ie9WD8uxU"
+              width="100%"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+              class="kr-layout_center-iframe panel-img"
+            ></iframe>
           </div>
         </div>
         <!-- プレゼン資料 -->
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">プレゼン資料</b>
-          </div>
-          <div class="ppt-frame">
-            <embed src="../../pdf/works/reflect_line.pdf" type="application/pdf" class="panel-img">
-          </div>
+        <p>
+          こちらは、当日使用したプレゼン資料です。
+        </p>
+        <div class="ppt-frame">
+          <embed src="../../pdf/works/reflect_line.pdf" type="application/pdf" class="panel-img">
         </div>
       </div>
-    </section>
-
-    <div class="neon-line"></div> <!-- グラデーション線 -->
-
-    <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- 紹介動画 -->
+      <div class="panel">
+        <div class="title-row">
+          <b class="title">紹介動画</b>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/twBnOmDY8fo"
+          width="100%"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          class="kr-layout_center-iframe"
+          loading="lazy"
+        ></iframe>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <!-- スライダー -->
-        <section id="img-slider">
-          <iframe
-            src="https://www.youtube.com/embed/twBnOmDY8fo"
-            width="100%"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            class="kr-layout_center-iframe"
-          ></iframe>
-          <img src="../../img/works/reflect_line/card_image.webp">
-          <img src="../../img/works/reflect_line/image_menu.webp">
-          <img src="../../img/works/reflect_line/image_endless.webp">
-          <img src="../../img/works/reflect_line/image_tutorial.webp">
-        </section>
+        <span id="img-slider">
+          <img src="../../img/works/reflect_line/card_image.webp" class="kr-layout_center-img">
+          <img src="../../img/works/reflect_line/image_menu.webp" class="kr-layout_center-img">
+          <img src="../../img/works/reflect_line/image_endless.webp" class="kr-layout_center-img">
+          <img src="../../img/works/reflect_line/image_tutorial.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
-      <div class="panel">
-        <table class="info-table">
-          <tr>
-            <td>プレイ人数</td>
-            <td>
-              1人
-              <span class="person-icons">
-                <span class="person-icon"></span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">反撃型回避アクション</span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>操作端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">キーボード</span>
-                <span class="pill">コントローラ</span>
-                <span class="pill">アーケード筐体</span>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
       <div class="panel">
         <table class="info-table">
           <tr>
@@ -185,6 +160,23 @@
             </td>
           </tr>
           <tr>
+            <td>プレイ人数</td>
+            <td>
+              1人
+              <span class="person-icons">
+                <span class="person-icon"></span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td>
+              <span class="pillbar">
+                <span class="pill">反撃型回避アクション</span>
+              </span>
+            </td>
+          </tr>          
+          <tr>
             <td>使用技術</td>
             <td>
               <span class="pillbar">
@@ -193,59 +185,84 @@
               </span>
             </td>
           </tr>
-          <tr>
-            <td>担当</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">ゲーム全体の設計</span>
-                <span class="pill">アニメーションなどの調整</span>
-                <span class="pill">障害物 (隕石)</span>
-                <span class="pill">UI</span>
-                <span class="pill">背景</span>
-                <span class="pill">自作ラッパーライブラリ開発</span>
-                <span class="pill">プレゼン資料作成</span>
-              </span>
-            </td>
-          </tr>
         </table>
+      </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>ゲーム進行・アニメーション・オブジェクト管理などをC++で実装し、コーディング力を高める。</li>
+            <li>オブジェクト指向設計への理解を深め、クラスを活用したゲーム開発を行う。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>ゲーム全体の設計</li>
+            <li>アニメーション・UI</li>
+            <li>障害物 (隕石)</li>
+            <li>タイトルロゴ・背景などのデザイン制作</li>
+            <li>自作ラッパーライブラリの開発</li>
+            <li>プレゼン資料作成</li>
+          </ul>
+        </div>
       </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://github.com/KurosawaReo/2025_shinkyu_zenki" target="_blank" class="btn-link">
             GitHub>>
           </a>
-        </p>
+        </div>
       </div>
     </section>
 
     <div class="neon-line"></div> <!-- グラデーション線 -->
 
-    <section id="contents-desc">
+    <section id="contents-operate">
       <div class="fade-in">
-        <h2 class="h2 neon">操作説明</h2>
+        <h2 class="h2 neon">操作方法</h2>
 
+        <!-- キーボード & コントローラー -->
         <div class="panel kr-layout_grid">
-          <div>
-            <div class="title-row">
-              <b class="title">キーボード</b>
-            </div>
+          <div class="kr-layout_center">
+            <span class="img-label">
+              <span class="seg text">キーボード</span>
+            </span>
             <a href="../../img/works/reflect_line/desc_keyboard.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
               <img src="../../img/works/reflect_line/desc_keyboard.webp" class="panel-img">
               <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
             </a>
           </div>
-          <div>
-            <div class="title-row">
-              <b class="title">Xboxコントローラ</b>
-            </div>
+          <div class="kr-layout_center">
+            <span class="img-label">
+              <span class="seg text">コントローラー</span>
+            </span>
             <a href="../../img/works/reflect_line/desc_xbox_controller.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
               <img src="../../img/works/reflect_line/desc_xbox_controller.webp" class="panel-img">
               <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
             </a>
+          </div>
+        </div>
+        <!-- アーケード筐体 -->
+        <div class="panel kr-layout_grid">
+          <div class="kr-layout_center">
+            <span class="img-label">
+              <span class="seg text">アーケード筐体</span>
+            </span>
+            <p>
+              学内に設置されているアーケード筐体にも対応しました。
+            </p>
+            <img src="../../img/works/reflect_line/arcade.webp" class="panel-img">
           </div>
         </div>
       </div>
@@ -328,7 +345,7 @@
           <br>
     
           <p>
-            これらのルールは、ゲーム本編の<span class="keyword">『チュートリアル』</span>から確認できます。
+            これらのルールは、ゲーム本編の<span class="keyword">「チュートリアル」</span>から確認できます。
           </p>
           <img src="../../img/works/reflect_line/menu_tutorial.webp" class="panel-img">
         </div>
@@ -400,19 +417,18 @@
 
         <div class="panel">
           <div class="title-row">
-            <b class="title">『反射』に辿り着いた経緯</b>
+            <b class="title">「反射」に辿り着いた経緯</b>
           </div>
 
           <p>
             ゲームの面白さを学ぶ授業で、3つのお題が出されました。<br>
-            その中でも、特に<span class="keyword">『こわす』</span>要素をどのようにゲームに落とし込むかに悩みました。
+            その中でも、特に<span class="keyword">「こわす」</span>要素をどのようにゲームに落とし込むかに悩みました。
           </p>
           <div class="episode-img" style="--img-max-width: 600px;">
             <img src="../../img/works/reflect_line/episode/3_theme.png" class="panel-img">
           </div>
-
           <p>
-            まずは<span class="keyword">『さける』</span>から、障害物を避けるゲームを作りました。
+            まずは<span class="keyword">「さける」</span>から、障害物を避けるゲームを作りました。
           </p>
           <!-- テーマ「さける」 -->
           <div class="idea-ui-wrap">
@@ -433,9 +449,8 @@
               </div>
             </div>
           </div>
-
           <p>
-            次に<span class="keyword">『とる』</span>を加え、アイテムを取る要素を追加しました。<br>
+            次に<span class="keyword">「とる」</span>を加え、アイテムを取る要素を追加しました。<br>
           </p>
           <!-- テーマ「とる」 -->
           <div class="idea-ui-wrap">
@@ -462,25 +477,22 @@
               </div>
             </div>
           </div>
-
           <p>
             そこで、次のような課題に直面しました。
           </p>
           <ul class="ui-list">
             <li>アイテムを取った後に何が起きるのか</li>
-            <li>何を<span class="keyword">『こわす』</span>のか、何のために<span class="keyword">『こわす』</span>のか</li>
+            <li>何を<span class="keyword">「こわす」</span>のか、何のために<span class="keyword">「こわす」</span>のか</li>
           </ul>
-
           <p>
             チームで議論を重ねた結果、
-            <span class="keyword">『隕石を壊してスコアを得る』</span>
+            <span class="keyword">「隕石を壊してスコアを得る」</span>
             という案に決まりました。
           </p>
           <p>
             しかし、プレイヤーが弾を撃つだけでは、ただのシューティングゲームになってしまい、個性がありません。<br>
-            そこで、<span class="keyword">『反射』</span>という発想に至りました。<br>
+            そこで、<span class="keyword">「反射」</span>という発想に至りました。<br>
           </p>
-
           <div class="episode-img" style="--img-max-width: 400px;">
             <img src="../../img/works/reflect_line/gif/reflect.gif" class="panel-img">
           </div>
@@ -489,12 +501,11 @@
             <li>避けるべき障害物にあえて当たり、反射して別の障害物を壊す</li>
             <li>壊せば壊すほどスコアを獲得できるが、一度でも障害物に当たるとゲームオーバー</li>
           </ul>
-
           <p>
             これにより、スコアを伸ばすためにリスクを取るかどうか、という駆け引きができると考えました。
           </p>
           <p>
-            このようにして、<span class="keyword">『さける』</span>と<span class="keyword">『こわす』</span>を両立させた、<span class="keyword">『反射』</span>というルールが生まれました。
+            このようにして、<span class="keyword">「さける」</span>と<span class="keyword">「こわす」</span>を両立させた、<span class="keyword">「反射」</span>というルールが生まれました。
           </p>
           <!-- テーマ「こわす」 -->
           <div class="idea-ui-wrap">
@@ -542,12 +553,12 @@
             <b class="title">ネオン風のデザイン</b>
           </div>
           <p>
-            <span class="keyword">『きれい × かっこいい』</span>をコンセプトにした、個性的なデザインにしています。<br>
+            <span class="keyword">「きれい × かっこいい」</span>をコンセプトにした、個性的なデザインにしています。<br>
             <font color=00ffff><b>青色</b></font>と<font color=ff00ff><b>ピンク色</b></font>の対比が特徴です。
           </p>
         
           <div class="kr-layout_grid">
-            <div>
+            <div class="kr-layout_center">
               <span class="img-label">
                 <span class="seg index"><font color="00ffff">青</font></span>
                 <span class="seg text">通常モード</span>
@@ -557,7 +568,7 @@
                 <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
               </a>
             </div>
-            <div>
+            <div class="kr-layout_center">
               <span class="img-label">
                 <span class="seg index"><font color="ff00ff">ピンク</font></span>
                 <span class="seg text">反射モード</span>
@@ -577,7 +588,7 @@
       
         <div class="panel">
           <div class="title-row">
-            <b class="title">『動き』を作るアニメーション</b>
+            <b class="title">「動き」を作るアニメーション</b>
           </div>
           <p>
             ゲームには、常に動いてるものがないと寂しく感じます。<br>
@@ -641,7 +652,7 @@
             <b class="title">隕石をこわす爽快感</b>
           </div>
           <p>
-            <span class="keyword">『ガラスを壊す』</span>ような破片の演出と効果音を取り入れています。
+            <span class="keyword">「ガラスを壊す」</span>ような破片の演出と効果音を取り入れています。
           </p>
           <p>
             現実では、ガラスを壊すことはあまりありません。<br>
@@ -669,9 +680,10 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

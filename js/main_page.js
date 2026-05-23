@@ -1,3 +1,7 @@
+/*
+  - main_page.css -
+  最初のページに使うもの。
+*/
 
 //新しいタブで開く.
 const openNewTab = (url) => {

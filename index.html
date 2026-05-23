@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&display=swap" rel="stylesheet">
   <!-- cssファイル -->
   <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/main_page.css">
   <link rel="stylesheet" href="plugins/KrLib_html/kr_common.css">
 </head>
 <body>
@@ -48,7 +49,8 @@
       </h1>
       <!-- 一言 -->
       <p class="hero-message">
-        「個性で魅せる作品を。」
+        私の強みは「実装力」と「整理力」<br>
+        「やりたい」を技術で叶え、きれいに仕上げることにこだわります。
       </p>
       <!-- 画像 -->
       <div class="avatar-wrap">
@@ -67,131 +69,122 @@
 
   <!-- サイト本体 -->
   <main class="wrap">
-    <!-- プロフィール -->
+
     <section id="profile">
-      <div class="fade-in">        
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">プロフィール</b>
+      <!-- PCでは横並びにする -->
+      <div class="kr-layout_grid">
+        <!-- プロフィール -->
+        <div class="fade-in">
+          <div class="panel">
+            <div class="title-row">
+              <b class="title">プロフィール</b>
+            </div>
+            <table class="info-table">
+              <tr>
+                <td>生年月日</td>
+                <td>2005/09/18</td>
+              </tr>
+              <tr>
+                <td>学校・学科</td>
+                <td>横浜デジタルアーツ専門学校 ゲーム科</td>
+              </tr>
+              <tr>
+                <td>メール</td>
+                <td>kurosawareo.job@gmail.com</td>
+              </tr>
+              <tr>
+                <td>志望</td>
+                <td>ゲームプログラマー</td>
+              </tr>
+              <tr>
+                <td>取得資格</td>
+                <td>
+                  <span class="keyword">計算技術検定 3級</span><br>
+                  <span class="keyword">情報技術検定 3級</span><br>
+                  <span class="keyword">情報検定 情報活用試験 3級</span><br>
+                  <span class="keyword">CGクリエイター検定 ベーシック</span><br>
+                  <span class="keyword">CGエンジニア検定 ベーシック</span><br>
+                </td>
+              </tr>
+            </table>
           </div>
-          <table class="info-table">
-            <tr>
-              <td>生年月日</td>
-              <td>2005/09/18</td>
-            </tr>
-            <tr>
-              <td>学校・学科</td>
-              <td>横浜デジタルアーツ専門学校 ゲーム科</td>
-            </tr>
-            <tr>
-              <td>メール</td>
-              <td>kurosawareo.job@gmail.com</td>
-            </tr>
-            <tr>
-              <td>趣味</td>
-              <td>
-                <span class="keyword">Minecraftゲーム制作</span><br>
-                <span class="keyword">Minecraftアドオン開発</span><br>
-                <span class="keyword">動画制作</span><br>
-                <span class="keyword">BGM作曲</span><br>
-                <span class="keyword">動画鑑賞</span><br>
-              </td>
-            </tr>
-            <tr>
-              <td>取得資格</td>
-              <td>
-                <span class="keyword">計算技術検定 3級</span><br>
-                <span class="keyword">情報技術検定 3級</span><br>
-                <span class="keyword">CGクリエイター検定 ベーシック</span><br>
-                <span class="keyword">情報検定 情報活用試験 3級</span><br>
-                <span class="keyword">CGエンジニア検定 ベーシック</span><br>
-              </td>
-            </tr>
-          </table>
         </div>
-      </div>
-      <div class="fade-in">
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">経験</b>
+  
+        <!-- 経験 -->
+        <div class="fade-in">
+          <div class="panel">
+            <div class="title-row">
+              <b class="title">経験</b>
+            </div>
+            <table class="info-table">
+              <tr>
+                <td>プログラム</td>
+                <td>
+                  <div class="pillbar">
+                    <span class="pill">C</span>
+                    <span class="pill">C++</span>
+                    <span class="pill">C#</span>
+                    <span class="pill">DxLib</span>
+                    <span class="pill">JavaScript</span>
+                    <span class="pill">HTML</span>
+                    <span class="pill">CSS</span>
+                    <span class="pill">PHP</span>
+                    <span class="pill">SQL</span>
+                    <span class="pill">VBA</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>ゲーム開発</td>
+                <td>
+                  <div class="pillbar">
+                    <span class="pill">Unity</span>
+                    <span class="pill">Unreal Engine</span>
+                    <span class="pill">Visual Studio</span>
+                    <span class="pill">Visual Studio Code</span>
+                    <span class="pill">GitHub</span>
+                    <span class="pill">Sourcetree</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>動画編集</td>
+                <td>
+                  <div class="pillbar">
+                    <span class="pill">Adobe Premiere Pro</span>
+                    <span class="pill">DaVinci Resolve</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>デザイン</td>
+                <td>
+                  <div class="pillbar">
+                    <span class="pill">Adobe Photoshop</span>
+                    <span class="pill">ibisPaint</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>モデル</td>
+                <td>
+                  <div class="pillbar">
+                    <span class="pill">Blockbench</span>
+                    <span class="pill">Blender</span>
+                    <span class="pill">Maya</span>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>サウンド</td>
+                <td>
+                  <div class="pillbar">
+                    <span class="pill">GarageBand</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
-          <table class="info-table">
-            <tr>
-              <td>プログラム</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">C</span>
-                  <span class="pill">C++</span>
-                  <span class="pill">C#</span>
-                  <span class="pill">DxLib</span>
-                  <span class="pill">JavaScript</span>
-                  <span class="pill">HTML</span>
-                  <span class="pill">CSS</span>
-                  <span class="pill">PHP</span>
-                  <span class="pill">SQL</span>
-                  <span class="pill">VBA</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>ゲーム開発</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">Unity</span>
-                  <span class="pill">Unreal Engine</span>
-                  <span class="pill">Visual Studio</span>
-                  <span class="pill">Visual Studio Code</span>
-                  <span class="pill">GitHub</span>
-                  <span class="pill">Sourcetree</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>動画編集</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">Adobe Premiere Pro</span>
-                  <span class="pill">DaVinci Resolve</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>デザイン</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">Adobe Photoshop</span>
-                  <span class="pill">ibisPaint</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>モデル</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">Blockbench</span>
-                  <span class="pill">Maya</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>サウンド</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">GarageBand</span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>連絡</td>
-              <td>
-                <div class="pillbar">
-                  <span class="pill">LINE</span>
-                  <span class="pill">Discord</span>
-                  <span class="pill">Slack</span>
-                </div>
-              </td>
-            </tr>
-          </table>
         </div>
       </div>
     </section>
@@ -209,13 +202,14 @@
             <div class="thumb"><img src="img/activity/real/card_image.webp"></div>
             <h3>学生活動</h3>
             <p>
-              学生時代に力を入れたことや、実績の一覧です。<br>
-              <br>
-              ・代表作が「アイデア賞」を受賞<br>
-              ・学年1位の成績(全教科で最高評価)<br>
-              ・学外のゲーム展示イベントに出展<br>
-              ・その他、サークル活動やイベント運営<br>
+              学内・学外での活動と実績まとめです。
             </p>
+            <ul class="ui-list">
+              <li>代表作が「アイデア賞」を受賞</li>
+              <li>学年1位の成績取得 (全教科最高評価)</li>
+              <li>ゲーム展示イベントへ出展</li>
+              <li>ゲーム制作イベントの運営</li>
+            </ul>
           </article>
 
           <!-- ネット -->
@@ -223,12 +217,13 @@
             <div class="thumb"><img src="img/activity/net/card_image.webp"></div>
             <h3>プライベート活動</h3>
             <p>
-              もう1つの人生。趣味で行っている活動です。<br>
-              <br>
-              ・Minecraftでのオリジナルゲーム制作<br>
-              ・Minecraftのアドオン開発(JSON, JavaScript)<br>
-              ・動画制作、BGM作曲<br>
+              もう1つの人生。趣味で継続している制作活動です。
             </p>
+            <ul class="ui-list">
+              <li>Minecraftでオリジナルゲーム制作・運営</li>
+              <li>Minecraftアドオン開発 (JSON / JavaScript)</li>
+              <li>動画制作・BGM作曲</li>
+            </ul>
           </article>
         </div>
       </div>
@@ -246,30 +241,29 @@
         <!-- 作品集 -->
         <div class="card_list">
           
-          <article class="card card-gold" id="works-card-01" data-tilt>
+          <article class="card card-3star" id="works-card-01" data-tilt>
             <span class="badge">★★★</span>
             <div class="thumb"><img src="img/works/reflect_line/card_image.webp"></div>
             <h3>REFLECT LINE</h3>
             <p>
-              これはただ避けるゲームではありません。<br>
-              障害物を跳ね返して別の障害物を壊す。<br>
-              「避ける×反射」を合わせたアクションゲームです。
+              「アイデア賞」を受賞した代表作です。<br>
+              ゲームロジック・UI・演出まで全てコーディングで実装。<br>
+              ロゴや作中のデザインも自作しました。
             </p>
             <div class="chipz">
               <span class="chip">DxLib</span>
               <span class="chip">C++</span>
-              <span class="chip">デザイン</span>
-              <span class="chip">アイデア賞受賞</span>
+              <span class="chip">🏆受賞</span>
             </div>
           </article>
 
-          <article class="card card-gold" id="works-card-02" data-tilt>
+          <article class="card card-3star" id="works-card-02" data-tilt>
             <span class="badge">★★★</span>
             <div class="thumb"><img src="img/works/gun_action/card_image.webp"></div>
-            <h3>Gun Action (挑戦中)</h3>
+            <h3>Gun Action (制作中)</h3>
             <p>
-              Unreal Engine / C++ での開発に挑戦。<br>
-              現在制作中の「FPS×アクション」ゲームです。
+              ゲームロジックは全てC++で実装。<br>
+              3D作品制作と、技術習得を目的に開発しています。
             </p>
             <div class="chipz">
               <span class="chip">Unreal Engine</span>
@@ -283,14 +277,28 @@
             <div class="thumb"><img src="img/works/pac_muscle/card_image.webp"></div>
             <h3>PAC MUSCLE</h3>
             <p>
-              首を伸ばして噛みつけ。<br>
-              ブロックを壊したり、運んだり、時には自分が移動したりと、ちょっと笑えるアクションゲームです。
+              リードプログラマーとして開発を主導。<br>
+              短期間のゲームジャムで制作し、即興でマップエディタ拡張も実装しました。
             </p>
             <div class="chipz">
               <span class="chip">Unity</span>
               <span class="chip">C#</span>
               <span class="chip">拡張エディタ</span>
-              <span class="chip">学内ゲームジャム入賞</span>
+              <span class="chip">🏆入賞</span>
+            </div>
+          </article>
+
+          <article class="card" id="works-card-07" data-tilt>
+            <span class="badge">★</span>
+            <div class="thumb"><img src="img/works/trans_water/card_image.webp"></div>
+            <h3>Trans water</h3>
+            <p>
+              アセットを組み合わせ、自然豊かなステージを表現。<br>
+              緑の鮮やかさと雰囲気作りにこだわりました。
+            </p>
+            <div class="chipz">
+              <span class="chip">Unity</span>
+              <span class="chip">C#</span>
             </div>
           </article>
 
@@ -299,28 +307,12 @@
             <div class="thumb"><img src="img/works/5host/card_image.webp"></div>
             <h3>5host</h3>
             <p>
-              廃病院で迷った少年の、ある一時の物語。<br>
-              そこで出会う5人の少女の幽霊は、生前に五感の1つを失っていたようです。少年は彼女たちの未練を晴らすため、手助けをすることに...
+              アニメーション演出をコードで実装。<br>
+              エンジン機能に依存しない演出に挑戦しました。
             </p>
             <div class="chipz">
               <span class="chip">Unity</span>
               <span class="chip">C#</span>
-              <span class="chip">アニメーション</span>
-            </div>
-          </article>
-
-          <article class="card" id="works-card-07" data-tilt>
-            <span class="badge">★★</span>
-            <div class="thumb"><img src="img/works/trans_water/card_image.webp"></div>
-            <h3>Trans water</h3>
-            <p>
-              主人公は水？氷・水・水蒸気を切り替えて進もう。<br>
-              水蒸気で浮き、水で網をすり抜け、氷でボタンを押すなど、水の多様な特性を活かしたギミックが登場します。
-            </p>
-            <div class="chipz">
-              <span class="chip">Unity</span>
-              <span class="chip">C#</span>
-              <span class="chip">レベルデザイン</span>
             </div>
           </article>
 
@@ -340,20 +332,20 @@
         <!-- 作品集 -->
         <div class="card_list">
           
-          <article class="card card-gold" id="works-card-03" data-tilt>
-          <span class="badge">★★★</span>
-          <div class="thumb"><img src="img/works/krlib/card_image.webp"></div>
-          <h3>KRライブラリ</h3>
-          <p>
-            「導入するだけですぐ使える」<br>
-            汎用性と使いやすさを重視した自作ライブラリです。<br>
-          </p>
-          <div class="chipz">
-            <span class="chip">Unity</span>
-            <span class="chip">DxLib</span>
-            <span class="chip">C#</span>
-            <span class="chip">C++</span>
-          </div>
+          <article class="card card-3star" id="works-card-03" data-tilt>
+            <span class="badge">★★★</span>
+            <div class="thumb"><img src="img/works/krlib/card_image.webp"></div>
+            <h3>KRライブラリ</h3>
+            <p>
+              「導入するだけですぐ使える」<br>
+              汎用データ型・リソース管理・自動実行管理などを備えた自作ライブラリです。
+            </p>
+            <div class="chipz">
+              <span class="chip">Unity</span>
+              <span class="chip">DxLib</span>
+              <span class="chip">C#</span>
+              <span class="chip">C++</span>
+            </div>
           </article>
           
           <article class="card" id="works-card-08" data-tilt>
@@ -362,12 +354,12 @@
             <h3>AI Goal (AI研究)</h3>
             <p>
               「学ばせ方を学ぶ」<br>
-              UnityのAI強化学習機能を使い、簡単なゲームに敵AIを実装する技術研究の作品です。
+              自律的に行動する敵AIを作るため、強化学習の報酬設計について研究しました。
             </p>
             <div class="chipz">
               <span class="chip">Unity</span>
               <span class="chip">C#</span>
-              <span class="chip">AI強化学習</span>
+              <span class="chip">機械学習</span>
             </div>
           </article>
 
@@ -376,9 +368,8 @@
             <div class="thumb"><img src="img/works/tetris/card_image.webp"></div>
             <h3>TETRIS (再現)</h3>
             <p>
-              あの有名な落ちものパズルゲームを再現。<br>
-              Tスピンなどの特殊な技にも対応。<br>
-              BGMは自作アレンジ曲を使用しています。
+              原作再現に加え、SRSなどの特殊仕様も実装。<br>
+              BGMも自作し、世界観の再現にもこだわりました。
             </p>
             <div class="chipz">
               <span class="chip">Unity</span>
@@ -395,7 +386,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/30<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
       ©2025-2026 Kurosawa Reo Portfolio

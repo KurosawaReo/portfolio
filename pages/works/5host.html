@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio | 5host</title>
+
+  <!--ソースコード色付け用 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
   <!-- cssファイル -->
   <link rel="stylesheet" href="../../plugins/slick/slick.css">
   <link rel="stylesheet" href="../../plugins/slick/slick-theme.css">
@@ -36,7 +43,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -48,7 +55,7 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-gamejam">学内ゲームジャム</a>
@@ -66,42 +73,23 @@
   <main class="wrap">
  
     <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 5host 》
+        </div>
+        <div class="text">
+          アニメーション演出をコードで実装。<br>
+          エンジン機能に依存しない演出に挑戦しました。
+        </div>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <img src="../../img/works/5host/card_image.webp" class="kr-layout_center-img">
+        <span id="img-slider">
+          <img src="../../img/works/5host/card_image.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
-      <div class="panel">
-        <table class="info-table">
-          <tr>
-            <td>プレイ人数</td>
-            <td>
-              1人
-              <span class="person-icons">
-                <span class="person-icon"></span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">脱出</span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>操作端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">マウス</span>
-                <span class="pill">スマホ</span>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
       <div class="panel">
         <table class="info-table">
           <tr>
@@ -122,6 +110,23 @@
             </td>
           </tr>
           <tr>
+            <td>プレイ人数</td>
+            <td>
+              1人
+              <span class="person-icons">
+                <span class="person-icon"></span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td>
+              <span class="pillbar">
+                <span class="pill">脱出</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
             <td>使用技術</td>
             <td>
               <span class="pillbar">
@@ -130,27 +135,41 @@
               </span>
             </td>
           </tr>
-          <tr>
-            <td>担当</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">部屋名表示</span>
-                <span class="pill">セリフ表示</span>
-              </span>
-            </td>
-          </tr>
         </table>
+      </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>デザイナーを含むチーム制作を通して、プログラマー主体の開発との違いを学ぶ。</li>
+            <li>デザイン素材を活用した開発フローを学ぶ。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>部屋名UIの表示・アニメーション</li>
+            <li>セリフUIの表示・アニメーション</li>
+            <li>長女ミニゲームのクリア判定</li>
+          </ul>
+        </div>
       </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://unityroom.com/games/5host" target="_blank" class="btn-link">
             unityroom>>
           </a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -229,12 +248,221 @@
 
         <div class="panel">
           <div class="title-row">
-            <b class="title">アニメーション</b>
+            <b class="title">コードでのUIアニメーション制御</b>
           </div>
           <p>
-            セリフや部屋移動のアニメーションを作りました。
-            Unityのアニメーション機能は使わず、プログラムで座標を計算しています。
+            <span class="keyword">「部屋名UI」</span>と<span class="keyword">「セリフUI」</span>のフェードイン/アウトアニメーションを実装しました。<br>
+            エンジンの機能に頼らず、プログラムで座標や透明度を計算して制御しています。
           </p>
+          <p>
+            ※見やすさを考慮し、コードは一部を抜粋して掲載しています。
+          </p>
+        </div>
+
+        <!-- 部屋名UI -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">部屋名UI</b>
+          </div>
+          <!-- 画像 -->
+          <div class="kr-layout_grid">
+            <div class="kr-layout_center">
+              <a href="../../img/works/5host/room_name.webp" data-lightbox="pac_muscle" class="zoom-icon-parent">
+                <img src="../../img/works/5host/room_name.webp" class="panel-img">
+                <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
+              </a>
+            </div>
+          </div>
+          <!-- コード -->
+          <div>
+            <span class="keyword">RoomNameBox.cs</span>, <span class="keyword">RoomNameText.cs</span><br>
+            ※どちらもほぼ同じ処理
+          </div>
+          <pre><code class="language-cpp">
+            //関数:アニメーション再生.
+            void AnimationPlay()
+            {
+                //※見やすくする用.
+                Vector3 pos = transform.localPosition;
+
+                //移動.
+                transform.localPosition += new Vector3(roomname.box.MoveImage_x, 0, 0);
+
+                //x軸が一定ラインまで達したら.
+                if (pos.x >= roomname.SlowDownLineX)
+                {
+                    //減速.
+                    roomname.box.MoveImage_x -= roomname.SlowDown;
+
+                    //マイナスに逆ブレしたら0にする.
+                    if (roomname.box.MoveImage_x < 0) {
+                        roomname.box.MoveImage_x = 0;
+                    }
+                }
+
+                //停止したら.
+                if (roomname.box.MoveImage_x == 0)
+                {
+                    roomname.box.Move_Flg = false; //アニメーション終了.
+                }
+            }
+          </code></pre>
+          <!-- コード -->
+          <div>
+            <span class="keyword">RoomNameManager.cs</span>
+          </div>
+          <pre><code class="language-cpp">
+            //関数:フェードアウト実行.
+            void RoomName_Fadeout()
+            {
+                //表示アニメーション.
+                if (color_a >= 0.0f)
+                {
+                    /*
+                      ゆっくり消滅。
+                    */
+
+                    hie_RoomNameBox.GetComponent&lt;Image&gt;().color = new Color(255, 255, 255, color_a);
+                    hie_RoomNameText.GetComponent&lt;Text&gt;().color = new Color(0, 0, 0, color_a);
+
+                    color_a -= FadeoutSpeed; //透明度を上げる.
+                }
+                //アニメーション終了.
+                else
+                {
+                    //非表示.
+                    hie_RoomNameBox.SetActive(false);
+                    hie_RoomNameText.SetActive(false);
+
+                    Fadeout_Flg = false;
+                }
+            }
+
+            //アニメーション実行.
+            public void AnimationExe()
+            {
+                CancelInvoke();
+
+                //▼アニメーション実行▼
+
+                /*
+                  カウントは同時に始まる。
+                */
+
+                //アニメーション実行.
+                Invoke("Exe_RoomNameBox",  0.0f);
+                Invoke("Exe_RoomNameText", 0.2f);
+
+                //フェードアウト(消滅)
+                Invoke("Fadeout_RoomName", 3.5f);
+            }
+
+            void Exe_RoomNameBox()
+            {
+                box.Move_Flg = true; //RoomNameBoxのAnimation実行.
+            }
+
+            void Exe_RoomNameText()
+            {
+                text.Move_Flg = true; //RoomNameTextのAnimation実行.
+            }
+
+            void Fadeout_RoomName()
+            {
+                Fadeout_Flg = true;
+                color_a = 1f; //最初は透過なし.
+            }
+          </code></pre>
+        </div>
+        
+        <!-- セリフUI -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">セリフUI</b>
+          </div>
+          <!-- 画像 -->
+          <div class="kr-layout_grid">
+            <div class="kr-layout_center">
+              <a href="../../img/works/5host/serif_box.webp" data-lightbox="pac_muscle" class="zoom-icon-parent">
+                <img src="../../img/works/5host/serif_box.webp" class="panel-img">
+                <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
+              </a>
+            </div>
+          </div>
+          <!-- コード -->
+          <div>
+            <span class="keyword">SerifBox.cs</span>
+          </div>
+          <pre><code class="language-cpp">
+            void Serif_Fadein()
+            {
+                //初回のみ.
+                if (color_a == 0)
+                {
+                    hie_SerifBox.SetActive(true); //表示.
+                }
+
+                //表示アニメーション.
+                if (color_a < 1.0f)
+                {
+                    Serif_y += 1; //bpxを上に動かす.
+
+                    /*
+                      ゆっくり表示。
+                      (いくつかやり方はあるが、今回はグループを使ってみる)
+                    */
+                    //セリフboxやキャラUIを、グループにする.
+                    CanvasGroup SerifBoxGroup = hie_SerifBox.GetComponent&lt;CanvasGroup&gt;();
+                    //↑のグループ全ての透明度を変更.
+                    SerifBoxGroup.alpha = color_a;
+
+                    //セリフboxを動かす.
+                    hie_SerifBox.transform.localPosition = new Vector2(Serif_x, Serif_y);
+
+                    color_a += 0.08f; //透明度を下げる.
+                }
+                //アニメーション終了.
+                else
+                {
+                    color_a = 1.0f; //固定.
+                    Fadein_Flg = false;
+                }
+            }
+
+            void Serif_Fadeout()
+            {
+                //表示アニメーション.
+                if (color_a > 0.0f)
+                {
+                    Serif_y -= 1; //boxを下に動かす.
+
+                    /*
+                      ゆっくり消滅。
+                    */
+                    //セリフboxやキャラUIを、グループにする.
+                    CanvasGroup SerifBoxGroup = hie_SerifBox.GetComponent<CanvasGroup>();
+                    //↑のグループ全ての透明度を変更.
+                    SerifBoxGroup.alpha = color_a;
+
+                    //セリフboxを動かす.
+                    hie_SerifBox.transform.localPosition = new Vector2(Serif_x, Serif_y);
+                    /*
+                      spriteはtransform.position(ワールド座標)で使えたが
+                      canvasでやる場合は、transform.localPosition(ローカル座標)を
+                    */
+
+                    color_a -= 0.08f; //透明度を上げる.
+                }
+                //アニメーション終了.
+                else
+                {
+                    hie_SerifBox.SetActive(false); //非表示.
+
+                    Fadeout_Flg = false;
+                    color_a = 0.0f; //リセット.
+                }
+            }
+          </code></pre>
         </div>
       </div>
     </section>
@@ -247,14 +475,19 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Unity表記 -->
+      Unity is a trademark or registered trademark of Unity Technologies.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>
 
   <!-- jsファイル -->
+  <script src="../../plugins/KrLib_html/kr_common.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/details_page.js"></script>
 

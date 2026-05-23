@@ -36,7 +36,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -48,13 +48,10 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-proposal">企画</a>
-        </p>
-        <p>
-          <span class="side-toc-dot">・</span><a href="#contents-production">制作風景</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-episode">苦労したエピソード</a>
@@ -69,37 +66,40 @@
   <main class="wrap">
 
     <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 Gun Action 》
+        </div>
+        <div class="text">
+          ゲームロジックは全てC++で実装。<br>
+          3D作品制作と、技術習得を目的に開発しています。
+        </div>
+      </div>
+      <!-- 紹介動画 -->
+      <div class="panel">
+        <div class="title-row">
+          <b class="title">紹介動画</b>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/PyeCZyzXuFg"
+          width="100%"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          class="kr-layout_center-iframe"
+          loading="lazy"
+        ></iframe>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <!-- スライダー -->
-        <section id="img-slider">
+        <span id="img-slider">
           <img src="../../img/works/gun_action/card_image.webp" class="kr-layout_center-img">
+          <img src="../../img/works/gun_action/map.webp" class="kr-layout_center-img">
           <img src="../../img/works/gun_action/exhibition.webp" class="kr-layout_center-img">
-        </section>
+        </span>
       </div>
       <!-- 表 -->
-      <div class="panel">
-        <table class="info-table">
-          <tr>
-            <td>ジャンル</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">アクション</span>
-                <span class="pill">TPS</span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>操作端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">キーボード & マウス</span>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
       <div class="panel">
         <table class="info-table">
           <tr>
@@ -117,37 +117,69 @@
             </td>
           </tr>
           <tr>
-            <td>使用技術</td>
+            <td>プレイ人数</td>
             <td>
-              <span class="pillbar">
-                <span class="pill">Unreal Engine</span>
-                <span class="pill">C++</span>
+              1人
+              <span class="person-icons">
+                <span class="person-icon"></span>
               </span>
             </td>
           </tr>
           <tr>
-            <td>担当</td>
+            <td>ジャンル</td>
             <td>
               <span class="pillbar">
-                <span class="pill">弾丸の基底クラス</span>
-                <span class="pill">プレイヤー & 敵の基底クラス</span>
-                <span class="pill">敵のモデルやAI</span>
-                <span class="pill">エンジンのトラブル対応</span>
+                <span class="pill">アクション</span>
+                <span class="pill">TPS</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>使用技術</td>
+            <td>
+              <span class="pillbar">
+                <span class="pill">Unreal Engine 5.5.4</span>
+                <span class="pill">C++</span>
               </span>
             </td>
           </tr>
         </table>
+      </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>ゲームロジックをC++で実装し、Unreal Engineと連携した開発手法を学ぶ。</li>
+            <li>3D作品制作を通して、モデル・メッシュ・アニメーションへの理解を深める。</li>
+            <li>学内で前例の少ない分野へ挑戦し、調査・実装・改善を通して課題解決力を養う。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>プレイヤー・敵キャラクターの基底クラス設計</li>
+            <li>弾の基底クラス設計 (挙動・当たり判定・弾道エフェクト)</li>
+            <li>敵AIの行動制御 (制作中)</li>
+            <li>Unreal EngineやGitのトラブル調査・原因特定・解決</li>
+          </ul>
+        </div>
       </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://github.com/KurosawaReo/2GM_shinkyu_kouki02" target="_blank" class="btn-link">
             GitHub>>
           </a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -162,43 +194,12 @@
             <b class="title">一枚企画書</b>
           </div>
           <p>
-            ゲームを制作する前に、内容やコンセプトを共有するために作成した一枚の企画書です。
+            開発に取りかかる前に、開発内容をクラスや教員へ共有するために作成した企画書です。
           </p>
           <a href="../../img/works/gun_action/proposal.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
             <img src="../../img/works/gun_action/proposal.webp" class="panel-img">
             <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
           </a>
-        </div>
-
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">プレゼン資料</b>
-          </div>
-          <p>
-            半年間の制作成果をまとめたプレゼン資料です。
-          </p>
-          <div class="ppt-frame">
-            <embed src="../../pdf/works/gun_action.pdf" type="application/pdf" class="panel-img">
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <div class="neon-line"></div> <!-- グラデーション線 -->
-
-    <section id="contents-production">
-      <div class="fade-in">
-        <h2 class="h2 neon">制作風景</h2>
-
-        <div class="panel">
-          <iframe
-            src="https://www.youtube.com/embed/fJSFL73J6wg"
-            width="100%"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            class="kr-layout_center-iframe panel-img"
-          ></iframe>
         </div>
       </div>
     </section>
@@ -213,20 +214,10 @@
           <div class="title-row">
             <b class="title">トラブルの連続発生</b>
           </div>
-
           <p>
-            このゲームは<span class="keyword">『Unreal Engine 5 / C++』</span>で開発しています。
+            ゼロから手探りで開発を進める中で、Unreal EngineやGitに関する多くの問題に直面しました。<br>
+            ここでは、主に発生したトラブルとその対処方法を紹介します。
           </p>
-          <p>
-            学内では取り組んでいる人が少なく、成功した前例はあまりありません。<br>
-            さらに、詳しい教師も限られており、指導を受けるのも困難な状況です。<br>
-            だからこそ、未知の領域を自分たちのチームで切り拓くため、この挑戦を始めました。
-          </p>
-          <p>
-            しかし、ゼロからの手探りでの開発は、トラブルの連続でした。<br>
-            主に直面した問題は以下の通りです。
-          </p>
-
           <ul class="ui-list">
             <li>1. Unreal Engineのクラッシュ</li>
             <li>2. Visual Studioの不明なエラー</li>
@@ -235,7 +226,6 @@
             <li>5. クラス名の変更方法</li>
             <li>6. プログラムの更新方法</li>
           </ul>
-
         </div>
 
         <!-- トラブル1 -->
@@ -263,10 +253,8 @@
           </div>
 
           <p>
-            こちらは未解決の問題です。
-          </p>
-          <p>
-            Visual Studioでのビルド時に、毎回原因不明のエラーが発生します。
+            Visual Studioでビルドを行うと、毎回原因不明のエラーが発生します。<br>
+            この件については、下記理由からユーザーが解決できる問題ではないと判断しています。
           </p>
           <ul class="ui-list">
             <li>開発初期から継続して発生している</li>
@@ -274,8 +262,7 @@
             <li>現時点では開発への影響はない</li>
           </ul>
           <p>
-            本来であれば不要なエラーは排除すべきですが、<br>
-            開発を優先するため、現状は無視すべき問題として扱っています。
+            そのため、現在は様子を見ながら開発を進めています。
           </p>
 
           <div class="episode-img">
@@ -290,7 +277,7 @@
           </div>
 
           <p>
-            Gitのクライアントには<span class="keyword">『Sourcetree』</span>を使用しています。
+            Gitのクライアントには<span class="keyword">「Sourcetree」</span>を使用しています。
           </p>
           <p>
             しかし、コミットがない状態でもブランチを切り替えると、意図しないコミットが自動で発生する問題が起きました。<br>
@@ -299,7 +286,7 @@
 
           <p>
             原因を調査したところ、Unreal Engineのプロジェクトを開いたままブランチを切り替えた場合に発生することが分かりました。<br>
-            そのため、現在は<span class="keyword">『プロジェクトを終了してからブランチ操作を行う』</span>というルールをチーム内で徹底しています。
+            これにより、現在は<span class="keyword">「プロジェクトを終了してからブランチ操作を行う」</span>というルールをチーム内で徹底しています。
           </p>
 
           <div class="episode-img" style="--img-max-width: 600px;">
@@ -325,7 +312,7 @@
             <div class="flow-item">
               <div class="flow-index">1</div>
               <div class="flow-content">
-                アセットを<span class="keyword">『Assets』</span>フォルダにまとめ、<span class="keyword">『.gitignore』</span>で除外
+                アセットを<span class="keyword">「Assets」</span>フォルダにまとめ、<span class="keyword">「.gitignore」</span>で除外
               </div>
             </div>
             <!-- 2 -->
@@ -339,7 +326,7 @@
             <div class="flow-item">
               <div class="flow-index">3</div>
               <div class="flow-content">
-                受け取り側で<span class="keyword">『移行』</span>機能を使い、開発プロジェクトに導入
+                受け取り側で<span class="keyword">「移行」</span>機能を使い、開発プロジェクトに導入
               </div>
             </div>
           </div>
@@ -409,7 +396,7 @@
 
           <p>
             試行錯誤の末、2通りの更新方法があることが分かりました。<br>
-            個人的には、<span class="keyword">『ライブコーディング』</span>を使う方法が手軽だと感じました。
+            個人的には、<span class="keyword">「ライブコーディング」</span>を使う方法が手軽だと感じました。
           </p>
 
           <ul class="ui-list">
@@ -427,7 +414,7 @@
           </div>
 
           <p>
-            ライブコーディングを使用した場合、このような表示が出れば正常に反映されています。
+            ライブコーディングを使用した場合、このような表示が出れば正常に反映されていることが分かりました。
           </p>
           <div class="episode-img" style="--img-max-width: 600px;">
             <img src="../../img/works/gun_action/episode/6_live_coding_3.webp" class="panel-img">
@@ -444,9 +431,15 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Unreal Engine表記 -->
+      This project uses Unreal® Engine.<br>
+      Unreal® is a trademark or registered trademark of Epic Games, Inc.<br>
+      Unreal® Engine, Copyright 1998–2026, Epic Games, Inc. All rights reserved.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

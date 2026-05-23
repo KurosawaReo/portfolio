@@ -1,3 +1,7 @@
+/*
+  - common.css -
+  全ページに使う汎用的なもの。
+*/
 @charset "utf-8";
 
 /* =============================== 
@@ -12,6 +16,7 @@
   --primary-2: #1bb7cb;    /* 補助の濃いシアン */
   --card: #0f1115;         /* カード背景 */
   --muted: #93c5d0aa;      /* 補助テキスト */
+  --desc: #d0ecf2d0;       /* 説明テキスト */
   --danger: #ff3b3b;       /* アラートに使うなら */
   --radius: 16px;
   --shadow: 0 10px 40px rgba(51,231,255,0.15), 0 2px 10px rgba(51,231,255,0.2);
@@ -181,12 +186,8 @@ img {
 
   font-size: clamp(14px, 2vw, 16px);
   line-height: 1.7;
-
+  
   margin-bottom: 20px; /* ← これで間隔 */
-}
-/* 最後だけ余白消す（綺麗に終わる） */
-.panel:last-child {
-  margin-bottom: 0;
 }
 
 /* 段落 */
@@ -378,12 +379,15 @@ img {
 
 /* 各項目 */
 .ui-list li {
+  --line-height: 1.5; /* ← 行の高さを固定 */
+
   position: relative;
 
   padding: 5px 10px 5px 20px;
   margin: 4px 0;
 
   font-size: 14px;
+  line-height: var(--line-height);
 
   background: rgba(51,231,255,0.03);
   border-left: 2px solid rgba(51,231,255,0.35);
@@ -393,13 +397,13 @@ img {
     inset 0 0 6px rgba(51,231,255,0.05);
 }
 
-/* ▼ 先頭マーク */
+/* 点マーク */
 .ui-list li::before {
   content: "";
   position: absolute;
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  /* 1行目中央へ固定 */
+  top: calc(5px + (var(--line-height) * 1em / 2) - 2px);
 
   width: 4px;
   height: 4px;
@@ -649,9 +653,8 @@ footer {
 /* =============================== 
   ▼ 概要 ▼
 ================================ */
-/* heroは画面基準で中央 */
 #hero-main {
-  height: calc(100vh - var(--header-h)); /* ←これが本質 */
+  height: calc(100vh - var(--header-h));
   
   display: flex;
   justify-content: center;
@@ -712,7 +715,7 @@ footer {
 /* メッセージ */
 .hero-message {
   font-size: clamp(16px, 2.5vw, 26px);
-  color: var(--muted);
+  color: var(--desc);
   max-width: 700px;
   margin: 0;
   margin-bottom: 24px;
@@ -774,24 +777,6 @@ footer {
 @keyframes spin { to { transform: rotate(1turn); } }
 
 /* =============================== 
-  ▼ プロフィール ▼
-================================ */
-#profile {
-  max-width: 1100px;
-  margin: 0 0;
-
-  display: grid;
-  grid-template-columns: 1.0fr 1.0fr; /* 1:1 の比率 */
-  gap: 20px;
-}
-@media (max-width: 900px) {
-  #profile { 
-    /* 画面全体に広げる */
-    grid-template-columns: 1.0fr; 
-  }
-}
-
-/* =============================== 
   ▼ テーブル ▼
 ================================ */
 .info-table {
@@ -846,234 +831,6 @@ footer {
   .info-table td:last-child {
     width: 65%;
   }
-}
-
-/* =============================== 
-  ▼ カード ▼
-================================ */
-.card_list {
-  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;
-}
-@media (max-width: 980px) { .hero { grid-template-columns: 1fr; } .card_list { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .card_list { grid-template-columns: 1fr; } }
-
-.card {
-  position: relative; 
-  background: var(--panel-back);
-
-  border: 1px solid rgba(51,231,255,0.28);
-  border-radius: var(--radius); padding: 14px; overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  transform-style: preserve-3d;
-  /* ↓ aタグを使っても見た目が変わらないように */
-  text-decoration: none; color: inherit; display: block;
-}
-.card:hover { transform: translateY(-3px); box-shadow: 0 16px 60px rgba(51,231,255,0.35); }
-
-/* カードの外枠のみ光らせるために、内側をmaskで切り抜く */
-.card::before {
-  content: ""; position: absolute; inset: -2px; border-radius: inherit; padding: 1px;
-  background: conic-gradient(from 0deg, rgba(51,231,255,0.0), rgba(51,231,255,0.35), rgba(51,231,255,0.0));
-
-  /* 標準用 */
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  /* WebKit用 (Safariなどはこれが必要らしい) */
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-
-  opacity: 0;
-  transition: 250ms ease;
-}
-
-.card:hover::before { opacity: 1; }
-.card .thumb {
-  height: 160px; border-radius: 12px; background:
-  linear-gradient(135deg, rgba(51,231,255,0.25), rgba(11,20,22,0.8)),
-  repeating-linear-gradient(45deg, rgba(51,231,255,0.16) 0 2px, transparent 2px 6px);
-  border: 1px solid rgba(51,231,255,0.28);
-  overflow: hidden; /* 角丸からはみ出さないようにする */
-  display: flex;    /* 中央配置用 */
-  place-items: center; font-weight: 900; letter-spacing: 0.4px; color: #001217;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.45); background-blend-mode: screen;
-}
-.card .thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* 切り抜き */
-  display: block;
-}
-
-.card .badge {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.4px;
-
-  /* 背景 */
-  background: rgba(13, 56, 62, 0.9);
-  /* 枠 */
-  border: 1px solid rgba(51,231,255,0.6);
-  /* 文字を発光 */
-  color: #d6f8ff;
-  text-shadow:
-    0 0 6px var(--primary),
-    0 0 12px rgba(51,231,255,0.6);
-  /* 影 */
-  box-shadow:
-    0 0 12px rgba(51,231,255,0.4),
-    inset 0 0 8px rgba(51,231,255,0.2);
-}
-
-.card h3 { 
-  margin: 10px 6px 6px;
-  font-size: 18px;
-  font-weight: 800;
-
-  color: #eaffff;
-
-  letter-spacing: 0.3px;
-
-  text-shadow:
-    0 0 6px rgba(51,231,255,0.6),
-    0 0 14px rgba(51,231,255,0.35);
-}
-
-.card p { 
-  margin: 0 6px 8px; color: var(--muted); font-size: 14px;
-}
-.card .chipz { 
-  display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 6px 8px; 
-}
-.card .chip {
-  font-size: 12px; border: 1px solid rgba(51,231,255,0.35); padding: 6px 10px; border-radius: 999px; color: #bfeef7; 
-}
-
-/* =============================== 
-  ▼ カード - ★★★テーマ ▼
-================================ */
-.card-gold {
-  background:
-    linear-gradient(135deg,
-      rgba(51,231,255,0.18),
-      rgba(160, 90, 255,0.10),
-      rgba(255,255,255,0.08) /* ← 白に変更 */
-    ),
-    var(--panel-back);
-
-  border: 1px solid rgba(180, 160, 255, 0.35);
-
-  box-shadow:
-    0 12px 40px rgba(120, 160, 255, 0.18),
-    0 0 20px rgba(200, 120, 255, 0.12);
-}
-
-.card-gold:hover {
-  transform: translateY(-3px);
-
-  box-shadow:
-    0 16px 60px rgba(120, 160, 255, 0.28),
-    0 0 30px rgba(200, 120, 255, 0.18);
-}
-
-.card-gold::before {
-  background: conic-gradient(
-    from 0deg,
-    rgba(51,231,255,0.0),
-    rgba(180,160,255,0.35),
-    rgba(255,255,255,0.25), /* ← 白 */
-    rgba(51,231,255,0.0)
-  );
-}
-
-.card-gold h3 {
-  text-shadow:
-    0 0 6px rgba(160, 140, 255, 0.6),
-    0 0 14px rgba(255,255,255,0.25); /* ← 白 */
-}
-
-.card-gold .badge {
-  background: rgba(20, 40, 60, 0.9);
-
-  border: 1px solid rgba(180,160,255,0.6);
-
-  color: #f2f8ff;
-
-  text-shadow:
-    0 0 6px rgba(180,160,255,0.8),
-    0 0 10px rgba(255,255,255,0.5); /* ← 白 */
-
-  box-shadow:
-    0 0 12px rgba(180,160,255,0.3),
-    inset 0 0 6px rgba(255,255,255,0.2);
-}
-
-/* =============================== 
-  ▼ 特別：Minecraft風カード
-================================ */
-.card-minecraft {
-  position: relative;
-  z-index: 0;
-  
-  border: 1px solid rgba(120, 255, 160, 0.35);
-  box-shadow:
-    0 12px 40px rgba(120, 255, 160, 0.12),
-    0 0 20px rgba(120, 255, 160, 0.08);
-}
-/* 中身を全部上のレイヤーに */
-.card-minecraft > * {
-  position: relative;
-  z-index: 1;
-}
-
-.card-minecraft:hover { 
-  transform: translateY(-3px); 
-  box-shadow: 0 16px 60px rgba(120, 255, 160, 0.35); 
-}
-
-/* 斜めの光 */
-.card-minecraft::after {
-  z-index: 0;
-
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-
-    /* 1本目 */
-    rgba(120,255,160,0.18) 20%,
-    rgba(120,255,160,0.28) 30%,
-    rgba(120,255,160,0.18) 20%,
-
-    /* 2本目 */
-    rgba(120,255,160,0.18) 60%,
-    rgba(120,255,160,0.28) 70%,
-    rgba(120,255,160,0.18) 60%,
-
-    transparent 100%
-  );
-
-  pointer-events: none;
-  opacity: 0.6;
-  transition: opacity 200ms ease;
-}
-
-.card-minecraft h3 {
-  font-family: 'Press Start 2P', 'DotGothic16', sans-serif;
-  font-size: 14px; /* 小さくしないと潰れる */
-  letter-spacing: 1px;
-  text-shadow:
-    0 0 6px rgba(120,255,160,0.8),
-    0 0 14px rgba(51,231,255,0.4);
 }
 
 /* =============================== 

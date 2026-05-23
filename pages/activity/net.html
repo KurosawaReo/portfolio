@@ -34,7 +34,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">活動概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -46,10 +46,13 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">活動概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-movie">動画集</a>
+          <span class="side-toc-dot">・</span><a href="#contents-details">活動内容</a>
+        </p>
+        <p>
+          <span class="side-toc-dot">・</span><a href="#contents-movie">自作動画</a>
         </p>
       </div>
     </div>
@@ -61,31 +64,27 @@
   <main class="wrap">
 
     <section id="contents-overview">
-      <h2 class="h2 neon">活動概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 プライベート活動 》
+        </div>
+        <div class="text">
+          もう1つの人生。趣味で継続している制作活動です。
+        </div>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <!-- スライダー -->
-        <section id="img-slider">
+        <span id="img-slider">
           <img src="../../img/activity/net/card_image.webp" class="kr-layout_center-img">        
-          <img src="../../img/activity/net/jinrou_1st.webp" class="kr-layout_center-img">
-          <img src="../../img/activity/net/jinrou_2nd.webp" class="kr-layout_center-img">
-          <img src="../../img/activity/net/jinrou_3rd.webp" class="kr-layout_center-img">
-          <img src="../../img/activity/net/jinrou_4th.webp" class="kr-layout_center-img">
-          <img src="../../img/activity/net/jinrou_5th.webp" class="kr-layout_center-img">
-        </section>
+        </span>
       </div>
       <!-- 表 -->
       <div class="panel">
         <table class="info-table">
           <tr>
-            <td>ニックネーム</td>
+            <td>活動名</td>
             <td>hyper star</td>
-          </tr>
-          <tr>
-            <td>好きなゲーム</td>
-            <td>
-              Minecraft
-            </td>
           </tr>
           <tr>
             <td>活動時期</td>
@@ -93,35 +92,10 @@
               2019年9月～
             </td>
           </tr>
-          </tr>
           <tr>
-            <td>主な活動内容</td>
+            <td>好きなゲーム</td>
             <td>
-              ワールド運営、動画制作
-            </td>
-        </table>
-      </div>
-      <!-- 表 -->
-      <div class="panel">
-        <div class="title-row">
-          <b class="title">Minecraftの記録</b>
-        </div>
-        <table class="info-table">
-          <tr>
-            <td>プレイ時間</td>
-            <td>
-              9000時間以上
-            </td>
-          </tr>
-          <tr>
-            <td>歴代プレイ端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">WiiU</span>
-                <span class="pill">Nintendo Switch</span>
-                <span class="pill">スマートフォン</span>
-                <span class="pill">PC</span>
-              </span>
+              Minecraft
             </td>
           </tr>
         </table>
@@ -130,25 +104,53 @@
 
     <div class="neon-line"></div> <!-- グラデーション線 -->
 
-    <section id="contents-movie">
+    <section id="contents-details">
       <div class="fade-in">
-        <h2 class="h2 neon">動画集</h2>
+        <h2 class="h2 neon">活動内容</h2>
 
         <div class="panel">
-          <div class="title-row">
-            <b class="title">初めに</b>
-          </div>
           <p>
-            こちらでは、プライベートで行っている活動の一部をご紹介しています。<br>
-            活動内容は文章で説明するよりも動画で見ていただく方が分かりやすいと思うので、過去に作った動画を掲載しています。
+            Minecraft(統合版)を9000時間以上プレイしてきました。<br>
+            長年コマンドによる制作に取り組み、処理の軽量化も意識しながら、1人で1ワールドに2804個のコマンドブロックを用いた大規模開発を行った経験があります。<br>
+            現在はアドオン開発に取り組み、JSON・JavaScriptを用いたゲーム制作を行っています。
           </p>
+          <div class="kr-layout_grid">
+            <div>
+              <img src="../../img/activity/net/jinrou_1st.webp" class="panel-img">
+            </div>
+            <div>
+              <img src="../../img/activity/net/jinrou_2nd.webp" class="panel-img">
+            </div>
+            <div>
+              <img src="../../img/activity/net/jinrou_3rd.webp" class="panel-img">
+            </div>
+            <div>
+              <img src="../../img/activity/net/jinrou_4th.webp" class="panel-img">
+            </div>
+            <div>
+              <img src="../../img/activity/net/jinrou_5th.webp" class="panel-img">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="neon-line"></div> <!-- グラデーション線 -->
+
+    <section id="contents-movie">
+      <div class="fade-in">
+        <h2 class="h2 neon">自作動画</h2>
+
+        <div class="panel">
           <div class="title-row">
             <b class="title">注意事項</b>
           </div>
           <p>
-            <span class="notice-text">本コンテンツは、権利やプライバシーへの配慮により一般公開は行っておりません。</span><br>
-            <span class="notice-text">フレンドが映り込む内容を含むため、外部への共有・転載は禁止とさせていただきます。</span><br>
-            <span class="notice-text">プライベートで制作したため、一部にラフな表現や内輪的な要素が含まれます。あらかじめご了承ください。</span>
+            <span class="notice-text">
+              本コンテンツは、権利およびプライバシーへの配慮のため、一般公開は行っておりません。<br>
+              外部への共有・転載はご遠慮いただけますと幸いです。
+            </span><br>
+            <span class="notice-text">プライベートで制作した動画のため、一部にラフな表現や内輪的な要素が含まれます。あらかじめご了承ください。</span>
           </p>
         </div>
 
@@ -158,11 +160,11 @@
               <span class="badge-label">制作時期</span>
               <span class="badge-value">2021 - 2022</span>
             </span>
-            <b class="title">人狼の歴史</b>
+            <b class="title">自作人狼ゲームの歴史</b>
           </div>
           <p>
-            数年間にわたる活動の経緯や歴史を紹介しています。<br>
-            初めて本格的に制作した動画のため、画質や演出に至らない点がありますが、あらかじめご了承ください。
+            Minecraftで開催している自作人狼ゲームについて、数年間の活動の経緯や歴史を紹介しています。<br>
+            ゆっくり音声と字幕による解説を入れ、見やすさを意識して制作しました。
           </p>
           <div class="kr-layout_grid">
             <div>
@@ -194,10 +196,12 @@
               <span class="badge-label">制作時期</span>
               <span class="badge-value">2024</span>
             </span>
-            <b class="title">サバイバル攻略動画</b>
+            <b class="title">Minecraft攻略動画</b>
           </div>
           <p>
-            攻略映像を編集した動画です。特に力を入れた2つを掲載します。
+            Minecraftの攻略映像を編集した動画です。<br>
+            長時間の映像素材から見どころを整理し、要点を分かりやすくまとめて編集しました。<br>
+            動画のBGMは、オリジナル曲やアレンジ曲を制作して使用しています。
           </p>
           <div class="kr-layout_grid">
             <div>
@@ -232,8 +236,9 @@
             <b class="title">誕生日企画 シーズン1</b>
           </div>
           <p>
-            フレンドの誕生日を祝う企画として制作した動画です。<br>
-            それぞれ異なるテーマをもとに制作しています。
+            フレンドの誕生日を祝う企画の第一期です。<br>
+            相手ごとに異なるテーマを設定し、それぞれに合わせた内容で制作しました。<br>
+            動画のBGMは、毎回異なるオリジナル曲やアレンジBGMを制作して使用しています。
           </p>
           
           <p>
@@ -362,9 +367,15 @@
             <b class="title">誕生日企画 シーズン2</b>
           </div>
           <p>
-            突如現れた、謎の予告。<br>
-            時が進むたび、次の行き先を告げる “アナウンス” が流れ始める。ワールドを転々と巡りながら、どこかへと向かっていく──。<br>
-            そして辿り着いた先で、待っていたものとは……？
+            フレンドの誕生日を祝う企画の第二期です。
+          </p>
+          <p>
+            テーマは「電車」。<br>
+            時の流れを電車に例え、実際に誕生日を迎えるタイミングに合わせて、1本ずつ動画を制作していました。<br>
+            最後の動画は、8分を超える特別版となっています。
+          </p>
+          <p>
+            動画内に登場する「誕生日記念品」は、Minecraftのアドオンを使い、モデリングやテクスチャを含めて全て一人で制作しました。
           </p>
           <div class="kr-layout_grid">
             <div>
@@ -378,7 +389,15 @@
               ></iframe>
             </div>
           </div>
-
+          <p>
+            各動画の最後には、次回の内容を示す意味深な予告を入れています。<br>
+            一番最初の動画をよく観察すると、最後に登場する駅名が分かる考察要素を隠しています。
+          </p>
+          <div class="kr-layout_grid">
+            <div>
+              <img src="../../img/activity/net/train_notice.webp" class="panel-img">
+            </div>
+          </div>
           <p>
             こちらの再生リストから、まとめてご覧いただけます。
           </p>
@@ -401,9 +420,14 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Minecraft表記 -->
+      NOT AN OFFICIAL MINECRAFT PRODUCT.<br>
+      NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

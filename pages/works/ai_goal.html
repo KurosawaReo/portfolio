@@ -34,7 +34,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -46,7 +46,7 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-results">研究結果</a>
@@ -61,20 +61,36 @@
   <main class="wrap">
 
     <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 AI Goal 》
+        </div>
+        <div class="text">
+          「学ばせ方を学ぶ」<br>
+          自律的に行動する敵AIを作るため、強化学習の報酬設計について研究しました。
+        </div>
+      </div>
+      <!-- 紹介動画 -->
+      <div class="panel">
+        <div class="title-row">
+          <b class="title">紹介動画</b>
+        </div>
+        <iframe
+          src="https://www.youtube.com/embed/SJM3kYxhm34"
+          width="100%"
+          frameborder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          class="kr-layout_center-iframe"
+          loading="lazy"
+        ></iframe>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <section id="img-slider">
-          <iframe
-            src="https://www.youtube.com/embed/SJM3kYxhm34"
-            width="100%"
-            frameborder="0"
-            allow="autoplay; encrypted-media"
-            allowfullscreen
-            class="kr-layout_center-iframe"
-          ></iframe>
-          <img src="../../img/works/ai_goal/card_image.webp">
-        </section>
+        <span id="img-slider">
+          <img src="../../img/works/ai_goal/card_image.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
       <div class="panel">
@@ -105,6 +121,27 @@
             </td>
           </tr>
         </table>
+      </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>Unityの「ML-Agents」を用いて、強化学習AIを実装する方法を学ぶ。</li>
+            <li>AIの観測情報や報酬設計の違いによる学習結果や挙動変化を検証する。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>個人制作のため、環境構築・実装・検証を含め全て担当。</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -157,9 +194,13 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Unity表記 -->
+      Unity is a trademark or registered trademark of Unity Technologies.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

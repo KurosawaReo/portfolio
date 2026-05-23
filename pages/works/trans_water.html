@@ -33,7 +33,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -45,7 +45,7 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-gamejam">学内ゲームジャム</a>
@@ -63,41 +63,23 @@
   <main class="wrap">
 
     <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 Trans water 》
+        </div>
+        <div class="text">
+          初めてのチーム制作作品です。<br>
+          緑鮮やかなレベルデザインにこだわりました。
+        </div>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <img src="../../img/works/trans_water/card_image.webp" class="kr-layout_center-img">
+        <span id="img-slider">
+          <img src="../../img/works/trans_water/card_image.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
-      <div class="panel">
-        <table class="info-table">
-          <tr>
-            <td>プレイ人数</td>
-            <td>
-              1人
-              <span class="person-icons">
-                <span class="person-icon"></span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">アクション</span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>操作端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">キーボード</span>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
       <div class="panel">
         <table class="info-table">
           <tr>
@@ -117,6 +99,23 @@
             </td>
           </tr>
           <tr>
+            <td>プレイ人数</td>
+            <td>
+              1人
+              <span class="person-icons">
+                <span class="person-icon"></span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td>
+              <span class="pillbar">
+                <span class="pill">アクション</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
             <td>使用技術</td>
             <td>
               <span class="pillbar">
@@ -125,28 +124,42 @@
               </span>
             </td>
           </tr>
-          <tr>
-            <td>担当</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">プレイヤー (水蒸気)</span>
-                <span class="pill">レベルデザイン</span>
-              </span>
-            </td>
-          </tr>
         </table>
+      </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>先輩とのチーム制作を通して、役割分担や連携方法を学ぶ。</li>
+            <li>短期間開発における制作体制の理解を深める。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>プレイヤー(水蒸気)の浮遊・移動制御</li>
+            <li>プレイヤーの状態に応じた焚火・金網の当たり判定</li>
+            <li>アセットを用いたステージ制作</li>
+          </ul>
+        </div>
       </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://unityroom.com/games/trans_water" target="_blank" class="btn-link">
             unityroom>>
           </a>
-          <!-- GitHubはPrivateのため掲載できない -->
-        </p>
+          <!-- GitHubは先輩が保有しており、Privateのため掲載できない -->
+        </div>
       </div>
     </section>
 
@@ -228,14 +241,14 @@
           </p>
 
           <div class="kr-layout_grid">
-            <div>
+            <div class="kr-layout_center">
               <b>3日経過時点</b>
               <a href="../../img/works/trans_water/old_version.webp" data-lightbox="trans_water" class="zoom-icon-parent">
                 <img src="../../img/works/trans_water/old_version.webp" class="panel-img">
                 <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
               </a>
             </div>
-            <div>
+            <div class="kr-layout_center">
               <b>完全版</b>
               <a href="../../img/works/trans_water/card_image.webp" data-lightbox="trans_water" class="zoom-icon-parent">
                 <img src="../../img/works/trans_water/card_image.webp" class="panel-img">
@@ -249,14 +262,14 @@
             レイヤー1の地形のみ当たり判定があり、レイヤー2に当たり判定はありません。<br>
           </p>
           <div class="kr-layout_grid">
-            <div>
+            <div class="kr-layout_center">
               <b>レイヤー1</b>
               <a href="../../img/works/trans_water/stage_layer1.webp" data-lightbox="trans_water" class="zoom-icon-parent">
                 <img src="../../img/works/trans_water/stage_layer1.webp" class="panel-img">
                 <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
               </a>
             </div>
-            <div>
+            <div class="kr-layout_center">
               <b>レイヤー2</b>
               <a href="../../img/works/trans_water/stage_layer2.webp" data-lightbox="trans_water" class="zoom-icon-parent">
                 <img src="../../img/works/trans_water/stage_layer2.webp" class="panel-img">
@@ -290,9 +303,13 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Unity表記 -->
+      Unity is a trademark or registered trademark of Unity Technologies.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

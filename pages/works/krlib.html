@@ -11,16 +11,17 @@
   <script>
     hljs.highlightAll();
   </script>
-
   <!-- cssファイル -->
   <link rel="stylesheet" href="../../plugins/slick/slick.css">
   <link rel="stylesheet" href="../../plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="../../plugins/lightbox2/css/lightbox.min.css">
   <link rel="stylesheet" href="../../plugins/KrLib_html/kr_common.css">
   <link rel="stylesheet" href="../../css/common.css">
   <link rel="stylesheet" href="../../css/details_page.css">
   <!-- jsファイル -->
   <script src="../../plugins/jquery/jquery-3.7.0.min.js"></script>
   <script src="../../plugins/slick/slick.min.js"></script>
+  <script src="../../plugins/lightbox2/js/lightbox.min.js"></script>
 </head>
 <body>
 
@@ -42,7 +43,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -53,12 +54,15 @@
       <h2 class="title">目次</h2>
 
       <div class="contents">
-      <p>
-        <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
-      </p>
-      <p>
-        <span class="side-toc-dot">・</span><a href="#contents-example">実用例</a>
-      </p>
+        <p>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
+        </p>
+        <p>
+          <span class="side-toc-dot">・</span><a href="#contents-reference">リファレンス</a>
+        </p>
+        <p>
+          <span class="side-toc-dot">・</span><a href="#contents-example">実用例</a>
+        </p>
       </div>
     </div>
   </aside>
@@ -69,10 +73,21 @@
   <main class="wrap">
 
     <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 KRライブラリ 》
+        </div>
+        <div class="text">
+          「導入するだけですぐ使える」<br>
+          汎用データ型・リソース管理・自動実行管理などを備えた自作ライブラリです。
+        </div>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <img src="../../img/works/krlib/card_image.webp" class="kr-layout_center-img">
+        <span id="img-slider">
+          <img src="../../img/works/krlib/card_image.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
       <div class="panel">
@@ -103,19 +118,63 @@
           </tr>
         </table>
       </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>ゲーム開発で再利用できる汎用処理をライブラリ化し、開発効率の向上を図る。</li>
+            <li>保守性・拡張性・可用性を意識した設計力を身につける。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>個人制作のため、設計・実装を含め全て担当。</li>
+          </ul>
+        </div>
+      </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://krlib-reference.netlify.app/" target="_blank" class="btn-link">
             KrLibリファレンス>>
           </a>
           <a href="https://github.com/KurosawaReo/KrLib_save" target="_blank" class="btn-link">
             GitHub>>
           </a>
-        </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="neon-line"></div> <!-- グラデーション線 -->
+
+    <section id="contents-reference">
+      <div class="fade-in">
+        <h2 class="h2 neon">リファレンス</h2>
+
+        <div class="panel">
+          <p>
+            現在、使用例やクラス・関数の情報をまとめたリファレンスサイトを制作中です。<br>
+            GitHubにソースコードを公開していますので、あわせてご覧ください。
+          </p>
+          <a href="../../img/works/krlib/krlib_reference_pc.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
+            <img src="../../img/works/krlib/krlib_reference_pc.webp" class="panel-img">
+            <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
+          </a>
+          <a href="../../img/works/krlib/krlib_reference_iphone.webp" data-lightbox="reflect_line" class="zoom-icon-parent">
+            <img src="../../img/works/krlib/krlib_reference_iphone.webp" class="panel-img">
+            <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
+          </a>
+        </div>
       </div>
     </section>
 
@@ -132,17 +191,17 @@
           ベジエ曲線と、プレイヤー歩行アニメーションを実装した動画です。<br>
           KRライブラリを使用すると、約100行のプログラムだけで記述できます。
         </p>
-        <iframe
-          src="https://www.youtube.com/embed/LXFWupACuU0"
-          width="100%"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-          class="kr-layout_center-iframe panel-img"
-        ></iframe>
-      </div>
-
-      <div class="panel">
+        <p>
+          <iframe
+            src="https://www.youtube.com/embed/LXFWupACuU0"
+            width="100%"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            class="kr-layout_center-iframe panel-img"
+          ></iframe>
+        </p>
+        
         <div class="title-row">
           <b class="title">ソースコード</b>
         </div>
@@ -259,9 +318,10 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>
@@ -270,7 +330,6 @@
   <script src="../../plugins/KrLib_html/kr_common.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/details_page.js"></script>
-  <script src="../../js/krlib_page.js"></script>
 
   <!-- マウスカーソル -->
   <div class="cursor"></div>

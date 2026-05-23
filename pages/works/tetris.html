@@ -7,12 +7,14 @@
   <!-- cssファイル -->
   <link rel="stylesheet" href="../../plugins/slick/slick.css">
   <link rel="stylesheet" href="../../plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="../../plugins/lightbox2/css/lightbox.min.css">
   <link rel="stylesheet" href="../../plugins/KrLib_html/kr_common.css">
   <link rel="stylesheet" href="../../css/common.css">
   <link rel="stylesheet" href="../../css/details_page.css">
   <!-- jsファイル -->
   <script src="../../plugins/jquery/jquery-3.7.0.min.js"></script>
   <script src="../../plugins/slick/slick.min.js"></script>
+  <script src="../../plugins/lightbox2/js/lightbox.min.js"></script>
 </head>
 <body>
 
@@ -34,7 +36,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -46,7 +48,7 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-commitment">こだわりポイント</a>
@@ -61,14 +63,38 @@
   <main class="wrap">
 
     <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 TETRIS 》
+        </div>
+        <div class="text">
+          原作再現に加え、SRSなどの特殊仕様も実装。<br>
+          BGMも自作し、世界観の再現にもこだわりました。
+        </div>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <img src="../../img/works/tetris/card_image.webp">
+        <span id="img-slider">
+          <img src="../../img/works/tetris/card_image.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
       <div class="panel">
         <table class="info-table">
+          <tr>
+            <td>開発期間</td>
+            <td>2024/10/02 ~ 10/15 (約2週間)</td>
+          </tr>
+          <tr>
+            <td>開発人数</td>
+            <td>
+              1人
+              <span class="person-icons">
+                <span class="person-icon"></span>
+              </span>
+            </td>
+          </tr>
           <tr>
             <td>プレイ人数</td>
             <td>
@@ -87,31 +113,6 @@
             </td>
           </tr>
           <tr>
-            <td>操作端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">キーボード</span>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="panel">
-        <table class="info-table">
-          <tr>
-            <td>開発期間</td>
-            <td>2024/10/02 ~ 10/15 (約2週間)</td>
-          </tr>
-          <tr>
-            <td>開発人数</td>
-            <td>
-              1人
-              <span class="person-icons">
-                <span class="person-icon"></span>
-              </span>
-            </td>
-          </tr>
-          <tr>
             <td>使用技術</td>
             <td>
               <span class="pillbar">
@@ -122,16 +123,37 @@
           </tr>
         </table>
       </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>Unityの当たり判定機能を使わず、配列による盤面管理を用いて実装し、ゲームロジックへの理解を深める。</li>
+            <li>7種1巡の出現法則やSRSを自力で実装し、アルゴリズムを考える力を高める。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>個人制作のため、ゲームロジック実装・BGM制作を含め全て担当。</li>
+          </ul>
+        </div>
+      </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://unityroom.com/games/tetris_hyper_star" target="_blank" class="btn-link">
             unityroom>>
           </a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -146,9 +168,17 @@
             <b class="title">7種1巡の出現法則</b>
           </div>
           <p>
-            次に出てくるミノは、全7種類のミノが順番に出てくるようにしています。<br>
-            同じミノばかり出てくることはありません。
+            全7種類のミノを1巡ごとにランダムで並べる<span class="keyword">「7-bag randomizer」</span>を実装。<br>
+            同じミノばかりが偏って出現しないようにしています。
           </p>
+          <div class="kr-layout_grid">
+            <div>
+              <a href="../../img/works/tetris/7_bag_randomizer.webp" data-lightbox="trans_water" class="zoom-icon-parent">
+                <img src="../../img/works/tetris/7_bag_randomizer.webp" class="panel-img">
+                <img src="../../img/works/zoom-icon.webp" class="zoom-icon">
+              </a>
+            </div>
+          </div>
           <!-- 参考リンク -->
           <div class="ref-box">
             <span class="ref-label">参考</span>
@@ -163,9 +193,18 @@
             <b class="title">SRS (Super Rotation System)</b>
           </div>
           <p>
-            ミノを回転させる時、壁や他ミノに埋まらないよう、穴の形状に沿って回転するようにしています。<br>
-            これにより、原作のように<span class="keyword">「Tスピン」</span>などの技を使うことができます。
+            壁やブロックに埋まらないよう、空間の形状に合わせて回転するようにしています。<br>
+            原作同様に<span class="keyword">「Tスピン」</span>などのテクニックも使用できます。
           </p>
+          <iframe
+            src="https://www.youtube.com/embed/7qqnKmAh3x8"
+            width="100%"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+            class="kr-layout_center-iframe panel-img"
+            loading="lazy"
+          ></iframe>
           <!-- 参考リンク -->
           <div class="ref-box">
             <span class="ref-label">参考</span>
@@ -180,15 +219,13 @@
             <b class="title">アレンジBGM</b>
           </div>
           <p>
-            使っているBGMは、テトリスのテーマ曲を自作アレンジして作ったものです。<br>
-            趣味で行っている作曲を実際に取り入れた作品でもあります。
+            テトリスのテーマ曲を自作アレンジし、BGMとして実装しました。<br>
+            趣味で続けている作曲を、実際の作品制作に取り入れています。
           </p>
         </div>
 
       </div>
     </section>
-
-    <!-- TODO: DT砲の動画撮って乗せる <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 
     <!-- <p>
       <a href="../../" class="back-button">メインページ</a>
@@ -198,9 +235,17 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Unity表記 -->
+      Unity is a trademark or registered trademark of Unity Technologies.<br>
+      <br>
+      <!-- TETRIS表記 -->
+      This is an unofficial fan-made recreation for learning purposes.<br>
+      Tetris® is a trademark of The Tetris Company.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

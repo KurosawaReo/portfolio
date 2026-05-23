@@ -33,8 +33,7 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-award">受賞</a>
-      <a href="#contents-overview">作品概要</a>
+      <a href="../../">トップページ</a>
     </nav>
   </header>
 
@@ -46,10 +45,7 @@
 
       <div class="contents">
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-award">OB賞受賞</a>
-        </p>
-        <p>
-          <span class="side-toc-dot">・</span><a href="#contents-overview">作品概要</a>
+          <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-gamejam">学内ゲームジャム</a>
@@ -66,65 +62,41 @@
   <!-- サイト本体 -->
   <main class="wrap">
 
-    <section id="contents-award">
-      <div class="fade-in">
-        <h2 class="h2 neon">OB賞受賞</h2>
-
-        <div class="panel">
-          <p>
-            <span class="keyword">『首が伸びる』</span><span class="keyword">『噛みつく』</span>というユニークな発想を卒業生の方々に評価され、<span class="keyword">『OB賞』</span>を受賞しました！
-          </p>
-          <div class="kr-layout_grid">
-            <div>
-              <img src="../../img/works/pac_muscle/ob_award_1.webp" class="panel-img" width="500">
-            </div>
-            <div>
-              <img src="../../img/works/pac_muscle/ob_award_2.webp" class="panel-img" width="500">
-            </div>
-          </diav>
+    <section id="contents-overview">
+      <!-- トップ説明 -->
+      <div class="desc">
+        <div class="title">
+          《 PAC MUSCLE 》
+        </div>
+        <div class="text">
+          リードプログラマーとして開発を主導。<br>
+          短期間のゲームジャムで制作し、即興でマップエディタ拡張も実装しました。
         </div>
       </div>
-    </section>
-
-    <div class="neon-line"></div> <!-- グラデーション線 -->
-
-    <section id="contents-overview">
-      <h2 class="h2 neon">作品概要</h2>
+      <!-- 受賞 -->
+      <div class="panel">
+        <div class="title-row">
+          <b class="title">受賞</b>
+        </div>
+        <p>
+          学内で開催されたゲームジャムにて<span class="keyword">「首が伸びる」</span><span class="keyword">「噛みつく」</span>というユニークな発想を卒業生の方々に評価され、<span class="keyword">「OB賞」</span>を受賞しました。
+        </p>
+        <div class="kr-layout_grid">
+          <div>
+            <img src="../../img/works/pac_muscle/ob_award_1.webp" class="panel-img" width="500">
+          </div>
+          <div>
+            <img src="../../img/works/pac_muscle/ob_award_2.webp" class="panel-img" width="500">
+          </div>
+        </div>
+      </div>
       <!-- 画像 -->
       <div class="panel">
-        <img src="../../img/works/pac_muscle/card_image.webp" class="kr-layout_center-img">
+        <span id="img-slider">
+          <img src="../../img/works/pac_muscle/card_image.webp" class="kr-layout_center-img">
+        </span>
       </div>
       <!-- 表 -->
-      <div class="panel">
-        <table class="info-table">
-          <tr>
-            <td>プレイ人数</td>
-            <td>
-              1人
-              <span class="person-icons">
-                <span class="person-icon"></span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>ジャンル</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">アクション</span>
-              </span>
-            </td>
-          </tr>
-          <tr>
-            <td>操作端末</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">キーボード & マウス</span>
-                <span class="pill">コントローラ</span>
-              </span>
-            </td>
-          </tr>
-        </table>
-      </div>
       <div class="panel">
         <table class="info-table">
           <tr>
@@ -145,6 +117,23 @@
             </td>
           </tr>
           <tr>
+            <td>プレイ人数</td>
+            <td>
+              1人
+              <span class="person-icons">
+                <span class="person-icon"></span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td>
+              <span class="pillbar">
+                <span class="pill">アクション</span>
+              </span>
+            </td>
+          </tr>
+          <tr>
             <td>使用技術</td>
             <td>
               <span class="pillbar">
@@ -153,32 +142,45 @@
               </span>
             </td>
           </tr>
-          <tr>
-            <td>担当</td>
-            <td>
-              <span class="pillbar">
-                <span class="pill">チームの進行管理</span>
-                <span class="pill">デザイナーへの発注</span>
-                <span class="pill">CSVマップエディタ</span>
-                <span class="pill">結合作業</span>
-              </span>
-            </td>
-          </tr>
         </table>
+      </div>
+      <div class="kr-layout_grid">
+        <!-- 目的 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">目的</b>
+          </div>
+          <ul class="ui-list">
+            <li>リードプログラマーとしてチーム開発を主導し、技術支援と進行管理を行う。</li>
+            <li>短期間で完成させるための効率的な開発の進行方法を学ぶ。</li>
+          </ul>
+        </div>
+        <!-- 担当 -->
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">担当</b>
+          </div>
+          <ul class="ui-list">
+            <li>チームの進行管理</li>
+            <li>デザイナーへの素材発注</li>
+            <li>CSVマップエディタの開発</li>
+            <li>各機能の結合作業</li>
+          </ul>
+        </div>
       </div>
       <!-- リンク -->
       <div class="panel">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
-        <p>
+        <div>
           <a href="https://unityroom.com/games/pac_muscle" target="_blank" class="btn-link">
             unityroom>>
           </a>
           <a href="https://github.com/KurosawaReo/GameJam2025_sum_main" target="_blank" class="btn-link">
             GitHub>>
           </a>
-        </p>
+        </div>
       </div>
     </section>
 
@@ -259,7 +261,8 @@
             <b class="title">CSVマップエディタ</b>
           </div>
           <p> 
-            チームメンバーと協力し、CSVでマップを生成する拡張機能を即興で開発しました。<br>
+            チームメンバーと協力し、CSVファイルからマップを生成・編集できる拡張エディタを即興で開発しました。<br>
+            これにより、地形の調整を直感的に行えるようになり、マップ制作の効率が大幅に向上しました。
           </p>
           <div class="kr-layout_grid">
             <div>
@@ -270,7 +273,11 @@
             </div>
           </div>
           <p>
-            後日、レイアウトを整えて完全版に仕上げました。
+            後日、UIを整理して正式なツールとして完成させました。<br>
+            これを自作ライブラリに組み込むことで、今後の開発でもマップ編集機能をすぐに使えるようにしています。
+          </p>
+          <p>
+            この作品制作を通して、汎用的に使える拡張エディタの実装方法を学ぶことができました。
           </p>
           <div class="kr-layout_grid">
             <div>
@@ -298,9 +305,13 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/04/29<br>
+      最終更新日: 2026/05/23<br>
       随時更新中<br>
       <br>
+      <!-- Unity表記 -->
+      Unity is a trademark or registered trademark of Unity Technologies.<br>
+      <br>
+      <!-- ポートフォリオサイト表記 -->
       ©2025-2026 Kurosawa Reo Portfolio
     </small>
   </footer>

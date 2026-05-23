@@ -1,50 +1,40 @@
 /*
   - kr_common.css - (HTML)
-  ver.2026/04/06
+  ver.2026/05/20
 
   汎用的に使えるデザインやレイアウトの設定。
 */
 @charset "utf-8";
 
 /* =============================== 
-  [レイアウト] 
-  左側基準。PCでは2つまで横並び、スマホでは縦並びにする。
+  [レイアウト]
+  中央基準にする。
 ================================ */
-.kr-layout_grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start; /* ← 左から配置 */
-  align-items: flex-start;
-  padding: 10px;
-  gap: 15px;
-  box-sizing: border-box;
-}
-
-.kr-layout_grid > div {
-  flex: 1 1 45%;
-  max-width: 50%;
+.kr-layout_center {
   text-align: center;
 }
 
-.kr-layout_grid img {
-  max-width: 100%;
-  height: auto;
+/* =============================== 
+  [レイアウト] 
+  グリッドで並べる。左側に寄せる。
+  PCでは2つまで横並び、スマホでは縦並びにする。
+================================ */
+.kr-layout_grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1.0fr 1.0fr; /* 横に2つ並ぶ。1:1の比率 */
 }
-
-/* スマホ */
-@media screen and (max-width: 768px) {
-  .kr-layout_grid {
-    flex-direction: column;
-  }
-  .kr-layout_grid > div {
-    max-width: 100%;
+@media (max-width: 900px) {
+  .kr-layout_grid { 
+    gap: 0px;
+    grid-template-columns: 1.0fr; /* 横に並ばない */
   }
 }
 
 /* =============================== 
   [レイアウト]
-  左側基準。可能な限り横に並べる。
-  画面サイズが小さくなると改行する。
+  グリッドで並べる。左側に寄せる。
+  可能な限り横に並べる。
 ================================ */
 .kr-layout_grid-nolimit {
   display: flex;
@@ -53,15 +43,10 @@
   flex-wrap: wrap; /* PCでは横に並び続ける */
 }
 
-/* 各アイテムの見た目調整 */
-.kr-layout_grid-nolimit div {
-  text-align: center;
-}
-
 /* =============================== 
   [レイアウト]
-  中央基準。可能な限り横に並べる。
-  画面サイズが小さくなると改行する。
+  グリッドで並べる。中央に寄せる。
+  可能な限り横に並べる。
 ================================ */
 .kr-layout_grid-nolimit-center {
   display: flex;
@@ -69,7 +54,6 @@
   justify-content: center;
   flex-wrap: wrap; /* PCでは横に並び続ける */
 }
-
 /* 各アイテムの見た目調整 */
 .kr-layout_grid-nolimit-center div {
   text-align: center;
