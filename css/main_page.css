@@ -13,19 +13,50 @@
 @media (max-width: 980px) { .hero { grid-template-columns: 1fr; } .card_list { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 640px) { .card_list { grid-template-columns: 1fr; } }
 
+/* 通常カード */
 .card {
-  position: relative; 
-  background: var(--panel-back);
+  position: relative;
 
-  border: 1px solid rgba(51,231,255,0.28);
-  border-radius: var(--radius); padding: 14px; overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  /* サイト背景との差を少し出す */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(51,231,255,0.045),
+      rgba(255,255,255,0.015)
+    ),
+    var(--panel-back);
+
+  border: 1px solid rgba(90, 220, 255, 0.42);
+
+  border-radius: var(--radius);
+  padding: 14px;
+  overflow: hidden;
+
+  box-shadow:
+    0 12px 36px rgba(51,231,255,0.10),
+    0 0 18px rgba(51,231,255,0.06);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+
   transform-style: preserve-3d;
-  /* ↓ aタグを使っても見た目が変わらないように */
-  text-decoration: none; color: inherit; display: block;
+
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
-.card:hover { transform: translateY(-3px); box-shadow: 0 16px 60px rgba(51,231,255,0.35); }
+
+.card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(120,235,255,0.58);
+
+  box-shadow:
+    0 16px 60px rgba(51,231,255,0.22),
+    0 0 28px rgba(51,231,255,0.10);
+}
 
 /* カードの外枠のみ光らせるために、内側をmaskで切り抜く */
 .card::before {
@@ -45,14 +76,20 @@
 
 .card:hover::before { opacity: 1; }
 .card .thumb {
-  height: 160px; border-radius: 12px; background:
-  linear-gradient(135deg, rgba(51,231,255,0.25), rgba(11,20,22,0.8)),
-  repeating-linear-gradient(45deg, rgba(51,231,255,0.16) 0 2px, transparent 2px 6px);
+  height: 160px; 
+  border-radius: 12px; 
+  background:
+    linear-gradient(135deg, rgba(51,231,255,0.25), rgba(11,20,22,0.8)),
+    repeating-linear-gradient(45deg, rgba(51,231,255,0.16) 0 2px, transparent 2px 6px);
   border: 1px solid rgba(51,231,255,0.28);
   overflow: hidden; /* 角丸からはみ出さないようにする */
   display: flex;    /* 中央配置用 */
-  place-items: center; font-weight: 900; letter-spacing: 0.4px; color: #001217;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.45); background-blend-mode: screen;
+  place-items: center; 
+  font-weight: 900; 
+  letter-spacing: 0.4px; 
+  color: #001217;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.45); 
+  background-blend-mode: screen;
 }
 .card .thumb img {
   width: 100%;
@@ -60,7 +97,26 @@
   object-fit: cover; /* 切り抜き */
   display: block;
 }
+.card p { 
+  margin: 0 6px 8px; color: var(--desc); font-size: 14px;
+}
 
+/* 作品名 */
+.card h3 { 
+  margin: 10px 6px 6px;
+  font-size: 18px;
+  font-weight: 800;
+
+  color: #eefcff;
+
+  letter-spacing: 0.3px;
+
+  text-shadow:
+    0 0 8px rgba(80,220,255,0.45),
+    0 0 18px rgba(51,231,255,0.22);
+}
+
+/* ★ */
 .card .badge {
   position: absolute;
   top: 14px;
@@ -72,43 +128,37 @@
   font-weight: 900;
   letter-spacing: 0.4px;
 
-  /* 背景 */
-  background: rgba(13, 56, 62, 0.9);
-  /* 枠 */
-  border: 1px solid rgba(51,231,255,0.6);
-  /* 文字を発光 */
-  color: #d6f8ff;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(40, 77, 95, 0.9),
+      rgba(22, 46, 59, 0.5)
+    );
+
+  border: 1px solid rgba(110,225,245,0.46);
+
+  color: #eefcff;
+
   text-shadow:
-    0 0 6px var(--primary),
-    0 0 12px rgba(51,231,255,0.6);
-  /* 影 */
+    0 0 5px rgba(90,210,230,0.35);
+
   box-shadow:
-    0 0 12px rgba(51,231,255,0.4),
-    inset 0 0 8px rgba(51,231,255,0.2);
+    0 0 10px rgba(51,231,255,0.12),
+    inset 0 0 6px rgba(255,255,255,0.05);
+
+  backdrop-filter: blur(3px);
 }
 
-.card h3 { 
-  margin: 10px 6px 6px;
-  font-size: 18px;
-  font-weight: 800;
-
-  color: #eaffff;
-
-  letter-spacing: 0.3px;
-
-  text-shadow:
-    0 0 6px rgba(51,231,255,0.6),
-    0 0 14px rgba(51,231,255,0.35);
-}
-
-.card p { 
-  margin: 0 6px 8px; color: var(--desc); font-size: 14px;
-}
+/* 下のチップ */
 .card .chipz { 
   display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 6px 8px; 
 }
 .card .chip {
-  font-size: 12px; border: 1px solid rgba(51,231,255,0.35); padding: 6px 10px; border-radius: 999px; color: #bfeef7; 
+  font-size: 12px; 
+  padding: 6px 10px; 
+  color: #bfeef7; 
+  border: 1px solid rgba(51,231,255,0.35); 
+  border-radius: 999px; 
 }
 
 /* =============================== 
@@ -116,58 +166,101 @@
 ================================ */
 .card-3star {
   background:
-    linear-gradient(135deg,
-      rgba(51,231,255,0.18),
-      rgba(160, 90, 255,0.10),
-      rgba(255,255,255,0.08) /* ← 白に変更 */
+    linear-gradient(
+      135deg,
+      rgba(51,231,255,0.20),
+      rgba(160,90,255,0.12),
+      rgba(255,255,255,0.08)
     ),
     var(--panel-back);
 
-  border: 1px solid rgba(180, 160, 255, 0.35);
+  border: 1px solid rgba(205, 190, 255, 0.58);
 
+  /* 常時少し光らせる */
   box-shadow:
-    0 12px 40px rgba(120, 160, 255, 0.18),
-    0 0 20px rgba(200, 120, 255, 0.12);
+    0 12px 40px rgba(120,160,255,0.18),
+    0 0 18px rgba(180,160,255,0.12),
+    inset 0 0 18px rgba(255,255,255,0.02);
 }
 
 .card-3star:hover {
   transform: translateY(-3px);
 
+  border-color: rgba(230,220,255,0.75);
+
   box-shadow:
-    0 16px 60px rgba(120, 160, 255, 0.28),
-    0 0 30px rgba(200, 120, 255, 0.18);
+    0 16px 60px rgba(120,160,255,0.30),
+    0 0 34px rgba(200,120,255,0.22);
 }
 
 .card-3star::before {
   background: conic-gradient(
     from 0deg,
-    rgba(51,231,255,0.0),
-    rgba(180,160,255,0.35),
-    rgba(255,255,255,0.25), /* ← 白 */
-    rgba(51,231,255,0.0)
+    rgba(51,231,255,0.00),
+    rgba(190,170,255,0.55),
+    rgba(255,255,255,0.38),
+    rgba(190,170,255,0.45),
+    rgba(51,231,255,0.00)
   );
+
+  opacity: 0.35;
 }
 
+.card-3star:hover::before {
+  opacity: 0.9;
+}
+
+/* 作品名 */
 .card-3star h3 {
   text-shadow:
     0 0 6px rgba(160, 140, 255, 0.6),
-    0 0 14px rgba(255,255,255,0.25); /* ← 白 */
+    0 0 14px rgba(255,255,255,0.25);
 }
 
+/* ★ */
 .card-3star .badge {
-  background: rgba(20, 40, 60, 0.9);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(87, 79, 115, 0.9),
+      rgba(44, 38, 63, 0.5)
+    );
 
-  border: 1px solid rgba(180,160,255,0.6);
+  border: 1px solid rgba(200,185,255,0.52);
 
-  color: #f2f8ff;
+  color: #f7f5ff;
 
   text-shadow:
-    0 0 6px rgba(180,160,255,0.8),
-    0 0 10px rgba(255,255,255,0.5); /* ← 白 */
+    0 0 6px rgba(190,170,255,0.45);
 
   box-shadow:
-    0 0 12px rgba(180,160,255,0.3),
-    inset 0 0 6px rgba(255,255,255,0.2);
+    0 0 12px rgba(180,160,255,0.14),
+    inset 0 0 6px rgba(255,255,255,0.06);
+
+  backdrop-filter: blur(3px);
+}
+
+/* 下のチップ */
+.card-3star .chip {
+  font-size: 12px;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  color: #f4eeff;
+
+  border: 1px solid rgba(200,180,255,0.48);
+
+  text-shadow:
+    0 0 8px rgba(190,170,255,0.22);
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.03),
+    0 0 10px rgba(180,160,255,0.08);
+
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 /* =============================== 
@@ -176,21 +269,37 @@
 .card-minecraft {
   position: relative;
   z-index: 0;
-  
-  border: 1px solid rgba(120, 255, 160, 0.35);
+
+  border: 1px solid rgba(150, 255, 180, 0.52);
+
+  /* Minecraftっぽい深い緑感 */
+  background:
+    linear-gradient(
+      180deg,
+      rgba(120,255,160,0.06),
+      rgba(40,70,45,0.03)
+    ),
+    var(--panel-back);
+
   box-shadow:
-    0 12px 40px rgba(120, 255, 160, 0.12),
-    0 0 20px rgba(120, 255, 160, 0.08);
+    0 12px 40px rgba(120,255,160,0.14),
+    0 0 24px rgba(120,255,160,0.10),
+    inset 0 0 0 1px rgba(210,255,220,0.04);
 }
+
 /* 中身を全部上のレイヤーに */
 .card-minecraft > * {
   position: relative;
-  z-index: 1;
 }
 
 .card-minecraft:hover { 
   transform: translateY(-3px); 
-  box-shadow: 0 16px 60px rgba(120, 255, 160, 0.35); 
+
+  border-color: rgba(170,255,190,0.68);
+
+  box-shadow:
+    0 16px 60px rgba(120,255,160,0.24),
+    0 0 30px rgba(120,255,160,0.18);
 }
 
 /* 斜めの光 */
@@ -201,33 +310,57 @@
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
+  background:
+    /* Minecraftの四角感 */
+    linear-gradient(
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.03) 1px,
+      transparent 1px
+    ),
 
-    /* 1本目 */
-    rgba(120,255,160,0.18) 20%,
-    rgba(120,255,160,0.28) 30%,
-    rgba(120,255,160,0.18) 20%,
+    linear-gradient(
+      120deg,
+      transparent 0%,
 
-    /* 2本目 */
-    rgba(120,255,160,0.18) 60%,
-    rgba(120,255,160,0.28) 70%,
-    rgba(120,255,160,0.18) 60%,
+      /* 1本目 */
+      rgba(120,255,160,0.16) 20%,
+      rgba(120,255,160,0.30) 30%,
+      rgba(120,255,160,0.16) 40%,
 
-    transparent 100%
-  );
+      /* 2本目 */
+      rgba(120,255,160,0.16) 60%,
+      rgba(120,255,160,0.30) 70%,
+      rgba(120,255,160,0.16) 80%,
+
+      transparent 100%
+    );
+
+  background-size:
+    14px 14px,
+    14px 14px,
+    cover;
 
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.55;
   transition: opacity 200ms ease;
+}
+
+.card-minecraft:hover::after {
+  opacity: 0.75;
 }
 
 .card-minecraft h3 {
   font-family: 'Press Start 2P', 'DotGothic16', sans-serif;
   font-size: 14px;
   letter-spacing: 1px;
+
+  color: #eaffef;
+
   text-shadow:
-    0 0 6px rgba(120,255,160,0.8),
-    0 0 14px rgba(51,231,255,0.4);
+    0 0 8px rgba(120,255,160,0.9),
+    0 0 18px rgba(120,255,160,0.35);
 }
