@@ -717,93 +717,6 @@
 }
 
 /* ===============================
-  ▼ コードブロック ▼
-================================ */
-pre {
-  margin: 12px 0;
-  padding: 12px;
-
-  background: #05080c;
-  border-radius: 12px;
-  border: 1px solid rgba(51,231,255,0.3);
-  box-shadow: 0 0 20px rgba(51,231,255,0.2);
-
-  overflow: auto;
-
-  max-height: 420px; /* ← スクロール出す */
-}
-
-/* コード */
-pre code {
-  font-family: Consolas, "Courier New", monospace;
-
-  font-size: clamp(11px, 1.4vw, 13px);
-
-  letter-spacing: 0; /* ← 無駄な広がり防止 */
-}
-
-/* ===============================
-  ▼ コードブロック スクロールバー ▼
-================================ */
-/* 全体サイズ */
-pre::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-/* 背景（トラック） */
-pre::-webkit-scrollbar-track {
-  background: rgba(95, 95, 95, 0.9);
-  border-radius: 999px;
-
-  box-shadow:
-    inset 0 0 6px rgba(0,0,0,0.8),
-    inset 0 0 10px rgba(51,231,255,0.08);
-}
-
-/* つまみ（スクロール部分） */
-pre::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-
-  background: linear-gradient(
-    180deg,
-    #5bffef,
-    #33e7ff,
-    #1bb7cb
-  );
-
-  box-shadow:
-    0 0 6px rgba(51,231,255,0.8),
-    0 0 12px rgba(51,231,255,0.5);
-
-  border: 1px solid rgba(255,255,255,0.2);
-}
-
-/* ホバー時（触った感） */
-pre::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    180deg,
-    #7bfff4,
-    #33e7ff,
-    #159cad
-  );
-
-  box-shadow:
-    0 0 10px rgba(51,231,255,1),
-    0 0 20px rgba(51,231,255,0.8);
-}
-
-/* アクティブ（ドラッグ中） */
-pre::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(
-    180deg,
-    #a0fffb,
-    #5bffef,
-    #33e7ff
-  );
-}
-
-/* ===============================
   ▼ 参考リンク ▼
 ================================ */
 .ref-box {
@@ -993,7 +906,7 @@ pre::-webkit-scrollbar-thumb:active {
 /* ===== 連想フロー ===== */
 .ui-flow {
   margin-top: 18px;
-  font-size: 14px;
+  font-size: 18px;
   color: var(--muted);
   letter-spacing: 2px;
 

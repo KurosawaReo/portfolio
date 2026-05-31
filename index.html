@@ -3,11 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="ポートフォリオ" />
+
   <title>Portfolio | Kurosawa Reo</title>
+  <meta name="description" content="ポートフォリオ" />
 
   <!-- font導入 -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
   <!-- cssファイル -->
   <link rel="stylesheet" href="css/common.css">
   <link rel="stylesheet" href="css/main_page.css">
@@ -32,9 +35,15 @@
     <nav class="nav">
       <div class="brand">PORTFOLIO</div>
       <div class="spacer"></div> <!-- スペース -->
-      <a href="#contents-activity">活動</a>
-      <a href="#contents-works-team">チーム作品</a>
-      <a href="#contents-works-one">個人作品</a>
+      <a href="#contents-activity">
+        <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+      </a>
+      <a href="#contents-works-team">
+        <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad2-icon lucide-gamepad-2"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
+      </a>
+      <a href="#contents-works-one">
+        <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml-icon lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+      </a>
     </nav>
   </header>
 
@@ -49,8 +58,7 @@
       </h1>
       <!-- 一言 -->
       <p class="hero-message">
-        私の強みは「実装力」と「整理力」<br>
-        「やりたい」を技術で叶え、きれいに仕上げることにこだわります。
+        「見た目で伝わる実装にこだわる。」
       </p>
       <!-- 画像 -->
       <div class="avatar-wrap">
@@ -117,7 +125,8 @@
               <b class="title">経験</b>
             </div>
             <p class="note-text">
-              ※白く表示されている技術は、授業外で自主的に学習しているものです。
+              「<svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>」
+              マークが付いている技術は、授業外で自主的に学習しているものです。
             </p>
             <table class="info-table">
               <tr>
@@ -130,7 +139,10 @@
                     <span class="pill">JavaScript</span>
                     <span class="pill">PHP</span>
                     <span class="pill">SQL</span>
-                    <span class="pill platinum">VBA</span>
+                    <span class="pill platinum">
+                      VBA
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
                     <span class="pill">HTML</span>
                     <span class="pill">CSS</span>
                     <span class="pill">DxLib</span>
@@ -178,8 +190,14 @@
                 <td>動画編集</td>
                 <td>
                   <div class="pillbar">
-                    <span class="pill platinum">Adobe Premiere Pro</span>
-                    <span class="pill platinum">DaVinci Resolve</span>
+                    <span class="pill platinum">
+                      Adobe Premiere Pro
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
+                    <span class="pill platinum">
+                      DaVinci Resolve
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
                   </div>
                 </td>
               </tr>
@@ -188,7 +206,10 @@
                 <td>
                   <div class="pillbar">
                     <span class="pill">Adobe Photoshop</span>
-                    <span class="pill platinum">ibisPaint</span>
+                    <span class="pill platinum">
+                      ibisPaint
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
                   </div>
                 </td>
               </tr>
@@ -196,8 +217,14 @@
                 <td>3Dモデリング</td>
                 <td>
                   <div class="pillbar">
-                    <span class="pill platinum">Blockbench</span>
-                    <span class="pill platinum">Blender</span>
+                    <span class="pill platinum">
+                      Blockbench
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
+                    <span class="pill platinum">
+                      Blender
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
                     <span class="pill">Maya</span>
                   </div>
                 </td>
@@ -206,7 +233,10 @@
                 <td>サウンド</td>
                 <td>
                   <div class="pillbar">
-                    <span class="pill platinum">GarageBand</span>
+                    <span class="pill platinum">
+                      GarageBand
+                      <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#f3fbff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-search-icon lucide-book-search"><path d="M11 22H5.5a1 1 0 0 1 0-5h4.501"/><path d="m21 22-1.879-1.878"/><path d="M3 19.5v-15A2.5 2.5 0 0 1 5.5 2H18a1 1 0 0 1 1 1v8"/><circle cx="17" cy="18" r="3"/></svg>
+                    </span>
                   </div>
                 </td>
               </tr>
@@ -221,7 +251,10 @@
     <!-- 活動 -->
     <section id="contents-activity">
       <div class="fade-in">
-        <h2 class="h2 neon">活動</h2>
+        <h2 class="h2 neon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+          活動
+        </h2>
 
         <div class="card_list">
           <!-- リアル -->
@@ -244,7 +277,8 @@
             <div class="thumb"><img src="img/activity/net/card_image.webp"></div>
             <h3>プライベート活動</h3>
             <p>
-              もう1つの人生。趣味で継続している制作活動です。
+              もう1つの人生<svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pickaxe-icon lucide-pickaxe"><path d="m14 13-8.381 8.38a1 1 0 0 1-3.001-3L11 9.999"/><path d="M15.973 4.027A13 13 0 0 0 5.902 2.373c-1.398.342-1.092 2.158.277 2.601a19.9 19.9 0 0 1 5.822 3.024"/><path d="M16.001 11.999a19.9 19.9 0 0 1 3.024 5.824c.444 1.369 2.26 1.676 2.603.278A13 13 0 0 0 20 8.069"/><path d="M18.352 3.352a1.205 1.205 0 0 0-1.704 0l-5.296 5.296a1.205 1.205 0 0 0 0 1.704l2.296 2.296a1.205 1.205 0 0 0 1.704 0l5.296-5.296a1.205 1.205 0 0 0 0-1.704z"/></svg><br>
+              趣味で継続している制作活動です。
             </p>
             <ul class="ui-list">
               <li>Minecraftでオリジナルゲーム制作・運営</li>
@@ -261,7 +295,10 @@
     <!-- 作品(チーム) -->
     <section id="contents-works-team">
       <div class="fade-in">
-        <h2 class="h2 neon">チーム作品</h2>
+        <h2 class="h2 neon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad2-icon lucide-gamepad-2"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
+          チーム作品
+        </h2>
         <p>
           <span class="info-text">特にご覧いただきたい作品に、★を多く付けています。</span>
         </p>
@@ -352,7 +389,10 @@
     <!-- 作品(個人) -->
     <section id="contents-works-one">
       <div class="fade-in">
-        <h2 class="h2 neon">個人作品</h2>
+        <h2 class="h2 neon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml-icon lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+          個人作品
+        </h2>
         <p>
           <span class="info-text">特にご覧いただきたい作品に、★を多く付けています。</span>
         </p>
@@ -413,7 +453,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/05/27<br>
+      最終更新日: 2026/06/01<br>
       随時更新中<br>
       <br>
       ©2025-2026 Kurosawa Reo Portfolio
