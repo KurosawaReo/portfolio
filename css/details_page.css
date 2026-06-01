@@ -722,38 +722,55 @@
 .ref-box {
   padding: 6px 10px;
 
-  font-size: 13x;
+  font-size: 16px;
   line-height: 1.2;
 
-  color: #aaa;
+  color: #aaaaaa;
 
   border-left: 2px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.02);
+
+  /* 少しだけ明るく */
+  background: rgba(255,255,255,0.045);
 }
 
 .ref-label {
   margin-right: 6px;
   font-weight: 600;
-  color: #888;
+  color: #b8c4c7;
 }
 
 .ref-box a {
-  display: block;              /* 幅制御のため */
-  overflow: hidden;            /* はみ出しを隠す */
-  white-space: nowrap;         /* 改行しない */
-  text-overflow: ellipsis;     /* …を付ける（任意） */
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
-  color: #888;
+  color: #8f8f8f;
   text-decoration: none;
 
-  /* フェードアウト */
-  -webkit-mask-image: linear-gradient(to right, black 80%, transparent);
-  mask-image: linear-gradient(to right, black 80%, transparent);
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+
+  -webkit-mask-image:
+    linear-gradient(to right, black 80%, transparent);
+  mask-image:
+    linear-gradient(to right, black 80%, transparent);
 }
 
+/* hover */
 .ref-box a:hover {
-  color: #ccc;
+  color: #7debf7;
+
   text-decoration: underline;
+  text-decoration-color: rgba(125,235,247,0.5);
+
+  transform: translateX(2px);
+}
+
+/* ボックス自体も少し反応 */
+.ref-box:hover {
+  background: rgba(255,255,255,0.06);
 }
 
 /* ===============================
