@@ -54,7 +54,7 @@
           <span class="side-toc-dot">・</span><a href="#contents-overview">概要</a>
         </p>
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-results">研究結果</a>
+          <span class="side-toc-dot">・</span><a href="#contents-results">振り返り</a>
         </p>
       </div>
     </div>
@@ -159,40 +159,62 @@
 
     <section id="contents-results">
       <div class="fade-in">
-        <h2 class="h2 neon">研究結果</h2>
+        <h2 class="h2 neon">振り返り</h2>
 
         <div class="panel">
           <div class="title-row">
             <b class="title">報酬設計</b>
           </div>
           <p>
-            ・ターゲットに近づけば加点(近づくほど)<br>
-            ・敵に近づけば減点(近づくほど)<br>
-            ・壁に当たると-0.5<br>
-            ・ターゲットに当たると+1.5<br>
-            ・敵に当たると-3.0<br>
-            敵に当たった場合と、ターゲットに当たった場合はチームで報酬を共有
+            ※敵に当たった場合と、ターゲットに当たった場合はチームで報酬を共有
+            <ul class="ui-list">
+              <li>ターゲットに近づけば加点(近づくほど)</li>
+              <li>敵に近づけば減点(近づくほど)</li>
+              <li>壁に当たると-0.5</li>
+              <li>ターゲットに当たると+1.5</li>
+              <li>敵に当たると-3.0</li>
+            </ul>
           </p>
 
           <div class="title-row">
             <b class="title">失敗例</b>
           </div>
           <p>
-            ・壁がない → 外に逃げ続けてしまう<br>
-            ・敵に近づいてもペナルティがない → 敵を避けない<br>
-            ・敵がひたすらAIを追いかける → 進展が少ない
+            <ul class="ui-list">
+              <li>壁がない → 外に逃げ続けてしまう</li>
+              <li>敵に近づいてもペナルティがない → 敵を避けない</li>
+              <li>敵がひたすらAIを追いかける → 進展が少ない</li>
+            </ul>
           </p>
 
           <div class="title-row">
             <b class="title">強化学習のコツ</b>
           </div>
           <p>
-            ・各オブジェクトの座標を伝えるより、相対座標を伝えた方が学びやすい<br>
-            　→AI目線で考えられるように<br>
-            ・最初は簡単にして、ある程度学ばせてから難易度を上げると学びやすい<br>
-            　→まずは目標に向かうところから、次に敵を追加
+            <ul class="ui-list">
+              <li>
+                各オブジェクトの座標を伝えるより、相対座標を伝えた方が学びやすい<br>
+                →AI目線で考えられるように
+              </li>
+              <li>
+                最初は簡単にして、ある程度学ばせてから難易度を上げると学びやすい<br>
+                →まずは目標に向かうところから、次に敵を追加
+              </li>
+            </ul>
           </p>
         </div>
+        
+        <div class="panel">
+          <div class="title-row">
+            <b class="title">学んだこと</b>
+          </div>
+          <p>
+            AI強化学習では、最初はランダムに行動し、成功体験をもとに学習を進めるため、適切な報酬設計が重要であることを学びました。<br>
+            また、相対座標などAI視点で情報を与えることで学習効率が向上することも分かりました。<br>
+            これらの経験を通じて、AIにも人と同様に試行錯誤を重ねながら学習する側面があることを実感しました。
+          </p>
+        </div>
+
       </div>
     </section>
 
