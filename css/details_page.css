@@ -722,7 +722,7 @@
 .ref-box {
   padding: 6px 10px;
 
-  font-size: 16px;
+  font-size: var(--panel-text-size);
   line-height: 1.2;
 
   color: #aaaaaa;

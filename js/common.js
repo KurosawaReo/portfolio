@@ -4,40 +4,6 @@
 */
 
 /* =============================== 
-  ▼ イントロ ▼
-================================ */
-const intros = [
-  document.getElementById("intro")
-];
-const content = document.getElementById("content");
-
-intros.forEach(intro => {
-  if (!intro || !content) return;
-    intro.addEventListener("animationend", () => {
-      intro.style.display   = "none";
-      content.style.display = "block";
-    }
-  );
-});
-
-/* ===============================
-  スクロールアニメーション
-================================ */
-const sections = document.querySelectorAll(".fade-in, .fade-in-left, .fade-in-right");
-
-//画面に入ったら出現.
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, {
-  threshold: 0.1 // 1.0 = 100% | 画面に一定割合入ったら発火.
-});
-sections.forEach(sec => observer.observe(sec));
-
-/* =============================== 
   ▼ スムーススクロール ▼
   aタグをクリックした時のアニメーション
 ================================ */

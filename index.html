@@ -80,10 +80,10 @@
   <main class="wrap">
 
     <section id="profile">
-      <!-- PCでは横並びにする -->
       <div class="kr-layout_grid">
+
         <!-- プロフィール -->
-        <div class="fade-in">
+        <div class="kr-anim_fade-in">
           <div class="panel">
             <div class="title-row">
               <b class="title">プロフィール</b>
@@ -120,7 +120,7 @@
         </div>
   
         <!-- 経験 -->
-        <div class="fade-in">
+        <div class="kr-anim_fade-in">
           <div class="panel">
             <div class="title-row">
               <b class="title">経験</b>
@@ -256,6 +256,7 @@
             </table>
           </div>
         </div>
+
       </div>
     </section>
     
@@ -263,14 +264,18 @@
 
     <!-- 活動 -->
     <section id="contents-activity">
-      <div class="fade-in">
-        <h2 class="h2 neon">
+      <!-- sectionタイトル -->
+      <div class="section-title">
+        <h2 class="text kr-anim_fade-in-left">
           <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-activity-icon lucide-activity"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
           活動
         </h2>
+      </div>
 
-        <div class="card_list">
-          <!-- リアル -->
+      <!-- 作品1行目 -->
+      <div class="card_list kr-anim_stagger-group">
+        <!-- リアル -->
+        <div class="kr-anim_fade-in-stagger">
           <article class="card" id="activity-card-real" data-tilt>
             <div class="thumb"><img src="img/activity/real/card_image.webp"></div>
             <h3>学生活動</h3>
@@ -284,8 +289,10 @@
               <li>ゲーム制作イベントの運営</li>
             </ul>
           </article>
+        </div>
 
-          <!-- ネット -->
+        <!-- ネット -->
+        <div class="kr-anim_fade-in-stagger">
           <article class="card card-minecraft" id="activity-card-net" data-tilt>
             <div class="thumb"><img src="img/activity/net/card_image.webp"></div>
             <h3>プライベート活動</h3>
@@ -306,17 +313,21 @@
 
     <!-- 作品(チーム) -->
     <section id="contents-works-team">
-      <div class="fade-in">
-        <h2 class="h2 neon">
+      <!-- sectionタイトル -->
+      <div class="section-title">
+        <h2 class="text kr-anim_fade-in-left">
           <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-gamepad2-icon lucide-gamepad-2"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258-.007-.05-.011-.1-.017-.151A4 4 0 0 0 17.32 5z"/></svg>
           チーム作品
         </h2>
-        <p>
+        <p class="kr-anim_fade-in-left">
           <span class="info-text">特にご覧いただきたい作品に、★を多く付けています。</span>
         </p>
-        <!-- 作品集 -->
-        <div class="card_list">
+      </div>
+
+      <!-- 作品1行目 -->
+      <div class="card_list kr-anim_stagger-group">
           
+        <div class="kr-anim_fade-in-stagger">
           <article class="card card-3star" id="works-card-01" data-tilt>
             <span class="badge">★★★</span>
             <div class="thumb"><img src="img/works/reflect_line/card_image.webp"></div>
@@ -332,7 +343,9 @@
               <span class="chip">🏆受賞</span>
             </div>
           </article>
+        </div>
 
+        <div class="kr-anim_fade-in-stagger">
           <article class="card card-3star" id="works-card-02" data-tilt>
             <span class="badge">★★★</span>
             <div class="thumb"><img src="img/works/gun_action/card_image.webp"></div>
@@ -347,7 +360,9 @@
               <span class="chip">3D</span>
             </div>
           </article>
+        </div>
 
+        <div class="kr-anim_fade-in-stagger">
           <article class="card" id="works-card-05" data-tilt>
             <span class="badge">★★</span>
             <div class="thumb"><img src="img/works/pac_muscle/card_image.webp"></div>
@@ -363,7 +378,14 @@
               <span class="chip">🏆入賞</span>
             </div>
           </article>
+        </div>
 
+      </div>
+
+      <!-- 作品2行目 -->
+      <div class="card_list kr-anim_stagger-group">
+
+        <div class="kr-anim_fade-in-stagger">
           <article class="card" id="works-card-07" data-tilt>
             <span class="badge">★</span>
             <div class="thumb"><img src="img/works/trans_water/card_image.webp"></div>
@@ -377,7 +399,9 @@
               <span class="chip">C#</span>
             </div>
           </article>
+        </div>
 
+        <div class="kr-anim_fade-in-stagger">
           <article class="card" id="works-card-06" data-tilt>
             <span class="badge">★</span>
             <div class="thumb"><img src="img/works/5host/card_image.webp"></div>
@@ -391,8 +415,8 @@
               <span class="chip">C#</span>
             </div>
           </article>
-
         </div>
+
       </div>
     </section>
 
@@ -400,17 +424,21 @@
 
     <!-- 作品(個人) -->
     <section id="contents-works-one">
-      <div class="fade-in">
-        <h2 class="h2 neon">
+      <!-- sectionタイトル -->
+      <div class="section-title">
+        <h2 class="text kr-anim_fade-in-left">
           <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code-xml-icon lucide-code-xml"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
           個人作品
         </h2>
-        <p>
+        <p class="kr-anim_fade-in-left">
           <span class="info-text">特にご覧いただきたい作品に、★を多く付けています。</span>
         </p>
-        <!-- 作品集 -->
-        <div class="card_list">
-          
+      </div>
+
+      <!-- 作品1行目 -->
+      <div class="card_list kr-anim_stagger-group">
+
+        <div class="kr-anim_fade-in-stagger">
           <article class="card card-3star" id="works-card-03" data-tilt>
             <span class="badge">★★★</span>
             <div class="thumb"><img src="img/works/krlib/card_image.webp"></div>
@@ -426,7 +454,9 @@
               <span class="chip">C++</span>
             </div>
           </article>
-          
+        </div>
+      
+        <div class="kr-anim_fade-in-stagger">
           <article class="card" id="works-card-08" data-tilt>
             <span class="badge">★★</span>
             <div class="thumb"><img src="img/works/ai_goal/card_image.webp"></div>
@@ -441,7 +471,9 @@
               <span class="chip">機械学習</span>
             </div>
           </article>
+        </div>
 
+        <div class="kr-anim_fade-in-stagger">
           <article class="card" id="works-card-04" data-tilt>
             <span class="badge">★★</span>
             <div class="thumb"><img src="img/works/tetris/card_image.webp"></div>
@@ -456,8 +488,8 @@
               <span class="chip">作曲</span>
             </div>
           </article>
-
         </div>
+          
       </div>
     </section>
   </main>
@@ -465,7 +497,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/06/01<br>
+      最終更新日: 2026/06/02<br>
       随時更新中<br>
       <br>
       ©2025-2026 Kurosawa Reo Portfolio
@@ -473,6 +505,7 @@
   </footer>
 
   <!-- jsファイル -->
+  <script src="plugins/KrLib_html/kr_common.js"></script>
   <script src="js/common.js"></script>
   <script src="js/main_page.js"></script>
 

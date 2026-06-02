@@ -69,7 +69,7 @@
 
     <section id="contents-overview">
       <!-- トップ説明 -->
-      <div class="desc">
+      <div class="desc kr-anim_fade-in">
         <div class="title">
           <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#2ecbe0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sparkles-icon lucide-sparkles"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"/><path d="M20 2v4"/><path d="M22 4h-4"/><circle cx="4" cy="20" r="2"/></svg>
           PAC MUSCLE
@@ -81,7 +81,7 @@
         </div>
       </div>
       <!-- 受賞 -->
-      <div class="panel">
+      <div class="panel kr-anim_fade-in">
         <div class="title-row">
           <b class="title">
             <svg xmlns="http://www.w3.org/2000/svg" width="0.9em" height="0.9em" viewBox="0 0 24 24" fill="none" stroke="#33e7ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trophy-icon lucide-trophy"><path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 21.978"/><path d="M14 14.66v1.626a2 2 0 0 0 .976 1.696A5 5 0 0 1 17 21.978"/><path d="M18 9h1.5a1 1 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6 9H4.5a1 1 0 0 1 0-5H6"/></svg>
@@ -101,13 +101,13 @@
         </div>
       </div>
       <!-- 画像 -->
-      <div class="panel">
+      <div class="panel kr-anim_fade-in">
         <span id="img-slider">
           <img src="../../img/works/pac_muscle/card_image.webp" class="kr-layout_center-img">
         </span>
       </div>
       <!-- 表 -->
-      <div class="panel">
+      <div class="panel kr-anim_fade-in">
         <table class="info-table">
           <tr>
             <td>開発期間</td>
@@ -156,7 +156,7 @@
       </div>
       <div class="kr-layout_grid">
         <!-- 目的 -->
-        <div class="panel">
+        <div class="panel kr-anim_fade-in-left">
           <div class="title-row">
             <b class="title">目的</b>
           </div>
@@ -166,7 +166,7 @@
           </ul>
         </div>
         <!-- 担当 -->
-        <div class="panel">
+        <div class="panel kr-anim_fade-in-right">
           <div class="title-row">
             <b class="title">担当</b>
           </div>
@@ -179,7 +179,7 @@
         </div>
       </div>
       <!-- リンク -->
-      <div class="panel">
+      <div class="panel kr-anim_fade-in">
         <div class="title-row">
           <b class="title">リンク</b>
         </div>
@@ -199,71 +199,74 @@
     <div class="neon-line"></div> <!-- グラデーション線 -->
 
     <section id="contents-gamejam">
-      <div class="fade-in">
-        <h2 class="h2 neon">学内ゲームジャム</h2>
+      <!-- sectionタイトル -->
+      <div class="section-title">
+        <h2 class="text kr-anim_fade-in-left">
+          学内ゲームジャム
+        </h2>
+      </div>
         
-        <div class="panel">
-          <p>
-            学内ゲームジャムで制作した作品です。<br>
-            チームとテーマは、当日即興で決められる環境で開発しました。
-          </p>
+      <div class="panel kr-anim_fade-in">
+        <p>
+          学内ゲームジャムで制作した作品です。<br>
+          チームとテーマは、当日即興で決められる環境で開発しました。
+        </p>
+      </div>
+
+      <div class="panel kr-anim_fade-in">
+        <div class="title-row">
+          <b class="title">テーマ</b>
         </div>
+        <!-- テーマ -->
+        <div class="idea-ui-wrap">
+          <!-- ぼやっと背景 -->
+          <div class="idea-bg"></div>
+          <!-- UI本体 -->
+          <div class="idea-ui">
 
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">テーマ</b>
-          </div>
-          <!-- テーマ -->
-          <div class="idea-ui-wrap">
-            <!-- ぼやっと背景 -->
-            <div class="idea-bg"></div>
-            <!-- UI本体 -->
-            <div class="idea-ui">
+            <div class="ui-input">
+              <span class="label">テーマ</span>
+              <span class="value">かみ</span>
+            </div>
 
-              <div class="ui-input">
-                <span class="label">テーマ</span>
-                <span class="value">かみ</span>
+            <div class="ui-flow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.0em" height="1.0em" viewBox="0 0 24 24" fill="none" stroke="#33e7ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash-icon lucide-arrow-big-down-dash"><path d="M14 8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-6.939 6.939a1.207 1.207 0 0 1-1.708 0l-6.94-6.94a.707.707 0 0 1 .5-1.206H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1z"/><path d="M9 4h6"/></svg>
+              <div>
+                連想
               </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="1.0em" height="1.0em" viewBox="0 0 24 24" fill="none" stroke="#33e7ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash-icon lucide-arrow-big-down-dash"><path d="M14 8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-6.939 6.939a1.207 1.207 0 0 1-1.708 0l-6.94-6.94a.707.707 0 0 1 .5-1.206H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1z"/><path d="M9 4h6"/></svg>
+            </div>
 
-              <div class="ui-flow">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.0em" height="1.0em" viewBox="0 0 24 24" fill="none" stroke="#33e7ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash-icon lucide-arrow-big-down-dash"><path d="M14 8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-6.939 6.939a1.207 1.207 0 0 1-1.708 0l-6.94-6.94a.707.707 0 0 1 .5-1.206H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1z"/><path d="M9 4h6"/></svg>
-                <div>
-                  連想
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="1.0em" height="1.0em" viewBox="0 0 24 24" fill="none" stroke="#33e7ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash-icon lucide-arrow-big-down-dash"><path d="M14 8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-6.939 6.939a1.207 1.207 0 0 1-1.708 0l-6.94-6.94a.707.707 0 0 1 .5-1.206H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1z"/><path d="M9 4h6"/></svg>
-              </div>
-
-              <div class="ui-output">
-                <div class="out">噛み</div>
-              </div>
+            <div class="ui-output">
+              <div class="out">噛み</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">制作風景</b>
-          </div>
-          <div class="kr-layout_grid">
-            <div>
-              <a href="../../img/works/pac_muscle/team.webp" data-lightbox="main" class="zoom-icon-parent">
-                <img src="../../img/works/pac_muscle/team.webp" class="panel-img">
-                <img src="../../img/zoom-icon.webp" class="zoom-icon">
-              </a>
-            </div>
+      <div class="panel kr-anim_fade-in">
+        <div class="title-row">
+          <b class="title">制作風景</b>
+        </div>
+        <div class="kr-layout_grid">
+          <div>
+            <a href="../../img/works/pac_muscle/team.webp" data-lightbox="main" class="zoom-icon-parent">
+              <img src="../../img/works/pac_muscle/team.webp" class="panel-img">
+              <img src="../../img/zoom-icon.webp" class="zoom-icon">
+            </a>
           </div>
         </div>
+      </div>
 
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">プレゼン資料</b>
-          </div>
-          <p>
-            3日目の最終発表で使用したプレゼン資料です。
-          </p>
-          <div class="ppt-frame">
-            <embed src="../../pdf/works/pac_muscle.pdf" type="application/pdf" class="panel-img">
-          </div>
+      <div class="panel kr-anim_fade-in">
+        <div class="title-row">
+          <b class="title">プレゼン資料</b>
+        </div>
+        <p>
+          3日目の最終発表で使用したプレゼン資料です。
+        </p>
+        <div class="ppt-frame">
+          <embed src="../../pdf/works/pac_muscle.pdf" type="application/pdf" class="panel-img">
         </div>
       </div>
     </section>
@@ -271,45 +274,48 @@
     <div class="neon-line"></div> <!-- グラデーション線 -->
 
     <section id="contents-commitment">
-      <div class="fade-in">
-        <h2 class="h2 neon">こだわりポイント</h2>
+      <!-- sectionタイトル -->
+      <div class="section-title">
+        <h2 class="text kr-anim_fade-in-left">
+          こだわりポイント
+        </h2>
+      </div>
 
-        <div class="panel">
-          <div class="title-row">
-            <b class="title">CSVマップエディタ</b>
+      <div class="panel kr-anim_fade-in">
+        <div class="title-row">
+          <b class="title">CSVマップエディタ</b>
+        </div>
+        <p> 
+          チームメンバーと協力し、CSVファイルからマップを生成・編集できる拡張エディタを即興で開発しました。<br>
+          これにより、地形の調整を直感的に行えるようになり、マップ制作の効率が大幅に向上しました。
+        </p>
+        <div class="kr-layout_grid">
+          <div>
+            <a href="../../img/works/pac_muscle/map_editor_old.webp" data-lightbox="main" class="zoom-icon-parent">
+              <img src="../../img/works/pac_muscle/map_editor_old.webp" class="panel-img">
+              <img src="../../img/zoom-icon.webp" class="zoom-icon">
+            </a>
           </div>
-          <p> 
-            チームメンバーと協力し、CSVファイルからマップを生成・編集できる拡張エディタを即興で開発しました。<br>
-            これにより、地形の調整を直感的に行えるようになり、マップ制作の効率が大幅に向上しました。
-          </p>
-          <div class="kr-layout_grid">
-            <div>
-              <a href="../../img/works/pac_muscle/map_editor_old.webp" data-lightbox="main" class="zoom-icon-parent">
-                <img src="../../img/works/pac_muscle/map_editor_old.webp" class="panel-img">
-                <img src="../../img/zoom-icon.webp" class="zoom-icon">
-              </a>
-            </div>
+        </div>
+        <p>
+          後日、UIを整理して正式なツールとして完成させました。<br>
+          これを自作ライブラリに組み込むことで、今後の開発でもマップ編集機能をすぐに使えるようにしています。
+        </p>
+        <p>
+          この作品制作を通して、汎用的に使える拡張エディタの実装方法を学ぶことができました。
+        </p>
+        <div class="kr-layout_grid">
+          <div>
+            <a href="../../img/works/pac_muscle/map_editor_new1.webp" data-lightbox="main" class="zoom-icon-parent">
+              <img src="../../img/works/pac_muscle/map_editor_new1.webp" class="panel-img">
+              <img src="../../img/zoom-icon.webp" class="zoom-icon">
+            </a>
           </div>
-          <p>
-            後日、UIを整理して正式なツールとして完成させました。<br>
-            これを自作ライブラリに組み込むことで、今後の開発でもマップ編集機能をすぐに使えるようにしています。
-          </p>
-          <p>
-            この作品制作を通して、汎用的に使える拡張エディタの実装方法を学ぶことができました。
-          </p>
-          <div class="kr-layout_grid">
-            <div>
-              <a href="../../img/works/pac_muscle/map_editor_new1.webp" data-lightbox="main" class="zoom-icon-parent">
-                <img src="../../img/works/pac_muscle/map_editor_new1.webp" class="panel-img">
-                <img src="../../img/zoom-icon.webp" class="zoom-icon">
-              </a>
-            </div>
-            <div>
-              <a href="../../img/works/pac_muscle/map_editor_new2.webp" data-lightbox="main" class="zoom-icon-parent">
-                <img src="../../img/works/pac_muscle/map_editor_new2.webp" class="panel-img">
-                <img src="../../img/zoom-icon.webp" class="zoom-icon">
-              </a>
-            </div>
+          <div>
+            <a href="../../img/works/pac_muscle/map_editor_new2.webp" data-lightbox="main" class="zoom-icon-parent">
+              <img src="../../img/works/pac_muscle/map_editor_new2.webp" class="panel-img">
+              <img src="../../img/zoom-icon.webp" class="zoom-icon">
+            </a>
           </div>
         </div>
       </div>
@@ -323,7 +329,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/06/01<br>
+      最終更新日: 2026/06/02<br>
       随時更新中<br>
       <br>
       <!-- Unity表記 -->
@@ -335,6 +341,7 @@
   </footer>
 
   <!-- jsファイル -->
+  <script src="../../plugins/KrLib_html/kr_common.js"></script>
   <script src="../../js/common.js"></script>
   <script src="../../js/details_page.js"></script>
 

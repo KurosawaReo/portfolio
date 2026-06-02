@@ -25,6 +25,7 @@
   --grad: linear-gradient(135deg, var(--primary) 0%, #5bffef 40%, #7bf2ff 100%);
   --ui-scale: clamp(12px, 2.2vw, 18px);
   --panel-back: linear-gradient(180deg, rgba(20,26,34,0.9), rgba(12,18,24,0.9));
+  --panel-text-size: clamp(14px, 2vw, 16px);
 
   /* レイヤー */
   --z-bg     : -2;
@@ -60,15 +61,14 @@ section { scroll-margin-top: 80px; }
 }
 
 .h2 {
-  font-size: clamp(24px, 4.5vw, 32px); 
-  font-weight: 900; 
-  margin: 0 0 14px;
-  letter-spacing: 0.2px; 
-  display: inline-block; 
+  font-size: clamp(24px, 4.5vw, 32px);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+
+  display: inline-block;
   position: relative;
-}
-.h2 + p {
-  margin-top: 0px;
+
+  margin: 0 0 14px;
 }
 
 /* imgタグ全て */
@@ -82,14 +82,6 @@ svg {
   display: inline-block;
   vertical-align: -0.08em;
   flex-shrink: 0;
-}
-
-/* ネオンテキストの発光 */
-.neon {
-  color: var(--ink);
-  text-shadow:
-    0 0 5px var(--primary),
-    0 0 15px var(--primary);
 }
 
 .btn {
@@ -192,7 +184,7 @@ svg {
   padding: 18px;
   box-shadow: var(--shadow);
 
-  font-size: clamp(14px, 2vw, 16px);
+  font-size: var(--panel-text-size);
   line-height: 1.7;
   
   margin-bottom: 20px; /* ← これで間隔 */
@@ -297,6 +289,40 @@ svg {
   padding: 4px 10px;
   color: #e6ffff;
   background: rgba(51,231,255,0.04);
+}
+
+/* ===============================
+  セクションタイトル
+================================ */
+.section-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  margin-bottom: 15px;
+}
+
+.section-title .text { 
+  font-size: clamp(24px, 4.5vw, 32px);
+  font-weight: 900;
+  letter-spacing: 0.2px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+
+  margin: 0;
+  position: relative;
+
+  color: var(--ink);
+
+  text-shadow:
+    0 0 5px var(--primary),
+    0 0 15px var(--primary);
+}
+
+.section-title p {
+  margin: 0;
 }
 
 /* ===============================
@@ -773,27 +799,6 @@ footer {
 /* =============================== 
   ▼ 演出 ▼
 ================================ */
-.fade-in {
-  opacity: 0;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.fade-in-left {
-  opacity: 0;
-  transform: translateX(-40px); /* 左から */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.fade-in-right {
-  opacity: 0;
-  transform: translateX(40px); /* 右から */
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* 表示時に適用されるクラス */
-.show {
-  opacity: 1;
-  transform: translateX(0) translateY(0);
-}
-
 /* ネオンライン（バランス型） */
 .neon-line {
   position: relative;
