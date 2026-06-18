@@ -74,7 +74,7 @@ window.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      //PC/タブレットでは遅延を作る.
+      //PC,タブレットでは遅延を作る.
       el.style.transitionDelay =
         `${i * 0.12}s`;
     });

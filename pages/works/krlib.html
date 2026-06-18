@@ -66,10 +66,13 @@
           <span class="side-toc-dot">・</span><a href="#contents-reference">リファレンス</a>
         </p>
         <p>
-          <span class="side-toc-dot">・</span><a href="#contents-commitment">こだわりポイント</a>
+          <span class="side-toc-dot">・</span><a href="#contents-template">テンプレート</a>
         </p>
         <p>
           <span class="side-toc-dot">・</span><a href="#contents-example">実用例</a>
+        </p>
+        <p>
+          <span class="side-toc-dot">・</span><a href="#contents-commitment">こだわりポイント</a>
         </p>
       </div>
     </div>
@@ -201,29 +204,121 @@
 
     <div class="neon-line"></div> <!-- グラデーション線 -->
 
-    <section id="contents-commitment">
+    <section id="contents-template">
       <!-- sectionタイトル -->
       <div class="section-title">
         <h2 class="text kr-anim_fade-in-left">
-          こだわりポイント
+          テンプレート
         </h2>
       </div>
 
       <div class="panel kr-anim_fade-in">
-        <div class="title-row">
-          <b class="title">例外メッセージ</b>
-        </div>
         <p>
-          各所で例外をスローしており、ライブラリ内部を編集せずにエラー内容を取得できるようにしています。<br>
-          これにより、不具合発生時の原因特定を行いやすくし、デバッグ効率の向上につなげています。
+          プログラム開始時のテンプレートです。<br>
+          <span class="keyword">「管理クラス」</span>と<span class="keyword">「オブジェクト」</span>を用いた構成で設計します。
         </p>
-        <p>
-          エラー発生時には、以下のようなエラー文を取得できます。
-        </p>
-        <a href="../../img/works/krlib/krlib_throw.webp" data-lightbox="main" class="zoom-icon-parent">
-          <img src="../../img/works/krlib/krlib_throw.webp" class="panel-img">
-          <img src="../../img/zoom-icon.webp" class="zoom-icon">
-        </a>
+        <pre><code class="language-cpp">
+          /*
+            - main.cpp - (DxLib)
+            ver.2026/06/04
+
+            プログラムの開始テンプレ.
+          */
+          #include "KrLib_Dx/KR_Global.h"
+          #include "KrLib_Dx/KR_App.h"
+          #include "KrLib_Dx/KR_Debug.h"
+          #include "KrLib_Dx/KR_Input.h"
+          #include "KrLib_Dx/KR_Object.h"
+          #include "KrLib_Dx/KR_ObjectList.h"
+          #include "KrLib_Dx/KR_ManagerBase.h"
+          #include "KrLib_Dx/KR_ManagerInsts.h"
+          #include "KrLib_Dx/KR_SceneMng.h"
+          #include "KrLib_Dx/KR_Sound.h"
+          using namespace KR;
+
+          /*
+            [オブジェクト]
+            ObjectCirやObjectBoxを継承することを推奨.
+            ObjectListで管理することで、配列でのオブジェクト管理がしやすくなる.
+          */
+          class Player : public ObjectCir
+          {
+          private:
+          public:
+            //初期化.
+            void Init() override {
+            }
+            //更新.
+            void Update() override {
+            }
+            //描画.
+            void Draw() override {
+            }
+            //消滅条件(必要なら設定)
+            bool IsErase() const override {
+              return false;
+            }
+          };
+
+          /*
+            [管理クラス]
+            必ずManagerBaseを継承する.
+            ManagerInstsにこのクラスを登録することで、自動実行されるようになる.
+          */
+          class GameManager : public ManagerBase
+          {
+          private:
+            ObjectList&lt;Player&gt; player;
+
+          public:
+            //コンストラクタ.
+            GameManager(int order) : ManagerBase(order) {}
+
+            //初期化.
+            void Init() override {
+              //オブジェクト生成.
+              player.NewObject();
+            }
+            //リセット.
+            void Reset() override {
+            }
+            //更新.
+            void Update() override {
+              //オブジェクト更新.
+              player.Update();
+            }
+            //描画.
+            void Draw() override {
+              //オブジェクト描画.
+              player.Draw();
+            }
+          };
+
+          int WINAPI WinMain(
+            _In_     HINSTANCE hinstance,
+            _In_opt_ HINSTANCE hPrevinstance,
+            _In_     LPSTR     lpCmdLine,
+            _In_     int       nCmdShow
+          ){
+            /*
+              [管理クラス生成]
+              引数で実行順(order値)を入力する.
+            */
+            //KrLibに実装されている管理クラスを登録.
+            ManagerInsts::NewManager&lt;InputMng&gt;(0);
+            ManagerInsts::NewManager&lt;SoundMng&gt;(1);
+            ManagerInsts::NewManager&lt;SceneMng&gt;(2);
+            //それ以外の管理クラスを登録.
+            ManagerInsts::NewManager&lt;GameManager&gt;(3);
+
+            //初期化処理.
+            App::InitDx(800, 640, true, 60, false);
+            //ループ処理.
+            App::LoopDx();
+
+            return 0;
+          }
+        </code></pre>
       </div>
     </section>
 
@@ -364,6 +459,34 @@
       </div>
     </section>
 
+    <div class="neon-line"></div> <!-- グラデーション線 -->
+
+    <section id="contents-commitment">
+      <!-- sectionタイトル -->
+      <div class="section-title">
+        <h2 class="text kr-anim_fade-in-left">
+          こだわりポイント
+        </h2>
+      </div>
+
+      <div class="panel kr-anim_fade-in">
+        <div class="title-row">
+          <b class="title">例外メッセージ</b>
+        </div>
+        <p>
+          各所で例外をスローしており、ライブラリ内部を編集せずにエラー内容を取得できるようにしています。<br>
+          これにより、不具合発生時の原因特定を行いやすくし、デバッグ効率の向上につなげています。
+        </p>
+        <p>
+          エラー発生時には、以下のようなエラー文を取得できます。
+        </p>
+        <a href="../../img/works/krlib/krlib_throw.webp" data-lightbox="main" class="zoom-icon-parent">
+          <img src="../../img/works/krlib/krlib_throw.webp" class="panel-img">
+          <img src="../../img/zoom-icon.webp" class="zoom-icon">
+        </a>
+      </div>
+    </section>
+
     <!-- <p>
       <a href="../../" class="back-button">メインページ</a>
     </p> -->
@@ -372,7 +495,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/06/02<br>
+      最終更新日: 2026/06/04<br>
       随時更新中<br>
       <br>
       <!-- ポートフォリオサイト表記 -->

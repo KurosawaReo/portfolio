@@ -456,13 +456,13 @@
 
         <p>
           ゲームの面白さを学ぶ授業で、3つのお題が出されました。<br>
-          その中でも、特に<span class="keyword">「こわす」</span>要素をどのようにゲームに落とし込むかに悩みました。
+          開発当初は、特に<span class="keyword">「こわす」</span>要素をどのようにゲームに落とし込むかに悩みました。
         </p>
         <div class="episode-img" style="--img-max-width: 600px;">
           <img src="../../img/works/reflect_line/episode/3_theme.png" class="panel-img">
         </div>
         <p>
-          まずは<span class="keyword">「さける」</span>から、障害物を避けるゲームを作りました。
+          まず、<span class="keyword">「さける」</span>要素として障害物を避けるゲームを制作し、次に<span class="keyword">「とる」</span>要素としてアイテム取得を追加しました。
         </p>
         <!-- テーマ「さける」 -->
         <div class="idea-ui-wrap">
@@ -485,9 +485,6 @@
             </div>
           </div>
         </div>
-        <p>
-          次に<span class="keyword">「とる」</span>を加え、アイテムを取る要素を追加しました。<br>
-        </p>
         <!-- テーマ「とる」 -->
         <div class="idea-ui-wrap">
           <!-- ぼやっと背景 -->
@@ -507,31 +504,23 @@
             <div class="ui-output">
               <div class="out">アイテムを取る</div>
             </div>
-
-            <div class="ui-flow">
-              <svg xmlns="http://www.w3.org/2000/svg" width="1.0em" height="1.0em" viewBox="0 0 24 24" fill="none" stroke="#33e7ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-down-dash-icon lucide-arrow-big-down-dash"><path d="M14 8a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h3.293a.707.707 0 0 1 .5 1.207l-6.939 6.939a1.207 1.207 0 0 1-1.708 0l-6.94-6.94a.707.707 0 0 1 .5-1.206H8a1 1 0 0 0 1-1V9a1 1 0 0 1 1-1z"/><path d="M9 4h6"/></svg>
-            </div>
-
-            <div class="ui-output">
-              <div class="out">？？？</div>
-            </div>
           </div>
         </div>
         <p>
-          そこで、次のような課題に直面しました。
+          しかし、制作を進める中で次の課題が生まれました。
         </p>
         <ul class="ui-list">
-          <li>アイテムを取った後に何が起きるのか</li>
-          <li>何を<span class="keyword">「こわす」</span>のか、何のために<span class="keyword">「こわす」</span>のか</li>
+          <li>アイテムを取った後、どのような変化が起きるのか</li>
+          <li>何を、どのような目的で<span class="keyword">「こわす」</span>のか
         </ul>
         <p>
           チームで議論を重ねた結果、
-          <span class="keyword">「隕石を壊してスコアを得る」</span>
-          という案に決まりました。
+          <span class="keyword">「アイテムの効果で隕石を壊す」</span>
+          という案に決まりました。<br>
+          ただし、単純に弾を撃って壊すだけでは一般的なシューティングゲームになり、独自性が弱いと考えました。
         </p>
         <p>
-          しかし、プレイヤーが弾を撃つだけでは、ただのシューティングゲームになってしまい、個性がありません。<br>
-          そこで、<span class="keyword">「反射」</span>という発想に至りました。<br>
+          そこで、<span class="keyword">「反射」</span>というアイデアを採用しました。<br>
         </p>
         <div class="episode-img" style="--img-max-width: 400px;">
           <img src="../../img/works/reflect_line/gif/reflect.gif" class="panel-img">
@@ -539,13 +528,28 @@
         <ul class="ui-list">
           <li>アイテムを取ると、一部の障害物が反射可能になる</li>
           <li>避けるべき障害物にあえて当たり、反射して別の障害物を壊す</li>
-          <li>壊せば壊すほどスコアを獲得できるが、一度でも障害物に当たるとゲームオーバー</li>
+          <li>壊した数に応じてスコアを獲得できるが、一度でも障害物に当たるとゲームオーバー</li>
         </ul>
         <p>
-          これにより、スコアを伸ばすためにリスクを取るかどうか、という駆け引きができると考えました。
+          これにより、スコアを伸ばすためにリスクを取る駆け引きが生まれ、ゲーム性が明確になりました。<br>
+          その結果、展示会では狙い通り高評価を得られ、多くの来場者に繰り返しプレイしていただきました。
         </p>
+        <div class="kr-layout_grid">
+          <div class="episode-img">
+            <img src="../../img/works/reflect_line/episode/exhibition1.webp" class="panel-img">
+          </div>
+          <div class="episode-img">
+            <img src="../../img/works/reflect_line/episode/exhibition2.webp" class="panel-img">
+          </div>
+          <div class="episode-img">
+            <img src="../../img/works/reflect_line/episode/exhibition3.webp" class="panel-img">
+          </div>
+          <div class="episode-img">
+            <img src="../../img/works/reflect_line/episode/exhibition4.webp" class="panel-img">
+          </div>
+        </div>
         <p>
-          このようにして、<span class="keyword">「さける」</span>と<span class="keyword">「こわす」</span>を両立させた、<span class="keyword">「反射」</span>というルールが生まれました。
+          このように、<span class="keyword">「さける」</span>と<span class="keyword">「こわす」</span>を両立させるルールとして、<span class="keyword">「反射」</span>という仕組みを考案しました。
         </p>
         <!-- テーマ「こわす」 -->
         <div class="idea-ui-wrap">
