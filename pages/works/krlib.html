@@ -220,13 +220,12 @@
         <pre><code class="language-cpp">
           /*
             - main.cpp - (DxLib)
-            ver.2026/06/04
+            ver.2026/06/11
 
             プログラムの開始テンプレ.
           */
           #include "KrLib_Dx/KR_Global.h"
           #include "KrLib_Dx/KR_App.h"
-          #include "KrLib_Dx/KR_Debug.h"
           #include "KrLib_Dx/KR_Input.h"
           #include "KrLib_Dx/KR_Object.h"
           #include "KrLib_Dx/KR_ObjectList.h"
@@ -234,6 +233,7 @@
           #include "KrLib_Dx/KR_ManagerInsts.h"
           #include "KrLib_Dx/KR_SceneMng.h"
           #include "KrLib_Dx/KR_Sound.h"
+          #include "KrLib_Dx/KR_TimerMng.h"
           using namespace KR;
 
           /*
@@ -308,8 +308,9 @@
             ManagerInsts::NewManager&lt;InputMng&gt;(0);
             ManagerInsts::NewManager&lt;SoundMng&gt;(1);
             ManagerInsts::NewManager&lt;SceneMng&gt;(2);
+            ManagerInsts::NewManager&lt;TimerMng&gt;(3);
             //それ以外の管理クラスを登録.
-            ManagerInsts::NewManager&lt;GameManager&gt;(3);
+            ManagerInsts::NewManager<GameManager>(4);
 
             //初期化処理.
             App::InitDx(800, 640, true, 60, false);
@@ -337,12 +338,12 @@
           <b class="title">動画</b>
         </div>
         <p>
-          ベジエ曲線と、プレイヤー歩行アニメーションを実装した動画です。<br>
-          KRライブラリを使用すると、約100行のプログラムだけで記述できます。
+          KRライブラリ(DxLib版)の実用例を紹介するために作った
+          球を運ぶ簡単なゲームです。
         </p>
         <p>
           <iframe
-            src="https://www.youtube.com/embed/LXFWupACuU0"
+            src="https://www.youtube.com/embed/u6wwFJjMVd4"
             width="100%"
             frameborder="0"
             allow="autoplay; encrypted-media"
@@ -356,104 +357,359 @@
         </div>
         <pre><code class="language-cpp">
           /*
-              ベジエ曲線の制御点をマウスカーソルで操作する。
-              KRライブラリ ver.2026/02/05
+            線で球をゴールまで運ぶ簡単なゲーム
+            KRライブラリ ver.2026/07/02
           */
           #include "KrLib_Dx/KR_Global.h"
           #include "KrLib_Dx/KR_App.h"
-          #include "KrLib_Dx/KR_Bezier.h"
           #include "KrLib_Dx/KR_Calc.h"
-          #include "KrLib_Dx/KR_Camera.h"
+          #include "KrLib_Dx/KR_DrawShape.h"
           #include "KrLib_Dx/KR_Debug.h"
           #include "KrLib_Dx/KR_Input.h"
-          #include "KrLib_Dx/KR_ManagerBase.h"
           #include "KrLib_Dx/KR_Object.h"
+          #include "KrLib_Dx/KR_ObjectList.h"
+          #include "KrLib_Dx/KR_ManagerBase.h"
+          #include "KrLib_Dx/KR_ManagerInsts.h"
+          #include "KrLib_Dx/KR_SceneMng.h"
+          #include "KrLib_Dx/KR_Sound.h"
+          #include "KrLib_Dx/KR_TimerMng.h"
+          #include "KrLib_cpp/KR_Calc.h"
+          #include "KrLib_cpp/KR_Format.h"
           using namespace KR;
 
-          constexpr double MOVE_SPEED = 0.02;
+          //当たり判定処理を何分割で処理するか(より細かい当たり判定を行うため)
+          constexpr int    HIT_SPLIT_PROCESSING = 10; 
+          //プレイヤー移動速度.
+          constexpr double PLAYER_MOVE_SPEED = 5;
+          //球の総数.
+          constexpr int    BALL_COUNT_MAX = 100;
 
-          //プレイヤー.
-          class Player : public ManagerBase, public ObjectBox
+          //前方宣言.
+          class GameManager;
+
+          class PlayerBase : public ObjectCir
           {
+          private:
           public:
-              //コンストラクタ.
-              Player() : ManagerBase(1) {}
+            //初期化.
+            void Init() override {
+              GetCir()->color = ColorID::SkyBlue;
+              GetCir()->r = 8;
+              SetPos({0, 100});
+            }
+            //更新.
+            void Update() override {
+              AddPos(GetInput() * PLAYER_MOVE_SPEED);
+            }
+            //描画.
+            virtual void Draw() override {
+              //加算描画.
+              DrawMode::Exe(
+                DrawModeID::None, DrawBlendModeID::Add, 100,
+                [&]() {
+                  DrawShape(true, true);
+                }
+              );
+            }
 
-              void Init() override {
-                  SetDrawImgs({ "player1", "player2", "player3" }, 0.2); //3つの画像を0.2秒で切り替え.
-              }
-              void Reset() override {
-              }
-              void Update() override {
-              }
-              void Draw() override {
-                  DrawGraph();
-              }
+            //入力操作.
+            virtual DBL_XY GetInput() = 0;
           };
 
-          //ゲームマネージャー.
+          class Player1 : public PlayerBase
+          {
+          private:
+          public:
+            //入力操作.
+            DBL_XY GetInput() override {
+              //WASD操作を受け取る.
+              const auto pInput = ManagerInsts::Get&lt;InputMng&gt;();
+              return pInput->GetKey4Dir(true, false);
+            }
+
+            //描画.
+            void Draw() override {
+
+              PlayerBase::Draw();
+
+              //テキスト.
+              DrawStr str(_T("WASD"), GetPos().ToInt() - INT_XY(0, 20), ColorID::White);
+              str.Draw();
+            }
+          };
+
+          class Player2 : public PlayerBase
+          {
+          private:
+          public:
+            //入力操作.
+            DBL_XY GetInput() override {
+              //矢印キー操作を受け取る.
+              const auto pInput = ManagerInsts::Get&lt;InputMng&gt;();
+              return pInput->GetKey4Dir(false, true);
+            }
+
+            //描画.
+            void Draw() override {
+
+              PlayerBase::Draw();
+
+              //テキスト.
+              DrawStr str(_T("Arrow"), GetPos().ToInt() - INT_XY(0, 20), ColorID::White);
+              str.Draw();
+            }
+          };
+
+          class Ball : public ObjectCir
+          {
+          private:
+            bool isErase;
+
+          public:
+            //コンストラクタ.
+            Ball(double x, double y) :
+              isErase(false)
+            {
+              SetPos(DBL_XY{x, y});
+            }
+
+            void Init() override {}
+
+            void Update() override;
+
+            void Draw() override {
+              DrawShape(true, true);
+            }
+
+            //消滅条件.
+            bool IsErase() const override{
+              return isErase;
+            }
+          };
+
+          //ゴール.
+          class Goal : public ObjectBox
+          {
+          private:
+          public:
+            void Init() override {
+              GetBox()->size = {100, 100};
+              GetBox()->color = 0x00FF00;
+            }
+            void Update() override {
+
+            }
+            void Draw() override {
+              //加算描画.
+              DrawMode::Exe(
+                DrawModeID::None, DrawBlendModeID::Add, 75,
+                [&]() {
+                  DrawShape();
+                }
+              );
+
+              //テキスト.
+              DrawStr str(_T("GOAL"), GetPos().ToInt(), ColorID::White);
+              str.Draw();
+            }
+          };
+
           class GameManager : public ManagerBase
           {
           private:
-              BezierLineContr bLine; //ベジエ曲線(制御点操作可能)
-              Player player;
+            Player1 player1;
+            Player2 player2;
+            ObjectList&lt;Ball&gt; balls;
+            Line playerLine; //player1とplayer2を繋ぐ線.
+            Goal goal;
 
-              double timer; //タイマー.
+            bool isEnd;
 
           public:
-              //コンストラクタ.
-              GameManager() : ManagerBase(0), timer(0), bLine(true, true) {}
+            //コンストラクタ.
+            GameManager(int order)
+              : ManagerBase(order), isEnd(false)
+            {
+              //線の初期設定.
+              playerLine.color = ColorID::SkyBlue;
+              playerLine.thick = 2;
+            }
 
-              //初期化.
-              void Init() override {
-                  //camera
-                  Camera::SetPos(App::GetWindowRect().GetMid().ToDbl());
-                  //image
-                  DrawImgMng::LoadFileDiv(
-                      _T("Images/gazou01all.webp"), { 64, 64 }, { 3, 4 }, //64×64のサイズで横3つ縦4つに分割.
-                      { //登録名.
-                          "player1", 
-                          "player2", 
-                          "player3"
-                      }
-                  );
+            //get.
+            const Line* GetPlayerLine() { return &playerLine; }
+            const Box*  GetGoal()       { return goal.GetBox(); }
 
-                  bLine.Init();
-                  bLine.SetPos({ -100, -100 }, { 100, 100 }, { -100, 100 }, { 100, -100 });
+            //初期化.
+            void Init() override {
+
+              goal.Init();
+              player1.Init();
+              player2.Init();
+
+              //球の生成.
+              Repeat(BALL_COUNT_MAX, [this]() {
+                //座標抽選.
+                int x = Calc::RandNum(App::GetWindowRect().GetL().x, App::GetWindowRect().GetR().x);
+                int y = Calc::RandNum(App::GetWindowRect().GetU().y, App::GetWindowRect().GetD().y);
+                //生成.
+                balls.NewObject(x, y);
+              });
+            }
+
+            //リセット.
+            void Reset() override {
+            }
+            
+            //更新.
+            void Update() override {
+
+              //オブジェクト更新.
+              goal.Update();
+              player1.Update();
+              player2.Update();
+              //線の更新.
+              playerLine.stPos = player1.GetPos();
+              playerLine.edPos = player2.GetPos();
+
+              //当たり判定関係.
+              Repeat(
+                HIT_SPLIT_PROCESSING,
+                [&]() {
+                  balls.Update();
+                  CollisionBall();
+                }
+              );
+
+              //球がなくなったら.
+              if (balls.GetObjectCnt() &lt;= 0) {
+                isEnd = true; //終了.
               }
-              //リセット.
-              void Reset() override {
+            }
+
+            //描画.
+            void Draw() override {
+
+              //オブジェクト描画.
+              goal.Draw();
+              balls.Draw();
+              player1.Draw();
+              player2.Draw();
+              //線の描画.
+              DrawLineKR(playerLine, true);
+
+              DrawUI();
+            }
+
+            //球同士の当たり判定.
+            void CollisionBall() {
+
+              //球の配列(vector)取得.
+              const auto& objects = balls.GetObjects();
+
+              //全球ループ(重複なし)
+              for (auto i = objects.begin(); i != objects.end(); ++i) {
+                for (auto j = std::next(i); j != objects.end(); ++j) {
+
+                  Circle* cir1 = (*i)->GetCir();
+                  Circle* cir2 = (*j)->GetCir();
+
+                  //重なってたら.
+                  if (Calc::HitCirCir(*cir1, *cir2)) {
+                    
+                    const double idealDist = cir1->r + cir2->r;                     //理想の距離.
+                    const double nowDist   = Calc::Dist(cir1->pos, cir2->pos);      //実際の距離.
+                    const double nowAng    = Calc::FacingAng(cir1->pos, cir2->pos); //実際の方向.
+                    const double power     = 0.1 / HIT_SPLIT_PROCESSING;            //押し退ける強さ.
+
+                    //徐々に押し退ける.
+                    cir1->pos -= Calc::AngToVector(nowAng) * (idealDist - nowDist) * power;
+                    cir2->pos += Calc::AngToVector(nowAng) * (idealDist - nowDist) * power;
+                  }
+                }
               }
-              //更新.
-              void Update() override {
-                  bLine.Update();
-                  //ベジエ曲線から一点を取得.
-                  DBL_XY pos = bLine.GetBezierTime(timer);
-                  player.SetPos(pos);
-                  //タイマー経過.
-                  timer += MOVE_SPEED;
-                  if (timer > 1) { timer = 0; }
+            }
+
+            //UI描画.
+            void DrawUI() {
+
+              const DBL_XY pos = { 0, -200 }; //基準位置.
+
+              //背景枠.
+              DrawMode::Exe(
+                DrawModeID::None, DrawBlendModeID::Alpha, 128,
+                [&]() {
+                  Box back(pos, { 160, 50 }, ColorID::Black, 1);
+                  DrawBoxKR(back);
+                }
+              );
+
+              //ゲーム終了.
+              if (isEnd) {
+                //クリアテキスト.
+                DrawStr str(_T("CLEAR!"), pos.ToInt(), ColorID::Yellow);
+                str.Draw();
               }
-              //描画.
-              void Draw() override {
-                  bLine.Draw();
+              else {
+                auto txt = Format::StrFormat(_T("ball: %d / %d"), balls.GetObjectCnt(), BALL_COUNT_MAX);
+                //残り球数表示.
+                DrawStr str(txt, { 0, -200 }, ColorID::White);
+                str.Draw();
               }
+            }
           };
-          GameManager gameMng;
+
+          //球の更新.
+          void Ball::Update() {
+
+            const auto gameMng = ManagerInsts::Get&lt;GameManager&gt;();
+
+            //プレイヤー線を取得.
+            const Line* line = gameMng->GetPlayerLine();
+
+            DBL_XY nearest;
+            
+            //線との当たり判定.
+            //nearest変数で最近傍点を取得する.
+            if (HitCheckLine(*line, &nearest)) {
+              //最近傍点→球のベクトル.
+              DBL_XY vec = (GetPos() - nearest).Normalize();
+              //位置をずらす(最近傍点 + 角度 * 半径)
+              SetPos(nearest + vec * GetCir()->r);
+            }
+
+            //画面外に行かないようにする.
+            FixPosInArea(App::GetWindowRect().ToDbl());
+
+            //ゴールに触れたら.
+            if (HitCheckBox(*gameMng->GetGoal())) {
+              isErase = true; //消滅.
+            }
+          }
 
           int WINAPI WinMain(
-              _In_     HINSTANCE hinstance,
-              _In_opt_ HINSTANCE hPrevinstance,
-              _In_     LPSTR     lpCmdLine,
-              _In_     int       nCmdShow
-          ) {
-              //初期化処理.
-              ResultInt err = App::InitDx(800, 600, true, 60, false);
-              if (err.GetCode() < 0) { return -1; } //初期化エラー.
-              //ループ処理.
-              App::LoopDx();
+            _In_     HINSTANCE hinstance,
+            _In_opt_ HINSTANCE hPrevinstance,
+            _In_     LPSTR     lpCmdLine,
+            _In_     int       nCmdShow
+          ){
+            /*
+              [管理クラス生成]
+              引数で実行順(order値)を入力する.
+            */
+            //KrLibに実装されている管理クラスを登録.
+            ManagerInsts::NewManager&lt;InputMng&gt;(0);
+            ManagerInsts::NewManager&lt;SoundMng&gt;(1);
+            ManagerInsts::NewManager&lt;SceneMng&gt;(2);
+            ManagerInsts::NewManager&lt;TimerMng&gt;(3);
+            //それ以外の管理クラスを登録.
+            ManagerInsts::NewManager&lt;GameManager&gt;(4);
 
-              return 0;
+            //初期化処理.
+            App::InitDx(800, 640, true, 60, false);
+            //ループ処理.
+            App::LoopDx();
+
+            return 0;
           }
         </code></pre>
       </div>
@@ -471,14 +727,38 @@
 
       <div class="panel kr-anim_fade-in">
         <div class="title-row">
+          <b class="title">考える手間を減らす設計</b>
+        </div>
+        <p>
+          ライブラリのほとんどの機能は、必要な設定を行うだけで利用できるよう設計し、手間のかかる処理を自動化しています。
+        </p>
+        <p>
+          例えば、<span class="keyword">ManagerBase</span>クラスを継承した管理クラスは<br>
+          ManagerInsts::NewManager() で生成するだけで Update() や Draw() が自動で呼び出されます。
+        </p>
+        <div class="kr-layout_grid">
+          <div>
+            <a href="../../img/works/krlib/manager1.webp" data-lightbox="main" class="zoom-icon-parent">
+              <img src="../../img/works/krlib/manager1.webp" class="panel-img">
+              <img src="../../img/zoom-icon.webp" class="zoom-icon">
+            </a>
+          </div>
+          <div>
+            <a href="../../img/works/krlib/manager2.webp" data-lightbox="main" class="zoom-icon-parent">
+              <img src="../../img/works/krlib/manager2.webp" class="panel-img">
+              <img src="../../img/zoom-icon.webp" class="zoom-icon">
+            </a>            
+          </div>
+        </div>
+      </div>
+
+      <div class="panel kr-anim_fade-in">
+        <div class="title-row">
           <b class="title">例外メッセージ</b>
         </div>
         <p>
-          各所で例外をスローしており、ライブラリ内部を編集せずにエラー内容を取得できるようにしています。<br>
-          これにより、不具合発生時の原因特定を行いやすくし、デバッグ効率の向上につなげています。
-        </p>
-        <p>
-          エラー発生時には、以下のようなエラー文を取得できます。
+          ライブラリ内部を編集することなく、エラー内容を取得できるようにしています。<br>
+          不具合発生時の原因特定を容易にし、デバッグ効率の向上につなげています。
         </p>
         <a href="../../img/works/krlib/krlib_throw.webp" data-lightbox="main" class="zoom-icon-parent">
           <img src="../../img/works/krlib/krlib_throw.webp" class="panel-img">
@@ -495,7 +775,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/06/04<br>
+      最終更新日: 2026/07/09<br>
       随時更新中<br>
       <br>
       <!-- ポートフォリオサイト表記 -->
