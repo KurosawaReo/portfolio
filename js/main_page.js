@@ -43,3 +43,6 @@ document.getElementById("works-card-07").onclick = () => {
 document.getElementById("works-card-08").onclick = () => {
   openNewTab("pages/works/ai_goal.html");
 };
+document.getElementById("works-card-09").onclick = () => {
+  openNewTab("pages/works/yarira_rhythm.html");
+};
