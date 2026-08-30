@@ -8,6 +8,61 @@ const openNewTab = (url) => {
   window.open(url, "_blank", "noopener,noreferrer");
 };
 
+/* ========================================
+  ▼ Hero EN ネオンランダム点灯 ▼
+======================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const letters = document.querySelectorAll(".hero-name .hero-en span");
+
+  if (!letters.length) return;
+
+  // 1文字を点灯・消灯させる
+  const flicker = (letter) => {
+    // すでに点灯している文字は除外
+    if (letter.classList.contains("is-lit")) return;
+
+    // 一瞬で点灯
+    letter.classList.add("is-lit");
+
+    // 点灯時間を短くする
+    const litTime = 50 + Math.random() * 100;
+
+    setTimeout(() => {
+      // 点灯解除
+      // → CSSのtransitionで自然に暗くなる
+      letter.classList.remove("is-lit");
+    }, litTime);
+  };
+
+  // ランダムな間隔で次の点灯を発生させる
+  const schedule = () => {
+    const delay = 150 + Math.random() * 1200;
+
+    setTimeout(() => {
+      // 1文字または2文字をランダムに点灯
+      const count = Math.random() < 0.75 ? 1 : 2;
+
+      for (let i = 0; i < count; i++) {
+        // 空白文字は除外
+        const candidates = [...letters].filter(
+          letter => letter.textContent.trim() !== ""
+        );
+
+        // ランダムな文字を選択
+        const letter = candidates[Math.floor(Math.random() * candidates.length)];
+
+        flicker(letter);
+      }
+
+      // 次回の点灯を予約
+      schedule();
+    }, delay);
+  };
+
+  schedule();
+});
+
 /* =============================== 
   ▼ ページ移動 ▼
   カードをクリックで開く。

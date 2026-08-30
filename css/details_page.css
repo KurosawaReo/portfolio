@@ -922,12 +922,45 @@
 
 /* ===== 連想フロー ===== */
 .ui-flow {
+  position: relative;
+
+  height: 1.4em;
+
   margin-top: 18px;
+
   font-size: 18px;
   color: var(--muted);
   letter-spacing: 2px;
+  line-height: 1;
+}
 
-  position: relative;
+/* 矢印を画面中央に固定 */
+.ui-flow svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 1.4em;
+  height: 1.4em;
+
+  transform: translate(-50%, -50%);
+
+  filter:
+    drop-shadow(0 0 4px rgba(51,231,255,0.6))
+    drop-shadow(0 0 8px rgba(51,231,255,0.25));
+}
+
+/* 「連想」は矢印の右側 */
+.ui-flow span {
+  position: absolute;
+  margin-left: 5px;
+  left: calc(50% + 0.9em);
+  top: 50%;
+
+  transform: translateY(-50%);
+  font-size: 15px;
+
+  white-space: nowrap;
 }
 
 /* ===== OUTPUT ===== */

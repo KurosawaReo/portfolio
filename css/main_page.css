@@ -5,7 +5,7 @@
 @charset "utf-8";
 
 /* =============================== 
-  ▼ 名前 & 顔 ▼
+  ▼ 自分の情報 ▼
 ================================ */
 #hero-main {
   height: calc(100vh - var(--header-h));
@@ -34,11 +34,14 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin: 0px;
+
+  margin: 0;
 }
 
+/* === 名前 === */
 .hero-name .hero-en {
   font-family: 'Orbitron', sans-serif;
+  margin: 0;
 
   font-size: clamp(18px, 2vw, 26px);
   font-weight: 200;
@@ -46,18 +49,73 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
 
-  color: #0b1114;
+  display: inline-flex;
+
+  /* 消灯時：文字本体はかなり暗く */
+  color: #080d0f;
+
+  /* 輪郭だけ薄い水色 */
+  -webkit-text-stroke:
+    clamp(0.8px, 0.08vw, 1px)
+    rgba(150, 220, 230, 0.28);
 
   -webkit-text-stroke:
-    clamp(0.8px, 0.08vw, 1.0px)
-    #dffcff;
+    clamp(0.8px, 0.08vw, 1px)
+    rgba(180, 220, 225, 0.18);
 
   text-shadow:
-    0 0 8px rgba(51,231,255,0.15);
+    0 0 4px rgba(51,231,255,0.04);
+}
+
+/* 1文字 */
+.hero-name .hero-en span {
+  display: inline-block;
+
+  /* 消灯時：文字本体はほぼ黒 */
+  color: #080d0f;
+
+  /* 輪郭だけ薄い水色 */
+  -webkit-text-stroke:
+    clamp(0.8px, 0.08vw, 1px)
+    rgba(150, 220, 230, 0.28);
+
+  opacity: 0.9;
+
+  transition:
+    color 300ms ease,
+    text-shadow 300ms ease,
+    opacity 1000ms ease;
+}
+
+/* 点灯 */
+.hero-name .hero-en span.is-lit {
+  color: #eaffff;
+  opacity: 1;
+
+  text-shadow:
+    0 0 4px rgba(51,231,255,1),
+    0 0 10px rgba(51,231,255,0.85),
+    0 0 20px rgba(51,231,255,0.5);
+
+  /* 点灯時は素早く反応 */
+  transition:
+    color 40ms ease,
+    text-shadow 40ms ease,
+    opacity 40ms ease;
+}
+
+/* アクセシビリティ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-name .hero-en span {
+    transition: none;
+  }
 }
 
 .hero-name .hero-jp {
   font-family: 'Noto Sans JP', sans-serif;
+
+  margin: 0;
+
   font-size: clamp(64px, 12vw, 100px);
   font-weight: 300;
 
@@ -81,15 +139,6 @@
     0 0 60px rgba(51,231,255,0.25);
 }
 
-/* メッセージ */
-.hero-message {
-  font-size: clamp(16px, 2.5vw, 26px);
-  color: var(--desc);
-  max-width: 700px;
-  margin: 0;
-  margin-bottom: 24px;
-}
-
 /* === 画像 === */
 .hero-avatar {
   width: clamp(120px, 20vw, 220px);
@@ -110,7 +159,7 @@
 /* 顔写真 */
 .avatar-wrap {
   position: relative; aspect-ratio: 1 / 1; 
-  margin: 0 auto; 
+  margin: 10px auto 0;
   place-self: center;
 
   /* サイズ */
@@ -144,6 +193,91 @@
 .rings:nth-child(2) { inset: -2%; animation-duration: 18s; }
 .rings:nth-child(3) { inset: -6%; animation-duration: 38s; }
 @keyframes spin { to { transform: rotate(1turn); } }
+
+/* ===============================
+  ▼ 自分の情報 実績 ▼
+================================ */
+
+/* 実績全体 */
+.hero-achievements {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 800px;
+
+  margin: 0 0 20px 0;
+}
+
+/* 実績1項目 */
+.hero-achievement {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+  padding: 7px 14px;
+
+  border: 1px solid rgba(130, 150, 255, 0.45);
+  border-radius: 8px;
+
+  background: rgba(90, 100, 180, 0.08);
+
+  color: rgba(190, 205, 255, 0.78);
+  font-size: clamp(12px, 1.8vw, 17px);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+
+  box-shadow:
+    0 0 8px rgba(100, 120, 255, 0.12),
+    inset 0 0 8px rgba(130, 150, 255, 0.05);
+
+  text-shadow:
+    0 0 6px rgba(120, 140, 255, 0.25),
+    0 0 12px rgba(100, 120, 255, 0.12);
+
+  transition: 180ms ease;
+}
+
+/* 実績の強調部分 */
+.hero-achievement strong {
+  margin: 0 3px;
+
+  color: #e5e8ff;
+  font-weight: 800;
+
+  text-shadow:
+    0 0 6px rgba(130, 150, 255, 0.65),
+    0 0 14px rgba(110, 130, 255, 0.25);
+}
+
+/* ホバー時 */
+.hero-achievement:hover {
+  border-color: rgba(150, 170, 255, 0.75);
+  background: rgba(110, 120, 210, 0.12);
+
+  box-shadow:
+    0 0 12px rgba(100, 120, 255, 0.2),
+    inset 0 0 10px rgba(130, 150, 255, 0.08);
+
+  transform: translateY(-1px);
+}
+
+/* スマホ */
+@media (max-width: 600px) {
+  .hero-achievements {
+    gap: 8px;
+  }
+
+  .hero-achievement {
+    padding: 6px 11px;
+    border-radius: 7px;
+  }
+}
 
 /* =============================== 
   ▼ カード ▼
