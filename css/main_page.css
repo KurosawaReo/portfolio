@@ -4,8 +4,121 @@
 */
 @charset "utf-8";
 
+/* ===============================
+  ▼ hero ファーストビュー動画 ▼
+================================ */
+
+.hero-video {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  overflow: hidden;
+
+  margin-top: calc(-1 * var(--header-h));
+}
+
+/* 背景動画 */
+.hero-video-content {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  pointer-events: none;
+}
+
+/* 動画を少し暗くする */
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(5, 8, 10, 0.30),
+      rgba(5, 8, 10, 0.60)
+    );
+}
+
+/* 動画上の文字 */
+.hero-video-text {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+
+  width: 100%;
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(26px, 5vw, 60px);
+  font-weight: 200;
+  letter-spacing: 0.2em;
+
+  text-align: center;
+  white-space: nowrap;
+
+  color: rgba(223, 252, 255, 0.9);
+
+  text-shadow:
+    0 0 8px rgba(51, 231, 255, 0.8),
+    0 0 25px rgba(51, 231, 255, 0.45),
+    0 0 50px rgba(51, 231, 255, 0.2);
+}
+
+.hero-video-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 24px;
+
+  transform: translateX(-50%);
+
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+
+  color: rgba(223, 252, 255, 0.7);
+
+  text-shadow:
+    0 0 8px rgba(51, 231, 255, 0.5),
+    0 0 18px rgba(51, 231, 255, 0.25);
+
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-hint {
+  0%, 100% {
+    transform: translate(-50%, 0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translate(-50%, 8px);
+    opacity: 1;
+  }
+}
+
+/* スマホ */
+@media (max-width: 600px) {
+  .hero-video-text {
+    font-size: clamp(20px, 7vw, 36px);
+    letter-spacing: 0.12em;
+    padding: 0 15px;
+  }
+}
+
 /* =============================== 
-  ▼ 自分の情報 ▼
+  ▼ hero 顔と名前 ▼
 ================================ */
 #hero-main {
   height: calc(100vh - var(--header-h));
@@ -34,13 +147,12 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-
   margin: 0;
 }
 
-/* === 名前 === */
 .hero-name .hero-en {
   font-family: 'Orbitron', sans-serif;
+
   margin: 0;
 
   font-size: clamp(18px, 2vw, 26px);
@@ -50,65 +162,6 @@
   text-transform: uppercase;
 
   display: inline-flex;
-
-  /* 消灯時：文字本体はかなり暗く */
-  color: #080d0f;
-
-  /* 輪郭だけ薄い水色 */
-  -webkit-text-stroke:
-    clamp(0.8px, 0.08vw, 1px)
-    rgba(150, 220, 230, 0.28);
-
-  -webkit-text-stroke:
-    clamp(0.8px, 0.08vw, 1px)
-    rgba(180, 220, 225, 0.18);
-
-  text-shadow:
-    0 0 4px rgba(51,231,255,0.04);
-}
-
-/* 1文字 */
-.hero-name .hero-en span {
-  display: inline-block;
-
-  /* 消灯時：文字本体はほぼ黒 */
-  color: #080d0f;
-
-  /* 輪郭だけ薄い水色 */
-  -webkit-text-stroke:
-    clamp(0.8px, 0.08vw, 1px)
-    rgba(150, 220, 230, 0.28);
-
-  opacity: 0.9;
-
-  transition:
-    color 300ms ease,
-    text-shadow 300ms ease,
-    opacity 1000ms ease;
-}
-
-/* 点灯 */
-.hero-name .hero-en span.is-lit {
-  color: #eaffff;
-  opacity: 1;
-
-  text-shadow:
-    0 0 4px rgba(51,231,255,1),
-    0 0 10px rgba(51,231,255,0.85),
-    0 0 20px rgba(51,231,255,0.5);
-
-  /* 点灯時は素早く反応 */
-  transition:
-    color 40ms ease,
-    text-shadow 40ms ease,
-    opacity 40ms ease;
-}
-
-/* アクセシビリティ */
-@media (prefers-reduced-motion: reduce) {
-  .hero-name .hero-en span {
-    transition: none;
-  }
 }
 
 .hero-name .hero-jp {
@@ -195,7 +248,63 @@
 @keyframes spin { to { transform: rotate(1turn); } }
 
 /* ===============================
-  ▼ 自分の情報 実績 ▼
+  ▼ hero 英字ネオン ▼
+================================ */
+/*
+  点灯 → 即座に明るく
+  消灯 → 短くフェード
+*/
+
+/* 消灯 */
+.hero-name .hero-en span {
+  display: inline-block;
+
+  /* 消灯時：文字本体をかなり暗く */
+  color: #070b0d;
+
+  /* iPhone Safari対策：文字の塗りを明示 */
+  -webkit-text-fill-color: #070b0d;
+
+  /* 輪郭だけ薄い水色 */
+  -webkit-text-stroke:
+    clamp(0.8px, 0.08vw, 1px)
+    rgba(150, 220, 230, 0.28);
+
+  /* 消灯時は発光させない */
+  text-shadow: none;
+
+  transition:
+    color 300ms ease,
+    -webkit-text-fill-color 300ms ease,
+    text-shadow 300ms ease;
+}
+
+/* 点灯 */
+.hero-name .hero-en span.is-lit {
+  color: #eaffff;
+  -webkit-text-fill-color: #eaffff;
+
+  text-shadow:
+    0 0 4px rgba(51,231,255,1),
+    0 0 10px rgba(51,231,255,0.75),
+    0 0 18px rgba(51,231,255,0.4);
+
+  transition:
+    color 30ms ease,
+    -webkit-text-fill-color 30ms ease,
+    text-shadow 30ms ease;
+}
+
+
+/* アクセシビリティ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-name .hero-en span {
+    transition: none;
+  }
+}
+
+/* ===============================
+  ▼ hero 実績 ▼
 ================================ */
 
 /* 実績全体 */
@@ -221,24 +330,27 @@
   min-height: 40px;
   padding: 7px 14px;
 
-  border: 1px solid rgba(130, 150, 255, 0.45);
+  /* 青寄りの枠 */
+  border: 1px solid rgba(90, 185, 255, 0.45);
   border-radius: 8px;
 
-  background: rgba(90, 100, 180, 0.08);
+  /* 青みのある薄い背景 */
+  background: rgba(70, 140, 200, 0.08);
 
-  color: rgba(190, 205, 255, 0.78);
+  color: rgba(195, 225, 255, 0.78);
+
   font-size: clamp(12px, 1.8vw, 17px);
   font-weight: 600;
   letter-spacing: 0.05em;
   line-height: 1.4;
 
   box-shadow:
-    0 0 8px rgba(100, 120, 255, 0.12),
-    inset 0 0 8px rgba(130, 150, 255, 0.05);
+    0 0 8px rgba(70, 170, 255, 0.12),
+    inset 0 0 8px rgba(80, 180, 255, 0.05);
 
   text-shadow:
-    0 0 6px rgba(120, 140, 255, 0.25),
-    0 0 12px rgba(100, 120, 255, 0.12);
+    0 0 6px rgba(70, 180, 255, 0.25),
+    0 0 12px rgba(60, 160, 255, 0.12);
 
   transition: 180ms ease;
 }
@@ -247,22 +359,22 @@
 .hero-achievement strong {
   margin: 0 3px;
 
-  color: #e5e8ff;
+  color: #e6f8ff;
   font-weight: 800;
 
   text-shadow:
-    0 0 6px rgba(130, 150, 255, 0.65),
-    0 0 14px rgba(110, 130, 255, 0.25);
+    0 0 6px rgba(70, 190, 255, 0.65),
+    0 0 14px rgba(60, 170, 255, 0.25);
 }
 
 /* ホバー時 */
 .hero-achievement:hover {
-  border-color: rgba(150, 170, 255, 0.75);
-  background: rgba(110, 120, 210, 0.12);
+  border-color: rgba(100, 200, 255, 0.75);
+  background: rgba(70, 150, 220, 0.12);
 
   box-shadow:
-    0 0 12px rgba(100, 120, 255, 0.2),
-    inset 0 0 10px rgba(130, 150, 255, 0.08);
+    0 0 12px rgba(70, 180, 255, 0.2),
+    inset 0 0 10px rgba(80, 180, 255, 0.08);
 
   transform: translateY(-1px);
 }
