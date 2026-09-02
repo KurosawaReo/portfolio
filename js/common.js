@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingElements = document.querySelectorAll(".intro-load");
 
   // イントロ演出の時間
-  const introDuration = 2800;
+  const introDuration = 1200;
 
   // 要素の読み込み完了を待つ
   const waitForElement = (element) => {
