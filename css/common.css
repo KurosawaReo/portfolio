@@ -571,6 +571,7 @@ svg {
 /* =============================== 
   ▼ イントロ ▼
 ================================ */ 
+
 /* Intro 全画面 */
 #intro {
   position: fixed;
@@ -580,9 +581,15 @@ svg {
   place-items: center;
   z-index: var(--z-intro);
   overflow: hidden;
+
+  /* JSで動画読み込み後に終了させる */
+  opacity: 1;
+  visibility: visible;
+
   /* フェードアウト */
-  animation: introEnd 1.5s ease forwards;
-  animation-delay: 1.3s;
+  transition:
+    opacity 1.5s ease,
+    visibility 0s linear 1.5s;
 }
 
 .intro-text {
@@ -607,8 +614,8 @@ svg {
   animation: introFade 1.0s ease forwards;
 }
 
-.intro-text::after {
-  content: "";
+/* 下線全体 */
+.intro-line {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -616,47 +623,60 @@ svg {
   width: 100%;
   height: 2px;
 
-  /* ▼ ベースライン（薄い） */
   background: rgba(51,231,255,0.2);
+
+  /* 光を下線の範囲内に閉じ込める */
   overflow: hidden;
+  border-radius: 2px;
+
+  /* 光が常に自然に見えるようにする */
+  box-shadow:
+    0 0 6px rgba(51,231,255,0.18);
 }
 
-/* ▼ 動く光 */
-.intro-text::before {
+/* 動く光 */
+.intro-line::before {
   content: "";
   position: absolute;
-  left: 0%; /* 初期位置 */
+  top: 0;
   bottom: 0;
-  
-  width: 50%;
-  height: 2px;
-  
+
+  width: 30%;
+  left: -30%;
+
   background: linear-gradient(
     90deg,
     transparent,
-    var(--primary),
+    rgba(51,231,255,0.9),
     transparent
   );
-    
-  filter: blur(2px);
-  clip-path: inset(0 0 0 0);
 
-  animation: introLine 1.8s linear forwards;
+  filter: blur(0.8px);
+  opacity: 0.9;
+
+  /* イントロが表示されている間ずっとループ */
+  animation: introLine 2s linear infinite;
+}
+
+/* イントロ終了 */
+#intro.is-ended {
+  opacity: 0;
+  visibility: hidden;
 }
 
 @keyframes introFade {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+
+/* 光を左から右へ流す */
 @keyframes introLine {
-  0%   { left: -10%; }
-  80%  { left: 50%; }
-  100% { left: 50%; opacity: 0.6; }
-}
-@keyframes introEnd {
+  from {
+    left: -30%;
+  }
+
   to {
-    opacity: 0;
-    visibility: hidden;
+    left: 100%;
   }
 }
 

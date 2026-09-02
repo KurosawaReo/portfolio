@@ -64,6 +64,25 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =============================== 
+  ▼ カードの軽いチルト効果 ▼
+================================ */
+const tiltCards = document.querySelectorAll('[data-tilt]');
+const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
+tiltCards.forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const r = card.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;  // 0..1
+    const py = (e.clientY - r.top)  / r.height; // 0..1
+    const rx = (py - 0.5) * -6; // rotateX
+    const ry = (px - 0.5) * 8;  // rotateY
+    card.style.transform = `translateY(-3px) rotateX(${clamp(rx,-8,8)}deg) rotateY(${clamp(ry,-10,10)}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+/* =============================== 
   ▼ ページ移動 ▼
   カードをクリックで開く。
 ================================ */

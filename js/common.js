@@ -17,22 +17,69 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* =============================== 
-  ▼ カードの軽いチルト効果 ▼
+/* ===============================
+  ▼ イントロ ▼
 ================================ */
-const tiltCards = document.querySelectorAll('[data-tilt]');
-const clamp = (n, min, max) => Math.min(Math.max(n, min), max);
-tiltCards.forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const r = card.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;  // 0..1
-    const py = (e.clientY - r.top)  / r.height; // 0..1
-    const rx = (py - 0.5) * -6; // rotateX
-    const ry = (px - 0.5) * 8;  // rotateY
-    card.style.transform = `translateY(-3px) rotateX(${clamp(rx,-8,8)}deg) rotateY(${clamp(ry,-10,10)}deg)`;
+document.addEventListener("DOMContentLoaded", () => {
+  const intro = document.getElementById("intro");
+
+  // 「intro-load」が付いた要素だけ読み込み待機する
+  const loadingElements = document.querySelectorAll(".intro-load");
+
+  // イントロ演出の時間
+  const introDuration = 2800;
+
+  // 要素の読み込み完了を待つ
+  const waitForElement = (element) => {
+    return new Promise((resolve) => {
+      if (element.tagName === "VIDEO") {
+        // 動画が再生可能なら完了
+        if (element.readyState >= 3) {
+          resolve();
+          return;
+        }
+
+        // 動画が再生可能になったら完了
+        element.addEventListener("canplay", resolve, { once: true });
+
+        // 読み込み失敗時もイントロが止まり続けないようにする
+        element.addEventListener("error", resolve, { once: true });
+      } else if (element.tagName === "IMG") {
+        // 画像がすでに読み込まれていれば完了
+        if (element.complete) {
+          resolve();
+          return;
+        }
+
+        // 画像の読み込み完了
+        element.addEventListener("load", resolve, { once: true });
+
+        // 読み込み失敗時もイントロを終了できるようにする
+        element.addEventListener("error", resolve, { once: true });
+      } else {
+        // video / img 以外は待機しない
+        resolve();
+      }
+    });
+  };
+
+  // イントロアニメーションの終了を待つ
+  const waitForIntro = new Promise((resolve) => {
+    setTimeout(resolve, introDuration);
   });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
+
+  // 待機対象がなければ即座に完了扱いにする
+  const waitForLoading =
+    loadingElements.length > 0
+      ? Promise.all([...loadingElements].map(waitForElement))
+      : Promise.resolve();
+
+  // イントロと対象要素の読み込み、両方が完了したら終了
+  Promise.all([
+    waitForIntro,
+    waitForLoading
+  ]).then(() => {
+    intro.classList.add("is-ended");
   });
 });
 
