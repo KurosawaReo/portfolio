@@ -115,7 +115,7 @@
         <table class="info-table">
           <tr>
             <td>開発期間</td>
-            <td>2025/10 ~ 現在</td>
+            <td>2025/10 ~ 2026/05 (現在休止中)</td>
           </tr>
           <tr>
             <td>開発人数</td>
@@ -309,7 +309,7 @@
           これにより、現在は<span class="keyword">プロジェクトを終了してからブランチ操作を行う</span>というルールをチーム内で徹底しています。
         </p>
 
-        <div class="episode-img" style="--img-max-width: 600px;">
+        <div class="episode-img">
           <img src="../../resources/image/works/gun_action/episode/3_git_commit.webp" class="panel-img">
         </div>
       </div>
@@ -332,7 +332,7 @@
           <div class="flow-item">
             <div class="flow-index">1</div>
             <div class="flow-content">
-              アセットを<span class="keyword">「Assets」</span>フォルダにまとめ、<span class="keyword">「.gitignore」</span>で除外
+              アセットを<span class="keyword">「Assets」</span>フォルダにまとめ、<span class="keyword">.gitignore</span>で除外
             </div>
           </div>
           <!-- 2 -->
@@ -346,7 +346,7 @@
           <div class="flow-item">
             <div class="flow-index">3</div>
             <div class="flow-content">
-              受け取り側で<span class="keyword">「移行」</span>機能を使い、開発プロジェクトに導入
+              受け取り側で<span class="keyword">移行</span>機能を使い、開発プロジェクトに導入
             </div>
           </div>
         </div>
@@ -366,35 +366,35 @@
         </div>
 
         <p>
-          Unreal Engineでは、C++クラス名を安全にリネームするのは難しそうなので、以下の手順で対応しています。
+          Unreal EngineでC++クラスをリネームする方法が見つからなかったため、以下の手順でクラス名を変更しています。
         </p>
         <div class="flow">
           <!-- 1 -->
           <div class="flow-item">
             <div class="flow-index">1</div>
             <div class="flow-content">
-              新規C++クラスを作る
+              新しいC++クラスを作成する
             </div>
           </div>
           <!-- 2 -->
           <div class="flow-item">
             <div class="flow-index">2</div>
             <div class="flow-content">
-              新規C++クラスにコードを全て移植する
+              元のクラスから新しいクラスへコードを移植する
             </div>
           </div>
           <!-- 3 -->
           <div class="flow-item">
             <div class="flow-index">3</div>
             <div class="flow-content">
-              (継承してるBluePrintがあれば) BluePrintを開き、親クラスを1で作成した新規クラスに変更する
+              継承しているBluePrintがある場合は、BluePrintを開き、親クラスを手順1で作成したクラスに変更する
             </div>
           </div>
           <!-- 4 -->
           <div class="flow-item">
             <div class="flow-index">4</div>
             <div class="flow-content">
-              元のC++クラスを削除
+              元のC++クラスを削除する
             </div>
           </div>
         </div>
@@ -450,7 +450,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/09/02<br>
+      最終更新日: 2026/09/10<br>
       随時更新中<br>
       <br>
       <!-- Unreal Engine表記 -->
