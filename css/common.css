@@ -357,33 +357,6 @@ svg {
     
   transition: 0.2s;
 }
-/* プラチナカラー */
-.pill.platinum {
-  position: relative;
-
-  border: 1px solid rgba(215, 245, 255, 0.85);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(140, 225, 255, 0.36),
-      rgba(210, 245, 255, 0.22),
-      rgba(170, 215, 240, 0.16)
-    );
-
-  color: #f3fbff;
-
-  box-shadow:
-    /* 内側ハイライト */
-    inset 0 0 0 1px rgba(255,255,255,0.12),
-
-    /* 外側の輪郭を少し強調 */
-    0 0 0 1px rgba(170,230,255,0.18),
-
-    /* 発光 */
-    0 0 18px rgba(120,210,255,0.30),
-    0 0 34px rgba(80,170,255,0.14);
-}
 
 /* ===============================
   ▼ 画像ラベル ▼
