@@ -5,10 +5,10 @@
 @charset "utf-8";
 
 /* ===============================
-  ▼ hero ファーストビュー動画 ▼
+  ▼ ファーストビュー動画 ▼
 ================================ */
 
-.hero-video {
+.top-video {
   position: relative;
 
   width: 100%;
@@ -20,7 +20,7 @@
 }
 
 /* 背景動画 */
-.hero-video-content {
+.top-video-content {
   position: absolute;
   inset: 0;
 
@@ -33,7 +33,7 @@
 }
 
 /* 動画を少し暗くする */
-.hero-video-overlay {
+.top-video-overlay {
   position: absolute;
   inset: 0;
 
@@ -46,7 +46,7 @@
 }
 
 /* 動画上の文字 */
-.hero-video-text {
+.top-video-text {
   position: absolute;
   inset: 0;
 
@@ -77,7 +77,7 @@
     0 0 50px rgba(51, 231, 255, 0.2);
 }
 
-.hero-video-scroll {
+.top-video-scroll {
   position: absolute;
   left: 50%;
   bottom: 50px; /* PC：下から50px */
@@ -110,110 +110,220 @@
 
 /* スマホ */
 @media (max-width: 600px) {
-  .hero-video-text {
+  .top-video-text {
     font-size: clamp(20px, 7vw, 36px);
     letter-spacing: 0.12em;
     padding: 0 15px;
   }
-  .hero-video-scroll {
+  .top-video-scroll {
     bottom: 40px; /* スマホ：下から40px */
     font-size: 22px; /* スマホ：22px */
   }
 }
 
-/* =============================== 
-  ▼ hero 顔と名前 ▼
+/* ===============================
+  ▼ プロフィール - メイン ▼
 ================================ */
-#hero-main {
-  height: calc(100vh - var(--header-h));
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+/* プロフィール全体 */
+#profile {
+  padding: 10px 0 20px;
 }
 
-/* === 中身まとめて中央揃え === */
-.hero-inner {
-  width: min(100%, 800px);
-  margin: 0 auto;
-  padding: 0 30px;
-  
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  text-align: center;
-}
-
-/* === 名前 === */
-.hero-name {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 0;
-}
-
-.hero-name .hero-en {
-  font-family: 'Orbitron', sans-serif;
-
-  margin: 0;
-
-  font-size: clamp(18px, 2vw, 26px);
-  font-weight: 200;
-
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-
-  display: inline-flex;
-}
-
-.hero-name .hero-jp {
-  font-family: 'Noto Sans JP', sans-serif;
-
-  margin: 0;
-
-  font-size: clamp(64px, 12vw, 100px);
-  font-weight: 300;
-
-  letter-spacing: 0.04em;
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #a8f7ff 35%,
-      #00d0ff 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  text-shadow:
-    0 0 10px rgba(163,249,255,0.8),
-    0 0 30px rgba(51,231,255,0.45),
-    0 0 60px rgba(51,231,255,0.25);
-}
-
-/* === 画像 === */
-.hero-avatar {
-  width: clamp(120px, 20vw, 220px);
-  aspect-ratio: 1 / 1;
-
-  border-radius: 50%;
+/* メインパネル */
+.profile-panel {
+  position: relative;
   overflow: hidden;
 
-  border: 2px solid rgba(51,231,255,0.5);
-  box-shadow: 0 0 30px rgba(51,231,255,0.4);
+  padding: clamp(22px, 4vw, 38px);
+
+  background:
+    radial-gradient(
+      600px 260px at 85% 0%,
+      rgba(51,231,255,0.10),
+      transparent 70%
+    ),
+    var(--panel-back);
+
+  border: 1px solid rgba(51,231,255,0.42);
+  border-radius: var(--radius);
+
+  box-shadow:
+    0 14px 50px rgba(51,231,255,0.12),
+    0 0 30px rgba(51,231,255,0.06);
 }
-.hero-avatar img {
+
+/* ===== ヘッダー ===== */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: clamp(14px, 4vw, 21px);
+}
+
+.profile-label {
+  font-family: 'Orbitron', sans-serif;
+
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+
+  color: var(--primary);
+
+  text-shadow:
+    0 0 6px rgba(51,231,255,0.8),
+    0 0 16px rgba(51,231,255,0.35);
+}
+
+.profile-index {
+  font-family: 'Orbitron', sans-serif;
+
+  font-size: 10px;
+  letter-spacing: 0.12em;
+
+  color: rgba(180,235,245,0.45);
+}
+
+/* ===== プロフィール本体 ===== */
+
+.profile-main {
+  display: grid;
+  grid-template-columns: minmax(220px, 330px) 1fr;
+  gap: clamp(28px, 5vw, 64px);
+
+  align-items: center;
+
+  margin-bottom: 28px;
+}
+
+/* ===== 顔写真 ===== */
+
+.profile-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-avatar .avatar-wrap {
+  width: min(100%, 300px);
+  max-width: none;
+
+  margin: 0;
+
+  border-radius: 20px;
+}
+
+/* 写真 */
+.profile-avatar .avatar-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* 顔写真 */
+/* ===== 名前 ===== */
+
+.profile-info {
+  min-width: 0;
+}
+
+.profile-name {
+  margin-bottom: 14px;
+}
+
+.profile-name-en {
+  display: block;
+  margin-bottom: 5px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(12px, 1.8vw, 17px);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: rgba(185,245,255,0.65);
+}
+
+.profile-name h2 {
+  margin: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: clamp(42px, 6vw, 68px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #c8faff 45%,
+      #33e7ff 100%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 12px rgba(51,231,255,0.35),
+    0 0 30px rgba(51,231,255,0.18);
+}
+
+/* ===== メッセージ ===== */
+.profile-message {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.8vw, 12px);
+
+  margin: clamp(10px, 2.2vw, 20px) 0;
+
+  padding: clamp(10px, 1.8vw, 15px) clamp(12px, 2.2vw, 18px);
+
+  background: rgba(51,231,255,0.045);
+
+  border-left: 3px solid var(--primary);
+  border-radius: 5px;
+
+  box-shadow:
+    inset 0 0 12px rgba(51,231,255,0.04);
+}
+
+.profile-message-mark {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(15px, 2.2vw, 20px);
+  font-weight: 700;
+
+  color: var(--primary);
+
+  text-shadow:
+    0 0 8px rgba(51,231,255,0.8);
+}
+
+.profile-message p {
+  margin: 0;
+
+  font-size: clamp(13px, 2.2vw, 20px);
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  color: #eaffff;
+
+  text-shadow:
+    0 0 8px rgba(51,231,255,0.28);
+}
+
+/* ===== 自己紹介 ===== */
+.profile-description {
+  margin: 0;
+  max-width: 600px;
+
+  color: rgba(215,240,245,0.75);
+
+  font-size: clamp(13px, 1.7vw, 16px);
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+/* =============================== 
+  ▼ プロフィール - 顔写真 ▼
+================================ */
+
 .avatar-wrap {
   position: relative; aspect-ratio: 1 / 1; 
   margin: 10px auto 0;
@@ -252,388 +362,170 @@
 @keyframes spin { to { transform: rotate(1turn); } }
 
 /* ===============================
-  ▼ hero 英字ネオン ▼
+  ▼ プロフィール - 区切り線 ▼
 ================================ */
-/*
-  点灯 → 即座に明るく
-  消灯 → 短くフェード
-*/
 
-/* 消灯 */
-.hero-name .hero-en span {
-  display: inline-block;
-
-  /* 消灯時：文字本体をかなり暗く */
-  color: #070b0d;
-
-  /* iPhone Safari対策：文字の塗りを明示 */
-  -webkit-text-fill-color: #070b0d;
-
-  /* 輪郭だけ薄い水色 */
-  -webkit-text-stroke:
-    clamp(0.8px, 0.08vw, 1px)
-    rgba(150, 220, 230, 0.28);
-
-  /* 消灯時は発光させない */
-  text-shadow: none;
-
-  transition:
-    color 300ms ease,
-    -webkit-text-fill-color 300ms ease,
-    text-shadow 300ms ease;
-}
-
-/* 点灯 */
-.hero-name .hero-en span.is-lit {
-  color: #eaffff;
-  -webkit-text-fill-color: #eaffff;
-
-  text-shadow:
-    0 0 4px rgba(51,231,255,1),
-    0 0 10px rgba(51,231,255,0.75),
-    0 0 18px rgba(51,231,255,0.4);
-
-  transition:
-    color 30ms ease,
-    -webkit-text-fill-color 30ms ease,
-    text-shadow 30ms ease;
-}
-
-
-/* アクセシビリティ */
-@media (prefers-reduced-motion: reduce) {
-  .hero-name .hero-en span {
-    transition: none;
-  }
+.profile-divider {
+  width: 100%;
+  height: 1px;
+  margin: 0 0 28px 0;
+  background: rgba(51,231,255,0.18);
 }
 
 /* ===============================
-  ▼ hero 実績 ▼
+  ▼ プロフィール - 見出し ▼
 ================================ */
 
-/* 実績全体 */
-.hero-achievements {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 10px;
-
-  width: 100%;
-  max-width: 800px;
-
-  margin: 0 0 20px 0;
-}
-
-/* 実績1項目 */
-.hero-achievement {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 40px;
-  padding: 7px 14px;
-
-  /* 青寄りの枠 */
-  border: 1px solid rgba(90, 185, 255, 0.45);
-  border-radius: 8px;
-
-  /* 青みのある薄い背景 */
-  background: rgba(70, 140, 200, 0.08);
-
-  color: rgba(195, 225, 255, 0.78);
-
-  font-size: clamp(12px, 1.8vw, 17px);
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  line-height: 1.4;
-
-  box-shadow:
-    0 0 8px rgba(70, 170, 255, 0.12),
-    inset 0 0 8px rgba(80, 180, 255, 0.05);
-
-  text-shadow:
-    0 0 6px rgba(70, 180, 255, 0.25),
-    0 0 12px rgba(60, 160, 255, 0.12);
-
-  transition: 180ms ease;
-}
-
-/* 実績の強調部分 */
-.hero-achievement strong {
-  margin: 0 3px;
-
-  color: #e6f8ff;
-  font-weight: 800;
-
-  text-shadow:
-    0 0 6px rgba(70, 190, 255, 0.65),
-    0 0 14px rgba(60, 170, 255, 0.25);
-}
-
-/* ホバー時 */
-.hero-achievement:hover {
-  border-color: rgba(100, 200, 255, 0.75);
-  background: rgba(70, 150, 220, 0.12);
-
-  box-shadow:
-    0 0 12px rgba(70, 180, 255, 0.2),
-    inset 0 0 10px rgba(80, 180, 255, 0.08);
-
-  transform: translateY(-1px);
-}
-
-/* スマホ */
-@media (max-width: 600px) {
-  .hero-achievements {
-    gap: 8px;
-  }
-
-  .hero-achievement {
-    padding: 6px 11px;
-    border-radius: 7px;
-  }
-}
-
-/* ===============================
-  ▼ PROFILE ▼
-================================ */
-
-/* プロフィール全体 */
-#profile {
-  padding: 10px 0 20px;
-}
-
-/* メインパネル */
-.profile-panel {
-  position: relative;
-  overflow: hidden;
-
-  padding: clamp(22px, 4vw, 38px);
-
-  background:
-    radial-gradient(
-      600px 260px at 85% 0%,
-      rgba(51,231,255,0.10),
-      transparent 70%
-    ),
-    var(--panel-back);
-
-  border: 1px solid rgba(51,231,255,0.42);
-  border-radius: var(--radius);
-
-  box-shadow:
-    0 14px 50px rgba(51,231,255,0.12),
-    0 0 30px rgba(51,231,255,0.06);
-}
-
-/* ===== ヘッダー ===== */
-
-.profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: clamp(28px, 4vw, 42px);
-  padding-bottom: 10px;
-}
-
-.profile-label {
-  font-family: 'Orbitron', sans-serif;
-
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-
-  color: var(--primary);
-
-  text-shadow:
-    0 0 6px rgba(51,231,255,0.8),
-    0 0 16px rgba(51,231,255,0.35);
-}
-
-.profile-index {
-  font-family: 'Orbitron', sans-serif;
-
-  font-size: 10px;
-  letter-spacing: 0.12em;
-
-  color: rgba(180,235,245,0.45);
-}
-
-
-/* ===== プロフィール本体 ===== */
-
-.profile-main {
-  display: grid;
-  grid-template-columns: minmax(220px, 330px) 1fr;
-  gap: clamp(28px, 5vw, 64px);
-
-  align-items: center;
-
-  margin-bottom: clamp(32px, 5vw, 48px);
-}
-
-
-/* ===== 顔写真 ===== */
-
-.profile-avatar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.profile-avatar .avatar-wrap {
-  width: min(100%, 300px);
-  max-width: none;
-
-  margin: 0;
-
-  border-radius: 20px;
-}
-
-/* 写真 */
-.profile-avatar .avatar-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ===== 名前 ===== */
-
-.profile-info {
-  min-width: 0;
-}
-
-.profile-name {
-  margin-bottom: 14px;
-}
-
-.profile-name-en {
-  display: block;
-
-  margin-bottom: 5px;
-
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(12px, 1.8vw, 17px);
-  font-weight: 500;
-
-  letter-spacing: 0.22em;
-
-  color: rgba(185,245,255,0.65);
-}
-
-.profile-name h2 {
-  margin: 0;
-
-  font-family: 'Noto Sans JP', sans-serif;
-  font-size: clamp(42px, 6vw, 68px);
-  font-weight: 800;
-
-  line-height: 1.1;
-  letter-spacing: 0.06em;
-
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #c8faff 45%,
-      #33e7ff 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  text-shadow:
-    0 0 12px rgba(51,231,255,0.35),
-    0 0 30px rgba(51,231,255,0.18);
-}
-
-
-/* ===== 肩書き ===== */
-
-.profile-role {
+.profile-section-header {
   display: flex;
   align-items: center;
   gap: 10px;
-
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(11px, 1.6vw, 15px);
+  font-size: clamp(15px, 1.8vw, 19px);
   font-weight: 700;
+  letter-spacing: 0.14em;
 
-  letter-spacing: 0.12em;
+  color: rgba(223,252,255,0.85);
 
-  color: rgba(223,252,255,0.72);
+  text-shadow:
+    0 0 6px rgba(51,231,255,0.45),
+    0 0 14px rgba(51,231,255,0.18);
 }
 
-.profile-role-line {
+/* 左側のアクセントライン */
+.profile-section-header::before {
+  content: "";
   width: 34px;
   height: 1px;
-
+  flex-shrink: 0;
   background: var(--primary);
-
   box-shadow:
     0 0 6px rgba(51,231,255,0.8),
     0 0 12px rgba(51,231,255,0.35);
 }
 
-
-/* ===== 自己紹介 ===== */
-
-.profile-description {
-  margin: 0 0 22px;
-
-  max-width: 600px;
-
-  color: rgba(215,240,245,0.75);
-
-  font-size: clamp(13px, 1.7vw, 16px);
-  line-height: 1.9;
-  letter-spacing: 0.04em;
-}
-
 /* ===============================
-  ▼ PROFILE DIVIDER ▼
+  ▼ プロフィール - アピール ▼
 ================================ */
 
-/* セクション区切り線 */
-.profile-divider {
-  width: 100%;
-  height: 1px;
-
-  margin: 0px 0 28px 0;
-
-  background: rgba(51,231,255,0.18);
+/* アピール全体 */
+.profile-appeal {
+  margin-bottom: clamp(28px, 4vw, 38px);
 }
 
-/* ===============================
-  ▼ TECH STACK ▼
-================================ */
-
-/* 技術ブロック全体 */
-.profile-stack {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 22px;
+/* アピール3枚 */
+.profile-appeal .list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
-/* ヘッダー */
-.profile-stack-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* アピールカード */
+.profile-appeal .item {
+  position: relative;
+  min-height: 145px;
+  padding: 20px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(51,231,255,0.08),
+      rgba(51,231,255,0.015)
+    );
+  border: 1px solid rgba(51,231,255,0.25);
+  border-radius: 10px;
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
 
-  margin-bottom: 16px;
-
+/* 番号 */
+.profile-appeal .item .number {
+  position: absolute;
+  top: 12px;
+  right: 14px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 16px;
-  letter-spacing: 0.14em;
-
-  color: rgba(51,231,255,0.75);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: rgba(51,231,255,0.35);
 }
+
+/* カード内容 */
+.profile-appeal .item .content {
+  position: relative;
+}
+
+/* タイトル */
+.profile-appeal .item .content .title {
+  display: block;
+  margin-bottom: 5px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(20px, 3vw, 30px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #eaffff;
+  text-shadow:
+    0 0 7px rgba(51,231,255,0.7),
+    0 0 18px rgba(51,231,255,0.25);
+}
+
+/* 説明 */
+.profile-appeal .item .content .description {
+  margin: 0;
+  color: rgba(195,230,236,0.58);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* 画像枠 */
+.profile-appeal .item .content .image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 16px;
+  border: 1px solid rgba(51,231,255,0.18);
+  border-radius: 6px;
+  background: rgba(51,231,255,0.025);
+  box-shadow:
+    inset 0 0 12px rgba(51,231,255,0.04);
+  overflow: hidden;
+}
+
+/* 画像 */
+.profile-appeal .item .content .image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 左端アクセント */
+.profile-appeal .item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 16px;
+  bottom: 16px;
+  width: 2px;
+  background: rgba(51,231,255,0.65);
+  box-shadow:
+    0 0 8px rgba(51,231,255,0.55);
+}
+
+/* ホバー */
+.profile-appeal .item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(51,231,255,0.55);
+  box-shadow:
+    0 10px 30px rgba(51,231,255,0.12),
+    0 0 18px rgba(51,231,255,0.06);
+}
+
+/* ===============================
+  ▼ プロフィール - 技術カテゴリ ▼
+================================ */
 
 /* 技術カテゴリをグリッド化 */
 .profile-stack-grid {
@@ -723,252 +615,69 @@
 }
 
 /* ===============================
-  ▼ ACHIEVEMENTS ▼
-================================ */
-
-.profile-achievements {
-  margin-bottom: clamp(28px, 4vw, 38px);
-}
-
-/* 実績3枚 */
-.profile-achievement-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 12px;
-}
-
-
-/* 実績カード */
-.profile-achievement {
-  position: relative;
-
-  min-height: 145px;
-
-  padding: 20px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(51,231,255,0.08),
-      rgba(51,231,255,0.015)
-    );
-
-  border: 1px solid rgba(51,231,255,0.25);
-  border-radius: 10px;
-
-  overflow: hidden;
-
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-/* 番号 */
-.profile-achievement-number {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-
-  font-family: 'Orbitron', sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.08em;
-
-  color: rgba(51,231,255,0.35);
-}
-
-
-/* 大きな実績 */
-.profile-achievement strong {
-  display: block;
-
-  margin-bottom: 5px;
-
-  font-family: 'Orbitron', sans-serif;
-  font-size: clamp(20px, 3vw, 30px);
-  font-weight: 700;
-
-  letter-spacing: 0.04em;
-
-  color: #eaffff;
-
-  text-shadow:
-    0 0 7px rgba(51,231,255,0.7),
-    0 0 18px rgba(51,231,255,0.25);
-}
-
-
-/* 実績タイトル */
-.profile-achievement h3 {
-  margin: 0 0 12px;
-
-  font-size: clamp(14px, 1.8vw, 17px);
-  font-weight: 700;
-
-  color: rgba(225,250,253,0.88);
-}
-
-
-/* 説明 */
-.profile-achievement p {
-  margin: 0;
-
-  color: rgba(195,230,236,0.58);
-
-  font-size: 12px;
-  line-height: 1.65;
-}
-
-
-/* 左端アクセント */
-.profile-achievement::before {
-  content: "";
-
-  position: absolute;
-  left: 0;
-  top: 16px;
-  bottom: 16px;
-
-  width: 2px;
-
-  background: rgba(51,231,255,0.65);
-
-  box-shadow:
-    0 0 8px rgba(51,231,255,0.55);
-}
-
-
-/* ホバー */
-.profile-achievement:hover {
-  transform: translateY(-2px);
-
-  border-color: rgba(51,231,255,0.55);
-
-  box-shadow:
-    0 10px 30px rgba(51,231,255,0.12),
-    0 0 18px rgba(51,231,255,0.06);
-}
-
-/* ===============================
-  ▼ MESSAGE ▼
-================================ */
-
-.profile-message {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  margin-bottom: 24px;
-  padding: 15px 18px;
-
-  background: rgba(51,231,255,0.045);
-
-  border-left: 3px solid var(--primary);
-  border-radius: 5px;
-
-  box-shadow:
-    inset 0 0 12px rgba(51,231,255,0.04);
-}
-
-.profile-message-mark {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-
-  color: var(--primary);
-
-  text-shadow:
-    0 0 8px rgba(51,231,255,0.8);
-}
-
-.profile-message p {
-  margin: 0;
-
-  font-size: clamp(15px, 2.2vw, 20px);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-
-  color: #eaffff;
-
-  text-shadow:
-    0 0 8px rgba(51,231,255,0.28);
-}
-
-/* ===============================
-  ▼ TABLET / MOBILE ▼
+  ▼ プロフィール - MOBILE ▼
 ================================ */
 
 @media (max-width: 800px) {
-
   .profile-main {
     grid-template-columns: 220px 1fr;
     gap: 28px;
   }
-
   .profile-name h2 {
     font-size: clamp(36px, 6vw, 52px);
   }
-
-  .profile-achievement {
+  .profile-appeal .item {
     padding: 17px;
   }
 }
 
-
 @media (max-width: 650px) {
-
   /* 写真とプロフィールを縦並び */
   .profile-main {
     grid-template-columns: 1fr;
     gap: 24px;
-
     text-align: center;
   }
-
   .profile-avatar .avatar-wrap {
     width: min(70vw, 280px);
   }
-
   .profile-info {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
-  .profile-role {
-    justify-content: center;
-  }
-
   .profile-description {
     text-align: center;
   }
-
   .profile-tags {
     justify-content: center;
   }
-
-  /* 実績を1列 */
-  .profile-achievement-list {
-    grid-template-columns: 1fr;
+  /* 名前とメッセージの間を少し詰める */
+  .profile-name {
+    margin-bottom: 8px;
+  }
+  /* セクション見出し */
+  .profile-section-header {
+    font-size: 16px;
+    margin-bottom: 14px;
   }
 
-  .profile-achievement {
+  /* アピールを1列 */
+  .profile-appeal .list {
+    grid-template-columns: 1fr;
+  }
+  .profile-appeal .item {
     min-height: auto;
   }
 }
 
-
 @media (max-width: 420px) {
-
   .profile-panel {
     padding: 20px 16px;
   }
-
   .profile-name h2 {
     font-size: clamp(34px, 11vw, 48px);
   }
-
   .profile-avatar .avatar-wrap {
     width: min(75vw, 260px);
   }

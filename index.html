@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Portfolio | Kurosawa Reo</title>
-  <meta name="description" content="「全てのクリエイティブは私の味方」学年1位の成績取得・作品受賞歴あり" />
+  <meta name="description" content="私が歩んできた道をご案内します。"/>
 
   <!-- font導入 -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&display=swap" rel="stylesheet">
@@ -50,10 +50,10 @@
   </header>
 
   <!-- ファーストビュー動画 -->
-  <section class="hero-video">
+  <section class="top-video">
     <!-- 動画 -->
     <video
-      class="hero-video-content intro-load"
+      class="top-video-content intro-load"
       autoplay
       muted
       loop
@@ -62,13 +62,13 @@
       <source src="resources/movie/hero-top.webm" type="video/webm">
     </video>
     <!-- 動画の上に薄いオーバーレイ -->
-    <div class="hero-video-overlay"></div>
+    <div class="top-video-overlay"></div>
     <!-- 動画上に置く文字 -->
-    <div class="hero-video-text">
+    <div class="top-video-text">
       <span>KUROSAWA REO</span>
     </div>
     <!-- スクロールヒント -->
-    <div class="hero-video-scroll">
+    <div class="top-video-scroll">
       <span>
         ↓ ↓ ↓
       </span>
@@ -102,7 +102,7 @@
                 <div class="rings"></div>
               </div>
 
-              <img src="resources/image/face_image.webp" alt="黒澤 怜旺">
+              <img src="resources/image/profile/face_image.webp" alt="黒澤 怜旺">
             </div>
           </div>
 
@@ -114,60 +114,89 @@
               <h2>黒澤 怜旺</h2>
             </div>
 
-            <div class="profile-role">
-              <span class="profile-role-line"></span>
-              <span>横浜デジタルアーツ専門学校 ゲーム科</span>
-            </div>
-
-            <!-- キャッチコピー -->
             <div class="profile-message">
               <span class="profile-message-mark">/</span>
-              <p>学年一位の成績・作品受賞歴あり</p>
+              <p>プログラマー志望</p>
             </div>
 
             <p class="profile-description">
-              プログラマー志望<br>
+              横浜デジタルアーツ専門学校 ゲーム科<br>
               kurosawareo.job@gmail.com<br>
             </p>
-          </div>
-        </div>
-
-        <!-- 実績 -->
-        <div class="profile-achievements">
-
-          <div class="profile-achievement-list">
-
-            <article class="profile-achievement">
-              <span class="profile-achievement-number">01</span>
-              <strong>SCHOOL</strong>
-              <h3>学年1位の成績</h3>
-              <p>2年間すべての科目で最高評価を獲得し、表彰されました。</p>
-            </article>
-
-            <article class="profile-achievement">
-              <span class="profile-achievement-number">02</span>
-              <strong>AWARD</strong>
-              <h3>アイデア賞受賞</h3>
-              <p>制作した作品が「アイデア賞」を受賞しました。</p>
-            </article>
-
-            <article class="profile-achievement">
-              <span class="profile-achievement-number">03</span>
-              <strong>PRIVATE</strong>
-              <h3>Minecraft 9000時間以上プレイ</h3>
-              <p>プライベートでの制作活動もしています。</p>
-            </article>
-
           </div>
         </div>
 
         <!-- 区切り線 -->
         <div class="profile-divider"></div>
 
+        <!-- アピールポイント -->
+        <div class="profile-appeal">
+
+          <div class="profile-section-header">
+            <span>私の足跡</span>
+          </div>
+
+          <div class="list">
+
+            <article class="item">
+              <span class="number">01</span>
+
+              <div class="content">
+                <strong class="title">学年1位の成績</strong>
+
+                <p class="description">
+                  2年間、全科目で最高評価を獲得し表彰。<br>
+                  決めたことは、最後までやりきります。
+                </p>
+
+                <div class="image">
+                  <img src="resources/image/profile/appeal_01.webp" alt="">
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <span class="number">02</span>
+
+              <div class="content">
+                <strong class="title">アイデア賞受賞</strong>
+
+                <p class="description">
+                  チーム制作作品が「アイデア賞」を受賞。<br>
+                  細部までこだわり、見た目も面白さも追求します。
+                </p>
+
+                <div class="image">
+                  <img src="resources/image/profile/appeal_02.webp" alt="">
+                </div>
+              </div>
+            </article>
+
+            <article class="item">
+              <span class="number">03</span>
+
+              <div class="content">
+                <strong class="title">プライベート活動</strong>
+
+                <p class="description">
+                  Minecraftを10年間、9000時間以上プレイ。<br>
+                  自作ゲーム運営・動画制作・作曲・アドオン開発など<br>
+                  様々なクリエイティブを続けています。
+                </p>
+
+                <div class="image">
+                  <img src="resources/image/profile/appeal_03.webp" alt="">
+                </div>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
         <!-- 技術・使用ツール -->
         <div class="profile-stack">
 
-          <div class="profile-stack-header">
+          <div class="profile-section-header">
             <span>経験</span>
           </div>
 
@@ -228,7 +257,7 @@
 
             <!-- デザイン・映像 -->
             <div class="profile-stack-group">
-              <span class="profile-stack-category">CREATIVE</span>
+              <span class="profile-stack-category">ILLUSTRATION / MOVIE</span>
 
               <div class="profile-stack-tags">
                 <span>Adobe Photoshop</span>
@@ -512,7 +541,7 @@
   <!-- フッター -->
   <footer>
     <small>
-      最終更新日: 2026/09/10<br>
+      最終更新日: 2026/09/22<br>
       随時更新中<br>
       <br>
       ©2025-2026 Kurosawa Reo Portfolio
