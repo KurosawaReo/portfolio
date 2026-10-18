@@ -221,13 +221,14 @@
         </p>
         <pre><code class="language-cpp">
           /*
-            - main.cpp - (DxLib)
-            ver.2026/06/11
+            - main.cpp - (KrLib_Dx用)
+            ver.2026/10/14
 
             プログラムの開始テンプレ.
           */
           #include "KrLib_Dx/KR_Global.h"
           #include "KrLib_Dx/KR_App.h"
+          #include "KrLib_Dx/KR_Debug.h"
           #include "KrLib_Dx/KR_Input.h"
           #include "KrLib_Dx/KR_Object.h"
           #include "KrLib_Dx/KR_ObjectList.h"
@@ -243,7 +244,7 @@
             ObjectCirやObjectBoxを継承することを推奨.
             ObjectListで管理することで、配列でのオブジェクト管理がしやすくなる.
           */
-          class Player : public ObjectCir
+          class Object : public ObjectCir
           {
           private:
           public:
@@ -252,6 +253,7 @@
             }
             //更新.
             void Update() override {
+              Debug::Log(_T("test"));
             }
             //描画.
             void Draw() override {
@@ -270,16 +272,16 @@
           class GameManager : public ManagerBase
           {
           private:
-            ObjectList&lt;Player&gt; player;
+            ObjectList&lt;Object&gt; objects;
 
           public:
             //コンストラクタ.
-            GameManager(int order) : ManagerBase(order) {}
+            GameManager(){}
 
             //初期化.
             void Init() override {
               //オブジェクト生成.
-              player.NewObject();
+              objects.NewObject();
             }
             //リセット.
             void Reset() override {
@@ -287,12 +289,12 @@
             //更新.
             void Update() override {
               //オブジェクト更新.
-              player.Update();
+              objects.Update();
             }
             //描画.
             void Draw() override {
               //オブジェクト描画.
-              player.Draw();
+              objects.Draw();
             }
           };
 
@@ -304,15 +306,15 @@
           ){
             /*
               [管理クラス生成]
-              引数で実行順(order値)を入力する.
+              生成した順にInitやUpdateなどが自動で実行される.
             */
             //KrLibに実装されている管理クラスを登録.
-            ManagerInsts::NewManager&lt;InputMng&gt;(0);
-            ManagerInsts::NewManager&lt;SoundMng&gt;(1);
-            ManagerInsts::NewManager&lt;SceneMng&gt;(2);
-            ManagerInsts::NewManager&lt;TimerMng&gt;(3);
+            ManagerInsts::NewManager&lt;InputMng&gt;();
+            ManagerInsts::NewManager&lt;SoundMng&gt;();
+            ManagerInsts::NewManager&lt;SceneMng&gt;();
+            ManagerInsts::NewManager&lt;TimerMng&gt;();
             //それ以外の管理クラスを登録.
-            ManagerInsts::NewManager<GameManager>(4);
+            ManagerInsts::NewManager&lt;GameManager&gt;();
 
             //初期化処理.
             App::InitDx(800, 640, true, 60, false);
@@ -340,12 +342,11 @@
           <b class="title">動画</b>
         </div>
         <p>
-          KRライブラリ(DxLib版)の実用例を紹介するために作った
-          球を運ぶ簡単なゲームです。
+          KRライブラリの実用例として作成したテストプログラムです。
         </p>
         <p>
           <iframe
-            src="https://www.youtube.com/embed/u6wwFJjMVd4"
+            src="https://www.youtube.com/embed/x_zZ_oe-B-4"
             width="100%"
             frameborder="0"
             allow="autoplay; encrypted-media"
@@ -359,13 +360,11 @@
         </div>
         <pre><code class="language-cpp">
           /*
-            線で球をゴールまで運ぶ簡単なゲーム
-            KRライブラリ ver.2026/07/02
+            地面の上で三角形を回転させるプログラム.
+            KRライブラリ ver.2026/10/15
           */
           #include "KrLib_Dx/KR_Global.h"
           #include "KrLib_Dx/KR_App.h"
-          #include "KrLib_Dx/KR_Calc.h"
-          #include "KrLib_Dx/KR_DrawShape.h"
           #include "KrLib_Dx/KR_Debug.h"
           #include "KrLib_Dx/KR_Input.h"
           #include "KrLib_Dx/KR_Object.h"
@@ -376,315 +375,239 @@
           #include "KrLib_Dx/KR_Sound.h"
           #include "KrLib_Dx/KR_TimerMng.h"
           #include "KrLib_cpp/KR_Calc.h"
-          #include "KrLib_cpp/KR_Format.h"
           using namespace KR;
 
-          //当たり判定処理を何分割で処理するか(より細かい当たり判定を行うため)
-          constexpr int    HIT_SPLIT_PROCESSING = 10; 
-          //プレイヤー移動速度.
-          constexpr double PLAYER_MOVE_SPEED = 5;
-          //球の総数.
-          constexpr int    BALL_COUNT_MAX = 100;
+          constexpr int    PLAYER_BALL_COUNT          = 3;    //プレイヤーの球がいくつあるか.
+          constexpr double PLAYER_BALL_ROT_SPEED_MAX  = 10;   //球の最大回転速度.
+          constexpr double PLAYER_BALL_ROT_SPEED_ADD  = 0.25; //球の回転加速度.
+          constexpr double PLAYER_BALL_DIST           = 60;   //中心から球までの距離.
 
-          //前方宣言.
-          class GameManager;
-
-          class PlayerBase : public ObjectCir
+          //地面.
+          class Ground : public ObjectBox
           {
           private:
           public:
             //初期化.
             void Init() override {
-              GetCir()->color = ColorID::SkyBlue;
-              GetCir()->r = 8;
-              SetPos({0, 100});
+              GetBox()->pos  = {   0, 100 };
+              GetBox()->size = { 800,  10 };
             }
             //更新.
             void Update() override {
-              AddPos(GetInput() * PLAYER_MOVE_SPEED);
             }
-            //描画.
-            virtual void Draw() override {
-              //加算描画.
-              DrawMode::Exe(
-                DrawModeID::None, DrawBlendModeID::Add, 100,
-                [&]() {
-                  DrawShape(true, true);
-                }
-              );
-            }
-
-            //入力操作.
-            virtual DBL_XY GetInput() = 0;
-          };
-
-          class Player1 : public PlayerBase
-          {
-          private:
-          public:
-            //入力操作.
-            DBL_XY GetInput() override {
-              //WASD操作を受け取る.
-              const auto pInput = ManagerInsts::Get&lt;InputMng&gt;();
-              return pInput->GetKey4Dir(true, false);
-            }
-
             //描画.
             void Draw() override {
-
-              PlayerBase::Draw();
-
-              //テキスト.
-              DrawStr str(_T("WASD"), GetPos().ToInt() - INT_XY(0, 20), ColorID::White);
-              str.Draw();
+              DrawShape();
             }
           };
 
-          class Player2 : public PlayerBase
+          //プレイヤーを構成する球.
+          class PlayerBall : public ObjectPoint
           {
           private:
-          public:
-            //入力操作.
-            DBL_XY GetInput() override {
-              //矢印キー操作を受け取る.
-              const auto pInput = ManagerInsts::Get&lt;InputMng&gt;();
-              return pInput->GetKey4Dir(false, true);
-            }
-
-            //描画.
-            void Draw() override {
-
-              PlayerBase::Draw();
-
-              //テキスト.
-              DrawStr str(_T("Arrow"), GetPos().ToInt() - INT_XY(0, 20), ColorID::White);
-              str.Draw();
-            }
-          };
-
-          class Ball : public ObjectCir
-          {
-          private:
-            bool isErase;
+            bool isGround; //この球が接地しているか.
 
           public:
             //コンストラクタ.
-            Ball(double x, double y) :
-              isErase(false)
+            PlayerBall() :
+              isGround(false)
             {
-              SetPos(DBL_XY{x, y});
+              SetDrawR(10);
+              SetDrawColor(ColorID::Cyan);
             }
-
-            void Init() override {}
-
-            void Update() override;
-
-            void Draw() override {
-              DrawShape(true, true);
-            }
-
-            //消滅条件.
-            bool IsErase() const override{
-              return isErase;
-            }
-          };
-
-          //ゴール.
-          class Goal : public ObjectBox
-          {
-          private:
-          public:
-            void Init() override {
-              GetBox()->size = {100, 100};
-              GetBox()->color = 0x00FF00;
-            }
-            void Update() override {
-
-            }
-            void Draw() override {
-              //加算描画.
-              DrawMode::Exe(
-                DrawModeID::None, DrawBlendModeID::Add, 75,
-                [&]() {
-                  DrawShape();
-                }
-              );
-
-              //テキスト.
-              DrawStr str(_T("GOAL"), GetPos().ToInt(), ColorID::White);
-              str.Draw();
-            }
-          };
-
-          class GameManager : public ManagerBase
-          {
-          private:
-            Player1 player1;
-            Player2 player2;
-            ObjectList&lt;Ball&gt; balls;
-            Line playerLine; //player1とplayer2を繋ぐ線.
-            Goal goal;
-
-            bool isEnd;
-
-          public:
-            //コンストラクタ.
-            GameManager(int order)
-              : ManagerBase(order), isEnd(false)
-            {
-              //線の初期設定.
-              playerLine.color = ColorID::SkyBlue;
-              playerLine.thick = 2;
-            }
-
+            //set.
+            void SetIsGround(bool flag) { isGround = flag; }
             //get.
-            const Line* GetPlayerLine() { return &playerLine; }
-            const Box*  GetGoal()       { return goal.GetBox(); }
+            bool GetIsGround() const { return isGround; }
+
+            //初期化.
+            void Init() override {
+            }
+            //更新.
+            void Update() override {
+              //接地した球を色で分ける.
+              SetDrawColor(isGround ? ColorID::Cyan : ColorID::SkyBlue);
+            }
+            //描画.
+            void Draw() override {
+              DrawShape();
+            }
+          };
+
+          //プレイヤー本体.
+          class Player : public ObjectPoint
+          {
+          private:
+            vector&lt;PlayerBall&gt; balls;
+
+            double rotSpeed{}; //球の回転速度.
+
+          public:
+            //回転力を与える.
+            void AddRotInput(double input) {
+              //回転.
+              rotSpeed += input * PLAYER_BALL_ROT_SPEED_ADD;
+              //速度限界.
+              NumLimRange(&rotSpeed, -PLAYER_BALL_ROT_SPEED_MAX, PLAYER_BALL_ROT_SPEED_MAX);
+            }
 
             //初期化.
             void Init() override {
 
-              goal.Init();
-              player1.Init();
-              player2.Init();
+              //初期位置.
+              SetPos({0, 50});
+              //球の数を設定.
+              balls.resize(PLAYER_BALL_COUNT);
 
-              //球の生成.
-              Repeat(BALL_COUNT_MAX, [this]() {
-                //座標抽選.
-                int x = Calc::RandNum(App::GetWindowRect().GetL().x, App::GetWindowRect().GetR().x);
-                int y = Calc::RandNum(App::GetWindowRect().GetU().y, App::GetWindowRect().GetD().y);
-                //生成.
-                balls.NewObject(x, y);
-              });
+              //球の位置を設定.
+              double ang = -90;
+              for (auto& i : balls) {
+                //球を配置する座標.
+                const DBL_XY pos = GetPos() + Calc::AngToVector(ang) * PLAYER_BALL_DIST;
+                i.SetPos(pos);
+                //均等な角度で配置.
+                ang += 360 / PLAYER_BALL_COUNT;
+              }
+
+              //球の初期化. 
+              for (auto& i : balls) {
+                i.Init();
+              }
+            }
+
+            //更新.
+            void Update() override {
+              //回転.
+              RotBall();
+              //球の更新.
+              for (auto& i : balls) {
+                i.Update();
+              }
+              //速度減衰.
+              rotSpeed *= 0.97;
+            }
+
+            //描画.
+            void Draw() override {
+              
+              //三角形の線を描画.
+              Line line[3] = {
+                {balls[0].GetPos(), balls[1].GetPos(), ColorID::SkyBlue, 1},
+                {balls[1].GetPos(), balls[2].GetPos(), ColorID::SkyBlue, 1},
+                {balls[2].GetPos(), balls[0].GetPos(), ColorID::SkyBlue, 1}
+              };
+              for (auto& i : line) {
+                i.Draw(true);
+              }
+
+              //球の描画.
+              for (auto& i : balls) {
+                i.Draw();
+              }
+            }
+
+            //球回転.
+            void RotBall();
+          };
+
+          //ゲーム管理.
+          class GameManager : public ManagerBase
+          {
+          private:
+            Ground ground;	//地面.
+            Player player;	//プレイヤー.
+
+          public:
+            //コンストラクタ.
+            GameManager(){}
+            //get.
+            Ground* GetGround() { return &ground; }
+
+            //初期化.
+            void Init() override {
+              ground.Init();
+              player.Init();
             }
 
             //リセット.
             void Reset() override {
             }
-            
+
             //更新.
             void Update() override {
 
-              //オブジェクト更新.
-              goal.Update();
-              player1.Update();
-              player2.Update();
-              //線の更新.
-              playerLine.stPos = player1.GetPos();
-              playerLine.edPos = player2.GetPos();
+              const auto inputMng = ManagerInsts::Get&lt;InputMng&gt;();
 
-              //当たり判定関係.
-              Repeat(
-                HIT_SPLIT_PROCESSING,
-                [&]() {
-                  balls.Update();
-                  CollisionBall();
-                }
-              );
-
-              //球がなくなったら.
-              if (balls.GetObjectCnt() &lt;= 0) {
-                isEnd = true; //終了.
+              //Aキー.
+              if (inputMng->IsPushKey(KeyID::A)) {
+                player.AddRotInput(-1.0); //回転.
               }
+              //Dキー.
+              if (inputMng->IsPushKey(KeyID::D)) {
+                player.AddRotInput(1.0); //回転.
+              }
+
+              ground.Update();
+              player.Update();
             }
 
             //描画.
             void Draw() override {
-
-              //オブジェクト描画.
-              goal.Draw();
-              balls.Draw();
-              player1.Draw();
-              player2.Draw();
-              //線の描画.
-              DrawLineKR(playerLine, true);
-
-              DrawUI();
-            }
-
-            //球同士の当たり判定.
-            void CollisionBall() {
-
-              //球の配列(vector)取得.
-              const auto& objects = balls.GetObjects();
-
-              //全球ループ(重複なし)
-              for (auto i = objects.begin(); i != objects.end(); ++i) {
-                for (auto j = std::next(i); j != objects.end(); ++j) {
-
-                  Circle* cir1 = (*i)->GetCir();
-                  Circle* cir2 = (*j)->GetCir();
-
-                  //重なってたら.
-                  if (Calc::HitCirCir(*cir1, *cir2)) {
-                    
-                    const double idealDist = cir1->r + cir2->r;                     //理想の距離.
-                    const double nowDist   = Calc::Dist(cir1->pos, cir2->pos);      //実際の距離.
-                    const double nowAng    = Calc::FacingAng(cir1->pos, cir2->pos); //実際の方向.
-                    const double power     = 0.1 / HIT_SPLIT_PROCESSING;            //押し退ける強さ.
-
-                    //徐々に押し退ける.
-                    cir1->pos -= Calc::AngToVector(nowAng) * (idealDist - nowDist) * power;
-                    cir2->pos += Calc::AngToVector(nowAng) * (idealDist - nowDist) * power;
-                  }
-                }
-              }
-            }
-
-            //UI描画.
-            void DrawUI() {
-
-              const DBL_XY pos = { 0, -200 }; //基準位置.
-
-              //背景枠.
-              DrawMode::Exe(
-                DrawModeID::None, DrawBlendModeID::Alpha, 128,
-                [&]() {
-                  Box back(pos, { 160, 50 }, ColorID::Black, 1);
-                  DrawBoxKR(back);
-                }
-              );
-
-              //ゲーム終了.
-              if (isEnd) {
-                //クリアテキスト.
-                DrawStr str(_T("CLEAR!"), pos.ToInt(), ColorID::Yellow);
-                str.Draw();
-              }
-              else {
-                auto txt = Format::StrFormat(_T("ball: %d / %d"), balls.GetObjectCnt(), BALL_COUNT_MAX);
-                //残り球数表示.
-                DrawStr str(txt, { 0, -200 }, ColorID::White);
-                str.Draw();
-              }
+              ground.Draw();
+              player.Draw();
             }
           };
 
-          //球の更新.
-          void Ball::Update() {
+          //球回転.
+          void Player::RotBall() {
 
-            const auto gameMng = ManagerInsts::Get&lt;GameManager&gt;();
+            //地面の当たり判定.
+            Box* boxGround = ManagerInsts::Get&lt;GameManager&gt;()->GetGround()->GetBox();
+            //地面に埋まった距離.
+            double buriedDist = 0; 
+            //地面の上面座標.
+            const double groundY = boxGround->pos.y - boxGround->size.y / 2;
 
-            //プレイヤー線を取得.
-            const Line* line = gameMng->GetPlayerLine();
+            //基準点.
+            const DBL_XY pivotPos = GetPos();
 
-            DBL_XY nearest;
-            
-            //線との当たり判定.
-            //nearest変数で最近傍点を取得する.
-            if (HitCheckLine(*line, &nearest)) {
-              //最近傍点→球のベクトル.
-              DBL_XY vec = (GetPos() - nearest).Normalize();
-              //位置をずらす(最近傍点 + 角度 * 半径)
-              SetPos(nearest + vec * GetCir()->r);
+            for (auto& i : balls) {
+
+              //接地した球は処理しない.
+              if (i.GetIsGround()) { continue; }
+
+              //角度と距離.
+              const double ang = Calc::FacingAng(pivotPos, i.GetPos());
+              const double dist = Calc::Dist(pivotPos, i.GetPos());
+              //回転した位置を計算.
+              const DBL_XY newPos = pivotPos + Calc::AngToVector(ang + rotSpeed) * dist;
+              //位置設定.
+              i.SetPos(newPos);
             }
 
-            //画面外に行かないようにする.
-            FixPosInArea(App::GetWindowRect().ToDbl());
+            for (auto& i : balls) {
 
-            //ゴールに触れたら.
-            if (HitCheckBox(*gameMng->GetGoal())) {
-              isErase = true; //消滅.
+              //接地済の球と、接地してない球は処理しない.
+              if (i.GetIsGround() || !i.HitCheckBox(*boxGround)) { continue; }
+
+              //球の座標.
+              const double ballY = i.GetPos().y;
+              //接地点.
+              const DBL_XY groundPos = { i.GetPos().x, groundY };
+              //地面Yとの差.
+              const double buriedDist = (ballY - groundY);
+
+              //埋まった分平行移動させる.
+              for (auto& j : balls) {
+                j.AddPos({ 0, -buriedDist });
+                j.SetIsGround(false);
+              }
+              //新たな接地オブジェクト.
+              i.SetIsGround(true);
+
+              //接地点を回転軸とする.
+              SetPos(groundPos);
+              break;
             }
           }
 
@@ -696,15 +619,15 @@
           ){
             /*
               [管理クラス生成]
-              引数で実行順(order値)を入力する.
+              生成した順にInitやUpdateなどが自動で実行される.
             */
             //KrLibに実装されている管理クラスを登録.
-            ManagerInsts::NewManager&lt;InputMng&gt;(0);
-            ManagerInsts::NewManager&lt;SoundMng&gt;(1);
-            ManagerInsts::NewManager&lt;SceneMng&gt;(2);
-            ManagerInsts::NewManager&lt;TimerMng&gt;(3);
+            ManagerInsts::NewManager&lt;InputMng&gt;();
+            ManagerInsts::NewManager&lt;SoundMng&gt;();
+            ManagerInsts::NewManager&lt;SceneMng&gt;();
+            ManagerInsts::NewManager&lt;TimerMng&gt;();
             //それ以外の管理クラスを登録.
-            ManagerInsts::NewManager&lt;GameManager&gt;(4);
+            ManagerInsts::NewManager&lt;GameManager&gt;();
 
             //初期化処理.
             App::InitDx(800, 640, true, 60, false);
