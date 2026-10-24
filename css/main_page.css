@@ -669,6 +669,10 @@
   .profile-appeal .item {
     min-height: auto;
   }
+
+  .profile-stack-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 420px) {
